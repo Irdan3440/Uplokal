@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Direktori Supplier Lokal Terverifikasi - Temukan mitra bisnis terbaik dari seluruh Indonesia">
+    <title>Direktori Supplier | Uplokal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/directory.css">
+</head>
+
+<body class="page-directory">
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <div class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </div>
+            </a>
+
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="directory.html" class="nav-link active">Direktori</a></li>
+                <li><a href="about.html" class="nav-link">Tentang</a></li>
+                <li><a href="contact.html" class="nav-link">Kontak</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <button class="btn-lang" id="langToggle" title="Switch Language">
+                    <span>ID</span> / <span class="lang-inactive">EN</span>
+                </button>
+                <a href="login.html" class="btn btn-ghost">Masuk</a>
+                <a href="register.html" class="btn btn-primary">Daftar</a>
+            </div>
+
+            <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Directory Header -->
+    <header class="directory-header">
+        <div class="container">
+            <h1>Direktori Supplier Terverifikasi</h1>
+            <p>Temukan 500+ mitra bisnis lokal yang siap melayani kebutuhan Anda</p>
+
+            <div class="directory-search">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" placeholder="Cari supplier, produk, atau jasa..." id="directorySearch">
+                    <button class="btn btn-primary" onclick="handleSearch(event)">Cari</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Directory Content -->
+    <main class="container">
+        <div class="directory-content">
+            <!-- Filters Sidebar -->
+            <aside class="filters-sidebar" id="filtersSidebar">
+                <div class="filter-header">
+                    <h3>Filter</h3>
+                    <button class="filter-close" onclick="toggleFilters()">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Kategori</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="manufaktur">
+                            <span>Manufaktur</span>
+                            <span class="count">(120)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="kerajinan">
+                            <span>Kerajinan</span>
+                            <span class="count">(85)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="fnb">
+                            <span>Food & Beverage</span>
+                            <span class="count">(95)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="fashion">
+                            <span>Fashion & Tekstil</span>
+                            <span class="count">(110)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="agrikultur">
+                            <span>Agrikultur</span>
+                            <span class="count">(75)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="category" value="furniture">
+                            <span>Furniture</span>
+                            <span class="count">(60)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Lokasi</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="jawa-barat">
+                            <span>Jawa Barat</span>
+                            <span class="count">(89)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="jawa-tengah">
+                            <span>Jawa Tengah</span>
+                            <span class="count">(76)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="jawa-timur">
+                            <span>Jawa Timur</span>
+                            <span class="count">(82)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="dki-jakarta">
+                            <span>DKI Jakarta</span>
+                            <span class="count">(45)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="yogyakarta">
+                            <span>Yogyakarta</span>
+                            <span class="count">(38)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="location" value="bali">
+                            <span>Bali</span>
+                            <span class="count">(42)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Sertifikasi</h4>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="checkbox" name="certification" value="export-ready">
+                            <span>Export Ready</span>
+                            <span class="count">(156)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="certification" value="halal">
+                            <span>Halal</span>
+                            <span class="count">(89)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="certification" value="bpom">
+                            <span>BPOM</span>
+                            <span class="count">(45)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="certification" value="sni">
+                            <span>SNI</span>
+                            <span class="count">(78)</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" name="certification" value="organic">
+                            <span>Organic</span>
+                            <span class="count">(32)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Kapasitas Produksi</h4>
+                    <div class="filter-range">
+                        <input type="number" placeholder="Min" id="capacityMin">
+                        <span>-</span>
+                        <input type="number" placeholder="Max" id="capacityMax">
+                    </div>
+                </div>
+
+                <div class="filter-actions">
+                    <button class="btn btn-ghost">Reset</button>
+                    <button class="btn btn-primary">Terapkan</button>
+                </div>
+            </aside>
+
+            <!-- Main Listing -->
+            <div class="directory-main">
+                <div class="directory-toolbar">
+                    <div class="results-info">
+                        Menampilkan <strong>248</strong> supplier terverifikasi
+                    </div>
+                    <div class="toolbar-actions">
+                        <button class="filter-toggle" onclick="toggleFilters()">
+                            <i data-lucide="sliders-horizontal"></i>
+                            Filter
+                        </button>
+                        <select class="sort-select" id="sortSelect">
+                            <option value="relevance">Relevansi</option>
+                            <option value="rating">Rating Tertinggi</option>
+                            <option value="newest">Terbaru</option>
+                            <option value="name">Nama A-Z</option>
+                        </select>
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" onclick="setView('grid')">
+                                <i data-lucide="grid-3x3"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" onclick="setView('list')">
+                                <i data-lucide="list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suppliers Grid -->
+                <div class="suppliers-listing grid-view" id="suppliersListing">
+                    <!-- Supplier Card 1 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🏭</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>PT Kulit Nusantara</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Bandung, Jawa Barat</p>
+                            <p class="supplier-category">Manufaktur Tas & Sepatu Kulit</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                                <span class="capacity">500+ pcs/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Halal</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 2 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🪑</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>CV Jepara Furniture</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Jepara, Jawa Tengah</p>
+                            <p class="supplier-category">Furniture Kayu Jati Custom</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.8</span>
+                                <span class="capacity">Custom Order</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">FSC Certified</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 3 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">☕</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>Kopi Gayo Premium</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Aceh Tengah</p>
+                            <p class="supplier-category">Specialty Coffee Beans</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                                <span class="capacity">10 ton/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Organic</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 4 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">👗</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>Batik Sekar Arum</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Solo, Jawa Tengah</p>
+                            <p class="supplier-category">Batik Tulis & Cap Premium</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.7</span>
+                                <span class="capacity">1000+ pcs/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">UNESCO Heritage</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 5 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🥥</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>PT Kelapa Makmur</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Sulawesi Utara</p>
+                            <p class="supplier-category">Virgin Coconut Oil & Derivatives</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.6</span>
+                                <span class="capacity">50 ton/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Organic</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 6 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🎨</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>Keramik Kasongan</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Yogyakarta</p>
+                            <p class="supplier-category">Keramik & Gerabah Artistik</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.8</span>
+                                <span class="capacity">Custom Order</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Handmade</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 7 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🦐</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>CV Laut Nusantara</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Surabaya, Jawa Timur</p>
+                            <p class="supplier-category">Seafood Frozen & Fresh</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.5</span>
+                                <span class="capacity">100 ton/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">HACCP</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 8 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🧵</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>Tenun Lombok Indah</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Lombok, NTB</p>
+                            <p class="supplier-category">Tenun Ikat & Songket</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                                <span class="capacity">500 pcs/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Handwoven</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+
+                    <!-- Supplier Card 9 -->
+                    <div class="supplier-card">
+                        <div class="supplier-badge verified">
+                            <i data-lucide="badge-check"></i> Verified
+                        </div>
+                        <div class="supplier-image">
+                            <div class="placeholder-image">🍫</div>
+                        </div>
+                        <div class="supplier-content">
+                            <h4>Kakao Sulawesi Prima</h4>
+                            <p class="supplier-location"><i data-lucide="map-pin"></i> Sulawesi Selatan</p>
+                            <p class="supplier-category">Cocoa Beans & Chocolate</p>
+                            <div class="supplier-meta">
+                                <span class="rating"><i data-lucide="star"></i> 4.7</span>
+                                <span class="capacity">25 ton/bulan</span>
+                            </div>
+                            <div class="supplier-tags">
+                                <span class="tag">Export Ready</span>
+                                <span class="tag">Fair Trade</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <button class="pagination-btn" disabled>
+                        <i data-lucide="chevron-left"></i>
+                    </button>
+                    <button class="pagination-btn active">1</button>
+                    <button class="pagination-btn">2</button>
+                    <button class="pagination-btn">3</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-btn">28</button>
+                    <button class="pagination-btn">
+                        <i data-lucide="chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item">
+            <i data-lucide="home"></i>
+            <span>Beranda</span>
+        </a>
+        <a href="directory.html" class="mobile-nav-item active">
+            <i data-lucide="search"></i>
+            <span>Direktori</span>
+        </a>
+        <a href="register.html" class="mobile-nav-item highlight">
+            <i data-lucide="plus-circle"></i>
+            <span>Daftar</span>
+        </a>
+        <a href="login.html" class="mobile-nav-item">
+            <i data-lucide="user"></i>
+            <span>Masuk</span>
+        </a>
+    </nav>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

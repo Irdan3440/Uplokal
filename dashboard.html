@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard Bisnis Uplokal - Kelola dan kembangkan bisnis Anda">
+    <title>Dashboard | Uplokal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item active">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="stethoscope"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <span class="user-name">Rina Amelia</span>
+                        <span class="user-role">PT Kulit Nusantara</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Pencarian">
+                        <i data-lucide="search"></i>
+                    </button>
+                    <button class="topbar-btn" title="Notifikasi">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <button class="btn-lang" onclick="toggleLanguage()" title="Switch Language">
+                        <span>ID</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Welcome Header -->
+                <div class="dashboard-header">
+                    <h1>Selamat Pagi, Rina! 👋</h1>
+                    <p>Berikut adalah ringkasan performa bisnis Anda</p>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-blue">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="stat-card-value">2,847</div>
+                        <div class="stat-card-label">Profile Views Bulan Ini</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-green">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <div class="stat-card-value">12</div>
+                        <div class="stat-card-label">Inquiry Baru</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-purple">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="stat-card-value">+127%</div>
+                        <div class="stat-card-label">Pertumbuhan Bulan Ini</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-orange">
+                            <i data-lucide="star"></i>
+                        </div>
+                        <div class="stat-card-value">4.9</div>
+                        <div class="stat-card-label">Rating Rata-rata</div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Column -->
+                    <div>
+                        <!-- Health Score Card -->
+                        <div class="health-score-card" style="margin-bottom: var(--space-6);">
+                            <h3>🏥 Business Health Score</h3>
+                            <div class="score-circle">
+                                <div class="score-ring" style="--score: 78;">
+                                    <div class="score-inner">
+                                        <span class="score-value">78</span>
+                                        <span class="score-label">dari 100</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="score-status">
+                                <i data-lucide="check-circle"></i>
+                                BAIK - Siap Berkembang
+                            </div>
+                            <div class="score-breakdown">
+                                <div class="breakdown-item">
+                                    <div class="breakdown-value">85</div>
+                                    <div class="breakdown-label">Marketing</div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="breakdown-value">70</div>
+                                    <div class="breakdown-label">Keuangan</div>
+                                </div>
+                                <div class="breakdown-item">
+                                    <div class="breakdown-value">80</div>
+                                    <div class="breakdown-label">Legalitas</div>
+                                </div>
+                            </div>
+                            <a href="dashboard-diagnostic.html" class="btn btn-outline"
+                                style="margin-top: var(--space-6);">
+                                Lihat Detail Diagnosa
+                                <i data-lucide="arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>📋 Aktivitas Terbaru</h3>
+                                <a href="#" class="btn btn-ghost btn-sm">Lihat Semua</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon info">
+                                            <i data-lucide="message-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Inquiry baru dari Singapore Interiors</div>
+                                            <div class="activity-time">2 jam lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon success">
+                                            <i data-lucide="check-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Kampanye Instagram berhasil diluncurkan</div>
+                                            <div class="activity-time">5 jam lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon warning">
+                                            <i data-lucide="alert-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Laporan keuangan Q4 perlu diupdate</div>
+                                            <div class="activity-time">1 hari lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon info">
+                                            <i data-lucide="file-text"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Dokumen export permit telah diverifikasi</div>
+                                            <div class="activity-time">2 hari lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon success">
+                                            <i data-lucide="star"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Rating baru: 5 bintang dari Malaysia Craft</div>
+                                            <div class="activity-time">3 hari lalu</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <!-- Quick Actions -->
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>⚡ Aksi Cepat</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="quick-actions">
+                                    <a href="#" class="quick-action">
+                                        <i data-lucide="message-square-plus"></i>
+                                        <span>Balas Inquiry</span>
+                                    </a>
+                                    <a href="#" class="quick-action">
+                                        <i data-lucide="file-plus"></i>
+                                        <span>Upload Dokumen</span>
+                                    </a>
+                                    <a href="#" class="quick-action">
+                                        <i data-lucide="calculator"></i>
+                                        <span>Input Keuangan</span>
+                                    </a>
+                                    <a href="#" class="quick-action">
+                                        <i data-lucide="calendar"></i>
+                                        <span>Jadwal Konsultasi</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recommendations -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>💡 Rekomendasi</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="recommendation-list">
+                                    <div class="recommendation-item priority-high">
+                                        <div class="recommendation-icon">
+                                            <i data-lucide="alert-triangle"></i>
+                                        </div>
+                                        <div class="recommendation-content">
+                                            <div class="recommendation-title">Update Laporan Keuangan</div>
+                                            <p class="recommendation-desc">Laporan Q4 belum lengkap. Lengkapi untuk
+                                                meningkatkan skor bankability.</p>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-item">
+                                        <div class="recommendation-icon">
+                                            <i data-lucide="lightbulb"></i>
+                                        </div>
+                                        <div class="recommendation-content">
+                                            <div class="recommendation-title">Optimalkan Profil Bisnis</div>
+                                            <p class="recommendation-desc">Tambahkan foto produk berkualitas untuk
+                                                meningkatkan conversion rate.</p>
+                                        </div>
+                                    </div>
+                                    <div class="recommendation-item priority-low">
+                                        <div class="recommendation-icon">
+                                            <i data-lucide="sparkles"></i>
+                                        </div>
+                                        <div class="recommendation-content">
+                                            <div class="recommendation-title">Ikuti Webinar Export</div>
+                                            <p class="recommendation-desc">Webinar gratis tentang ekspor ke EU tersedia
+                                                minggu depan.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Pesan</span>
+            </a>
+            <a href="dashboard-diagnostic.html" class="mobile-nav-item">
+                <i data-lucide="stethoscope"></i>
+                <span>Diagnosa</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i data-lucide="user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

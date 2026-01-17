@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Uplokal - Jembatan UMKM Indonesia ke Pasar Global. Platform kolaborasi bisnis untuk konsultasi, keuangan, pemasaran digital, dan matchmaking B2B.">
+    <meta name="keywords" content="UMKM, ekspor, bisnis lokal, digital marketing, supplier Indonesia">
+    <title>Uplokal - From Local Up To Global</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="/" class="navbar-brand">
+                <div class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </div>
+            </a>
+            
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="directory.html" class="nav-link">Direktori</a></li>
+                <li><a href="about.html" class="nav-link">Tentang</a></li>
+                <li><a href="contact.html" class="nav-link">Kontak</a></li>
+            </ul>
+            
+            <div class="navbar-actions">
+                <button class="btn-lang" id="langToggle" title="Switch Language">
+                    <span>ID</span> / <span class="lang-inactive">EN</span>
+                </button>
+                <a href="login.html" class="btn btn-ghost">Masuk</a>
+                <a href="register.html" class="btn btn-primary">Daftar</a>
+            </div>
+            
+            <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>Platform #1 untuk UMKM Indonesia</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="gradient-text">From Local</span>
+                    <br>Up To <span class="highlight">Global</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Jembatan lengkap untuk membawa bisnis lokal Anda ke pasar internasional. 
+                    Konsultasi bisnis, perbaikan keuangan, hingga pemasaran digital dalam satu platform.
+                </p>
+                <div class="hero-search">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Cari supplier, produk, atau jasa..." id="heroSearch">
+                        <button class="btn btn-primary">Cari</button>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Mitra Bisnis</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Negara Tujuan</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat">
+                        <span class="stat-number">Rp 2.5M+</span>
+                        <span class="stat-label">Transaksi Difasilitasi</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card hero-card-1">
+                    <div class="card-icon success">
+                        <i data-lucide="trending-up"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">Revenue Growth</span>
+                        <span class="card-value">+127%</span>
+                    </div>
+                </div>
+                <div class="hero-card hero-card-2">
+                    <div class="card-icon primary">
+                        <i data-lucide="globe"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">Export Ready</span>
+                        <span class="card-value">Verified ✓</span>
+                    </div>
+                </div>
+                <div class="hero-card hero-card-3">
+                    <div class="card-icon warning">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-label">New Inquiry</span>
+                        <span class="card-value">+12 Today</span>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="illustration-globe"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Jelajahi Kategori</h2>
+                <p class="section-subtitle">Temukan supplier dan mitra bisnis dari berbagai industri</p>
+            </div>
+            <div class="categories-grid">
+                <a href="directory.html?cat=manufaktur" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="factory"></i>
+                    </div>
+                    <h3>Manufaktur</h3>
+                    <span class="category-count">120+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=kerajinan" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="gem"></i>
+                    </div>
+                    <h3>Kerajinan</h3>
+                    <span class="category-count">85+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=fnb" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="utensils"></i>
+                    </div>
+                    <h3>Food & Beverage</h3>
+                    <span class="category-count">95+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=fashion" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="shirt"></i>
+                    </div>
+                    <h3>Fashion & Tekstil</h3>
+                    <span class="category-count">110+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=agrikultur" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <h3>Agrikultur</h3>
+                    <span class="category-count">75+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=furniture" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="armchair"></i>
+                    </div>
+                    <h3>Furniture</h3>
+                    <span class="category-count">60+ Supplier</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section class="section services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">One-Stop Solution</span>
+                <h2 class="section-title">Layanan Lengkap untuk Bisnis Anda</h2>
+                <p class="section-subtitle">Dari perbaikan fundamental hingga ekspansi pasar internasional</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon gradient-blue">
+                        <i data-lucide="stethoscope"></i>
+                    </div>
+                    <h3>Business Diagnostic</h3>
+                    <p>Analisis kesehatan bisnis Anda dari sisi marketing, keuangan, dan legalitas dengan sistem scoring otomatis.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check"></i> Health Score Assessment</li>
+                        <li><i data-lucide="check"></i> Rekomendasi Perbaikan</li>
+                        <li><i data-lucide="check"></i> Konsultasi Ahli</li>
+                    </ul>
+                </div>
+                <div class="service-card featured">
+                    <div class="featured-badge">Paling Populer</div>
+                    <div class="service-icon gradient-green">
+                        <i data-lucide="calculator"></i>
+                    </div>
+                    <h3>Tax & Finance Assistant</h3>
+                    <p>Modul pencatatan keuangan sederhana dan estimasi pajak untuk UMKM agar siap bankable dan ekspansi.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check"></i> Cash Flow Tracking</li>
+                        <li><i data-lucide="check"></i> Estimasi Pajak</li>
+                        <li><i data-lucide="check"></i> Laporan Keuangan</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gradient-purple">
+                        <i data-lucide="megaphone"></i>
+                    </div>
+                    <h3>Marketing Campaign</h3>
+                    <p>Tim ahli digital marketing yang mengelola kampanye Anda dengan transparansi data real-time.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check"></i> Social Media Ads</li>
+                        <li><i data-lucide="check"></i> Performance Dashboard</li>
+                        <li><i data-lucide="check"></i> Content Creation</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon gradient-orange">
+                        <i data-lucide="handshake"></i>
+                    </div>
+                    <h3>B2B Matchmaking</h3>
+                    <p>Sistem RFQ dan direktori supplier terverifikasi untuk menghubungkan supply dan demand secara efektif.</p>
+                    <ul class="service-features">
+                        <li><i data-lucide="check"></i> Verified Suppliers</li>
+                        <li><i data-lucide="check"></i> RFQ System</li>
+                        <li><i data-lucide="check"></i> Direct Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Suppliers Section -->
+    <section class="section suppliers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Supplier Unggulan</h2>
+                <p class="section-subtitle">Mitra bisnis terkurasi yang siap melayani kebutuhan Anda</p>
+                <a href="directory.html" class="btn btn-outline">Lihat Semua <i data-lucide="arrow-right"></i></a>
+            </div>
+            <div class="suppliers-grid">
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">🏭</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>PT Kulit Nusantara</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Bandung, Jawa Barat</p>
+                        <p class="supplier-category">Manufaktur Tas & Sepatu Kulit</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                            <span class="capacity">500+ pcs/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">Halal</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">🪑</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>CV Jepara Furniture</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Jepara, Jawa Tengah</p>
+                        <p class="supplier-category">Furniture Kayu Jati Custom</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.8</span>
+                            <span class="capacity">Custom Order</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">FSC Certified</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">☕</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>Kopi Gayo Premium</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Aceh Tengah</p>
+                        <p class="supplier-category">Specialty Coffee Beans</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                            <span class="capacity">10 ton/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">Organic</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">👗</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>Batik Sekar Arum</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Solo, Jawa Tengah</p>
+                        <p class="supplier-category">Batik Tulis & Cap Premium</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.7</span>
+                            <span class="capacity">1000+ pcs/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">UNESCO Heritage</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Mudah & Cepat</span>
+                <h2 class="section-title">Bagaimana Cara Kerjanya?</h2>
+                <p class="section-subtitle">4 langkah sederhana untuk membawa bisnis Anda ke level berikutnya</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i data-lucide="user-plus"></i>
+                    </div>
+                    <h3>Daftar & Profil</h3>
+                    <p>Buat akun dan lengkapi profil bisnis Anda. Gratis dan hanya butuh 5 menit.</p>
+                </div>
+                <div class="step-connector">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i data-lucide="clipboard-check"></i>
+                    </div>
+                    <h3>Diagnosa Bisnis</h3>
+                    <p>Sistem kami akan menilai kesehatan bisnis dan memberikan rekomendasi prioritas.</p>
+                </div>
+                <div class="step-connector">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i data-lucide="message-circle"></i>
+                    </div>
+                    <h3>Konsultasi & Strategi</h3>
+                    <p>Terhubung dengan tim ahli untuk menyusun rencana bisnis yang tepat.</p>
+                </div>
+                <div class="step-connector">
+                    <i data-lucide="chevron-right"></i>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                    <h3>Go Global!</h3>
+                    <p>Produk Anda tampil di direktori dan siap menerima inquiry dari seluruh dunia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Apa Kata Mereka?</h2>
+                <p class="section-subtitle">Kisah sukses mitra bisnis yang telah bergabung dengan Uplokal</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"Sebelum bergabung Uplokal, kami kesulitan mendapat buyer internasional. Sekarang sudah ekspor ke 5 negara! Tim konsultannya sangat membantu merapikan laporan keuangan kami."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RA</div>
+                        <div class="author-info">
+                            <span class="author-name">Rina Amelia</span>
+                            <span class="author-title">Owner, PT Kulit Nusantara</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"Dashboard marketing-nya transparan banget. Saya bisa lihat performa iklan real-time dan ROI-nya jelas. Omzet naik 200% dalam 6 bulan pertama."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">BS</div>
+                        <div class="author-info">
+                            <span class="author-name">Budi Santoso</span>
+                            <span class="author-title">Founder, Kopi Gayo Premium</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <p class="testimonial-text">"Sebagai buyer dari Singapore, Uplokal memudahkan saya menemukan supplier furniture berkualitas. Proses RFQ-nya cepat dan supplier-nya sudah terverifikasi."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JT</div>
+                        <div class="author-info">
+                            <span class="author-name">James Tan</span>
+                            <span class="author-title">Procurement, SG Interiors</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2>Siap Membawa Bisnismu ke Level Berikutnya?</h2>
+                    <p>Bergabung dengan 500+ mitra bisnis yang sudah merasakan manfaat Uplokal. Pendaftaran gratis!</p>
+                    <div class="cta-buttons">
+                        <a href="register.html" class="btn btn-light btn-lg">
+                            <i data-lucide="rocket"></i>
+                            Mulai Sekarang - Gratis
+                        </a>
+                        <a href="contact.html" class="btn btn-outline-light btn-lg">
+                            <i data-lucide="phone"></i>
+                            Hubungi Kami
+                        </a>
+                    </div>
+                </div>
+                <div class="cta-decoration">
+                    <div class="decoration-circle"></div>
+                    <div class="decoration-circle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">📍</span>
+                        <span class="logo-text">Uplokal</span>
+                    </div>
+                    <p>Jembatan UMKM Indonesia ke pasar global. Dari konsultasi bisnis hingga digital marketing dalam satu platform.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+                        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+                        <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Business Diagnostic</a></li>
+                        <li><a href="#">Tax & Finance</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">Export Readiness</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="about.html">Tentang Kami</a></li>
+                        <li><a href="#">Karir</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i data-lucide="mail"></i> hello@uplokal.com</li>
+                        <li><i data-lucide="phone"></i> +62 21 1234 5678</li>
+                        <li><i data-lucide="map-pin"></i> Jakarta, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Uplokal. All rights reserved.</p>
+                <p>Made with ❤️ for Indonesian SMEs</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html" class="mobile-nav-item active">
+            <i data-lucide="home"></i>
+            <span>Beranda</span>
+        </a>
+        <a href="directory.html" class="mobile-nav-item">
+            <i data-lucide="search"></i>
+            <span>Direktori</span>
+        </a>
+        <a href="register.html" class="mobile-nav-item highlight">
+            <i data-lucide="plus-circle"></i>
+            <span>Daftar</span>
+        </a>
+        <a href="login.html" class="mobile-nav-item">
+            <i data-lucide="user"></i>
+            <span>Masuk</span>
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

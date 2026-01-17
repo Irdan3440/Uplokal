@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hubungi Uplokal - Kami siap membantu mengembangkan bisnis Anda">
+    <title>Kontak | Uplokal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            padding: calc(72px + var(--space-16)) 0 var(--space-16);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .page-header p {
+            font-size: var(--text-xl);
+            color: var(--color-gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-section {
+            padding: var(--space-16) 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: var(--space-12);
+        }
+
+        @media (min-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-info h2 {
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-6);
+        }
+
+        .contact-info>p {
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-4);
+            margin-bottom: var(--space-8);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-4);
+            padding: var(--space-5);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-xl);
+        }
+
+        .contact-method-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-method-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+        }
+
+        .contact-method-content h4 {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-1);
+        }
+
+        .contact-method-content p {
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+            margin: 0;
+        }
+
+        .contact-method-content a {
+            color: var(--color-primary-600);
+            font-weight: var(--font-medium);
+        }
+
+        .social-section h4 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-4);
+        }
+
+        .social-section .social-links {
+            justify-content: flex-start;
+        }
+
+        .contact-form-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: var(--space-8);
+            border: 1px solid var(--color-gray-200);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-form-card h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-2);
+        }
+
+        .contact-form-card>p {
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-6);
+        }
+
+        .contact-form .form-row {
+            display: grid;
+            gap: var(--space-4);
+        }
+
+        @media (min-width: 640px) {
+            .contact-form .form-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .faq-section {
+            background: var(--color-gray-50);
+            padding: var(--space-16) 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: var(--space-4);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: var(--space-6);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: var(--font-semibold);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-gray-400);
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-item.open .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: var(--space-4);
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="navbar-brand">
+                <div class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </div>
+            </a>
+
+            <ul class="navbar-menu" id="navMenu">
+                <li><a href="directory.html" class="nav-link">Direktori</a></li>
+                <li><a href="about.html" class="nav-link">Tentang</a></li>
+                <li><a href="contact.html" class="nav-link active">Kontak</a></li>
+            </ul>
+
+            <div class="navbar-actions">
+                <a href="login.html" class="btn btn-ghost">Masuk</a>
+                <a href="register.html" class="btn btn-primary">Daftar</a>
+            </div>
+
+            <button class="navbar-toggle" id="navToggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Hubungi Kami</h1>
+            <p>Ada pertanyaan? Tim kami siap membantu Anda</p>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h2>Mari Terhubung 👋</h2>
+                    <p>
+                        Kami senang mendengar dari Anda! Baik Anda pelaku usaha yang ingin bergabung,
+                        buyer yang mencari supplier, atau hanya ingin tahu lebih banyak tentang Uplokal.
+                    </p>
+
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Email</h4>
+                                <p><a href="mailto:hello@uplokal.com">hello@uplokal.com</a></p>
+                                <p>Kami akan membalas dalam 24 jam</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Telepon</h4>
+                                <p><a href="tel:+622112345678">+62 21 1234 5678</a></p>
+                                <p>Senin - Jumat, 09:00 - 18:00 WIB</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i data-lucide="message-circle"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/6281234567890">+62 812 3456 7890</a></p>
+                                <p>Respon cepat untuk pertanyaan singkat</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-method-icon">
+                                <i data-lucide="map-pin"></i>
+                            </div>
+                            <div class="contact-method-content">
+                                <h4>Alamat Kantor</h4>
+                                <p>Jl. Sudirman No. 123, Lantai 15</p>
+                                <p>Jakarta Selatan 12190, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-section">
+                        <h4>Ikuti Kami</h4>
+                        <div class="social-links">
+                            <a href="#"><i data-lucide="instagram"></i></a>
+                            <a href="#"><i data-lucide="linkedin"></i></a>
+                            <a href="#"><i data-lucide="twitter"></i></a>
+                            <a href="#"><i data-lucide="youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <h3>Kirim Pesan</h3>
+                    <p>Isi formulir di bawah dan tim kami akan segera menghubungi Anda</p>
+
+                    <form class="contact-form" id="contactForm" onsubmit="return handleContact(event)">
+                        <div class="form-row" style="margin-bottom: var(--space-5);">
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="name">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-input" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="form-group" style="margin-bottom: 0;">
+                                <label class="form-label" for="email">Email</label>
+                                <input type="email" id="email" class="form-input" placeholder="email@example.com"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="phone">Nomor Telepon</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+62 xxx xxxx xxxx">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="subject">Subjek</label>
+                            <select id="subject" class="form-input" required>
+                                <option value="">Pilih subjek...</option>
+                                <option value="business">Saya ingin mendaftarkan bisnis</option>
+                                <option value="buyer">Saya mencari supplier</option>
+                                <option value="partnership">Kerjasama / Partnership</option>
+                                <option value="support">Bantuan teknis</option>
+                                <option value="other">Lainnya</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="message">Pesan</label>
+                            <textarea id="message" class="form-input" rows="5" placeholder="Tuliskan pesan Anda..."
+                                required style="resize: vertical;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                            <i data-lucide="send"></i>
+                            Kirim Pesan
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pertanyaan Umum</h2>
+                <p class="section-subtitle">Jawaban untuk pertanyaan yang sering diajukan</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Apakah pendaftaran di Uplokal gratis?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Ya, pendaftaran di Uplokal sepenuhnya gratis. Anda dapat membuat akun, melengkapi profil bisnis,
+                        dan mendapatkan Business Health Checkup tanpa biaya. Kami menawarkan layanan premium untuk
+                        fitur-fitur lanjutan seperti konsultasi ahli dan kampanye marketing.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Bagaimana proses verifikasi supplier?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Tim kami memverifikasi setiap supplier melalui pengecekan dokumen legal (NIB, NPWP, sertifikasi
+                        produk),
+                        validasi alamat bisnis, dan review portofolio. Proses ini memakan waktu 2-5 hari kerja.
+                        Supplier yang lolos verifikasi akan mendapat badge "Verified" di profil mereka.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Apakah Uplokal memfasilitasi transaksi?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Uplokal berfungsi sebagai platform matchmaking yang menghubungkan buyer dan supplier.
+                        Untuk transaksi besar atau internasional, tim kami dapat memfasilitasi negosiasi dan
+                        membantu menyiapkan dokumen yang diperlukan. Namun, transaksi dilakukan langsung
+                        antara kedua pihak.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Layanan apa saja yang tersedia untuk pelaku usaha?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Kami menyediakan: (1) Business Diagnostic untuk menilai kesehatan bisnis,
+                        (2) Financial Tools untuk pencatatan keuangan dan estimasi pajak,
+                        (3) Marketing Campaign untuk promosi digital,
+                        (4) Export Readiness Kit untuk persiapan ekspor, dan
+                        (5) Project Workspace untuk kolaborasi dengan tim Uplokal.
+                    </div>
+                </div>
+
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <span>Bagaimana cara menghubungi supplier?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Setelah login sebagai customer, Anda dapat mengirim inquiry langsung ke supplier melalui
+                        tombol "Kirim Inquiry" di profil mereka. Anda juga dapat membuat Request for Quotation (RFQ)
+                        untuk kebutuhan spesifik, dan sistem kami akan mencocokkan dengan supplier yang relevan.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <span class="logo-icon">📍</span>
+                        <span class="logo-text">Uplokal</span>
+                    </div>
+                    <p>Jembatan UMKM Indonesia ke pasar global.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Business Diagnostic</a></li>
+                        <li><a href="#">Tax & Finance</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Perusahaan</h4>
+                    <ul>
+                        <li><a href="about.html">Tentang Kami</a></li>
+                        <li><a href="contact.html">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><i data-lucide="mail"></i> hello@uplokal.com</li>
+                        <li><i data-lucide="phone"></i> +62 21 1234 5678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Uplokal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a href="index.html" class="mobile-nav-item">
+            <i data-lucide="home"></i>
+            <span>Beranda</span>
+        </a>
+        <a href="directory.html" class="mobile-nav-item">
+            <i data-lucide="search"></i>
+            <span>Direktori</span>
+        </a>
+        <a href="register.html" class="mobile-nav-item highlight">
+            <i data-lucide="plus-circle"></i>
+            <span>Daftar</span>
+        </a>
+        <a href="login.html" class="mobile-nav-item">
+            <i data-lucide="user"></i>
+            <span>Masuk</span>
+        </a>
+    </nav>
+
+    <script src="js/app.js"></script>
+    <script>
+        function handleContact(e) {
+            e.preventDefault();
+            showToast('Pesan berhasil dikirim! Tim kami akan menghubungi Anda segera.', 'success');
+            e.target.reset();
+            return false;
+        }
+
+        function toggleFaq(element) {
+            // Close other open FAQs
+            document.querySelectorAll('.faq-item.open').forEach(item => {
+                if (item !== element) {
+                    item.classList.remove('open');
+                }
+            });
+            // Toggle current FAQ
+            element.classList.toggle('open');
+        }
+    </script>
+</body>
+
+</html>

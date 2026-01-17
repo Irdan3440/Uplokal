@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Daftar sebagai pelaku usaha di Uplokal untuk mengembangkan bisnis ke pasar global">
+    <title>Daftar Bisnis | Uplokal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+    <div class="auth-layout">
+        <!-- Sidebar Visual -->
+        <aside class="auth-sidebar">
+            <div class="auth-sidebar-content">
+                <h2>Daftarkan<br>Bisnis Anda! 🏢</h2>
+                <p>Lengkapi data untuk memulai perjalanan ekspansi bisnis bersama Uplokal.</p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <span>Akses ke buyer internasional</span>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="bar-chart-2"></i>
+                        </div>
+                        <span>Dashboard bisnis lengkap</span>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <span>Konsultasi bisnis gratis</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-sidebar-decoration">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="auth-main">
+            <div class="auth-container" style="max-width: 480px;">
+                <div class="auth-logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon">📍</span>
+                        <span class="logo-text">Uplokal</span>
+                    </a>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="onboarding-progress">
+                    <div class="progress-step active">
+                        <div class="step-dot">1</div>
+                        <span class="step-label">Akun</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="progress-step">
+                        <div class="step-dot">2</div>
+                        <span class="step-label">Bisnis</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="progress-step">
+                        <div class="step-dot">3</div>
+                        <span class="step-label">Diagnosa</span>
+                    </div>
+                </div>
+
+                <div class="auth-header">
+                    <h1>Buat Akun Bisnis</h1>
+                    <p>Langkah 1 dari 3 - Informasi Akun</p>
+                </div>
+
+                <form class="auth-form" id="registerForm" onsubmit="return handleRegister(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="fullname">Nama Lengkap</label>
+                        <input type="text" id="fullname" class="form-input" placeholder="Masukkan nama lengkap"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email Bisnis</label>
+                        <input type="email" id="email" class="form-input" placeholder="nama@perusahaan.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Nomor WhatsApp</label>
+                        <input type="tel" id="phone" class="form-input" placeholder="08xx xxxx xxxx" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="password" class="form-input" placeholder="Minimal 8 karakter"
+                                required minlength="8">
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                <i data-lucide="eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="confirmPassword">Konfirmasi Password</label>
+                        <div class="password-input-wrapper">
+                            <input type="password" id="confirmPassword" class="form-input" placeholder="Ulangi password"
+                                required>
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                <i data-lucide="eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="remember-me">
+                            <input type="checkbox" id="terms" required>
+                            <span>Saya menyetujui <a href="#">Syarat & Ketentuan</a> dan <a href="#">Kebijakan
+                                    Privasi</a></span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        Lanjutkan
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Sudah punya akun? <a href="login.html">Masuk di sini</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        function handleRegister(e) {
+            e.preventDefault();
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                showToast('Password tidak cocok', 'error');
+                return false;
+            }
+
+            if (password.length < 8) {
+                showToast('Password minimal 8 karakter', 'error');
+                return false;
+            }
+
+            // Demo: redirect to next step
+            showToast('Akun berhasil dibuat!', 'success');
+            setTimeout(() => {
+                window.location.href = 'register-business-profile.html';
+            }, 1500);
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
