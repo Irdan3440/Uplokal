@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin - Client Management">
+    <title>Clients | Uplokal Admin</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item active">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Client Management</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm">
+                        <i data-lucide="plus"></i>
+                        Add Client
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Filters -->
+                <div class="admin-filters">
+                    <div class="filter-group">
+                        <input type="text" class="form-input" placeholder="Search clients..." style="min-width: 250px;">
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">All Categories</option>
+                            <option>Manufaktur</option>
+                            <option>Kerajinan</option>
+                            <option>Food & Beverage</option>
+                            <option>Fashion & Tekstil</option>
+                            <option>Agrikultur</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">All Status</option>
+                            <option>Active</option>
+                            <option>Pending</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select class="form-input">
+                            <option value="">All Locations</option>
+                            <option>Jawa Barat</option>
+                            <option>Jawa Tengah</option>
+                            <option>Jawa Timur</option>
+                            <option>DKI Jakarta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Data Table -->
+                <div class="dashboard-card">
+                    <div class="card-body" style="padding: 0;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Category</th>
+                                    <th>Location</th>
+                                    <th>Health Score</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">KN</div>
+                                            <div>
+                                                <div class="client-name">PT Kulit Nusantara</div>
+                                                <div class="client-category">Manufaktur Tas & Sepatu</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Manufaktur</td>
+                                    <td>Bandung</td>
+                                    <td><span class="badge badge-success">78</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>15 Nov 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">JF</div>
+                                            <div>
+                                                <div class="client-name">CV Jepara Furniture</div>
+                                                <div class="client-category">Furniture Kayu Jati</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Furniture</td>
+                                    <td>Jepara</td>
+                                    <td><span class="badge badge-success">85</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>10 Nov 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">KG</div>
+                                            <div>
+                                                <div class="client-name">Kopi Gayo Premium</div>
+                                                <div class="client-category">Specialty Coffee</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Food & Beverage</td>
+                                    <td>Aceh Tengah</td>
+                                    <td><span class="badge badge-success">92</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>8 Nov 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">TK</div>
+                                            <div>
+                                                <div class="client-name">CV Tenun Kalimantan</div>
+                                                <div class="client-category">Tenun Tradisional</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Fashion & Tekstil</td>
+                                    <td>Samarinda</td>
+                                    <td><span class="badge badge-warning">45</span></td>
+                                    <td><span class="status-badge pending">Pending</span></td>
+                                    <td>5 Jan 2026</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">SA</div>
+                                            <div>
+                                                <div class="client-name">Batik Sekar Arum</div>
+                                                <div class="client-category">Batik Tulis & Cap</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Fashion & Tekstil</td>
+                                    <td>Solo</td>
+                                    <td><span class="badge badge-success">88</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>1 Oct 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">KM</div>
+                                            <div>
+                                                <div class="client-name">PT Kelapa Makmur</div>
+                                                <div class="client-category">Virgin Coconut Oil</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Agrikultur</td>
+                                    <td>Sulawesi Utara</td>
+                                    <td><span class="badge badge-primary">68</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>20 Sep 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">KK</div>
+                                            <div>
+                                                <div class="client-name">Keramik Kasongan</div>
+                                                <div class="client-category">Keramik & Gerabah</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Kerajinan</td>
+                                    <td>Yogyakarta</td>
+                                    <td><span class="badge badge-success">75</span></td>
+                                    <td><span class="status-badge active">Active</span></td>
+                                    <td>15 Aug 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">LN</div>
+                                            <div>
+                                                <div class="client-name">CV Laut Nusantara</div>
+                                                <div class="client-category">Seafood Frozen</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>Food & Beverage</td>
+                                    <td>Surabaya</td>
+                                    <td><span class="badge badge-warning">58</span></td>
+                                    <td><span class="status-badge inactive">Inactive</span></td>
+                                    <td>10 Jul 2025</td>
+                                    <td>
+                                        <div class="table-actions">
+                                            <button class="table-action" title="View"><i data-lucide="eye"></i></button>
+                                            <button class="table-action" title="Edit"><i
+                                                    data-lucide="pencil"></i></button>
+                                            <button class="table-action" title="More"><i
+                                                    data-lucide="more-vertical"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div
+                        style="padding: var(--space-4); border-top: 1px solid var(--color-gray-200); display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: var(--text-sm); color: var(--color-gray-500);">Showing 1-8 of 248
+                            clients</span>
+                        <div class="pagination" style="margin: 0;">
+                            <button class="pagination-btn" disabled><i data-lucide="chevron-left"></i></button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">2</button>
+                            <button class="pagination-btn">3</button>
+                            <button class="pagination-btn"><i data-lucide="chevron-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <nav class="dashboard-mobile-nav">
+            <a href="admin.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-clients.html" class="mobile-nav-item active">
+                <i data-lucide="building-2"></i>
+                <span>Clients</span>
+            </a>
+            <a href="admin-projects.html" class="mobile-nav-item">
+                <i data-lucide="folder-kanban"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>

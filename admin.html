@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Dashboard - Uplokal Internal Management">
+    <title>Admin Dashboard | Uplokal</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">📍</span>
+                    <span class="logo-text">Uplokal</span>
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item active">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" onclick="toggleSidebar()">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Admin Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Pencarian">
+                        <i data-lucide="search"></i>
+                    </button>
+                    <button class="topbar-btn" title="Notifikasi">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <a href="index.html" class="btn btn-ghost btn-sm">
+                        <i data-lucide="external-link"></i>
+                        View Site
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Welcome Header -->
+                <div class="dashboard-header">
+                    <h1>Selamat Datang, Admin! 👨‍💼</h1>
+                    <p>Overview performa platform Uplokal</p>
+                </div>
+
+                <!-- Key Metrics -->
+                <div class="stats-grid" style="grid-template-columns: repeat(5, 1fr);">
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-blue">
+                            <i data-lucide="building-2"></i>
+                        </div>
+                        <div class="stat-card-value">248</div>
+                        <div class="stat-card-label">Total Clients</div>
+                        <div class="stat-trend positive">
+                            <i data-lucide="trending-up"></i> +12 bulan ini
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-green">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-card-value">1,247</div>
+                        <div class="stat-card-label">Customers</div>
+                        <div class="stat-trend positive">
+                            <i data-lucide="trending-up"></i> +89 bulan ini
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-purple">
+                            <i data-lucide="folder-kanban"></i>
+                        </div>
+                        <div class="stat-card-value">18</div>
+                        <div class="stat-card-label">Active Projects</div>
+                        <div class="stat-trend neutral">
+                            <i data-lucide="minus"></i> Stabil
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-orange">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <div class="stat-card-value">56</div>
+                        <div class="stat-card-label">RFQ Bulan Ini</div>
+                        <div class="stat-trend positive">
+                            <i data-lucide="trending-up"></i> +23%
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon"
+                            style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
+                            <i data-lucide="banknote"></i>
+                        </div>
+                        <div class="stat-card-value">Rp 125jt</div>
+                        <div class="stat-card-label">Revenue Bulan Ini</div>
+                        <div class="stat-trend positive">
+                            <i data-lucide="trending-up"></i> +18%
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="dashboard-grid">
+                    <!-- Left Column -->
+                    <div>
+                        <!-- Pending Verifications -->
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>🔍 Pending Verifications</h3>
+                                <a href="#" class="btn btn-ghost btn-sm">Lihat Semua</a>
+                            </div>
+                            <div class="card-body">
+                                <div class="verification-list">
+                                    <div class="verification-item">
+                                        <div class="verification-avatar">TK</div>
+                                        <div class="verification-content">
+                                            <div class="verification-name">CV Tenun Kalimantan</div>
+                                            <div class="verification-meta">
+                                                <span>Fashion & Tekstil</span>
+                                                <span>•</span>
+                                                <span>Samarinda</span>
+                                            </div>
+                                            <div class="verification-docs">
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> NIB</span>
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> NPWP</span>
+                                                <span class="doc-badge pending"><i data-lucide="clock"></i> Foto</span>
+                                            </div>
+                                        </div>
+                                        <div class="verification-actions">
+                                            <button class="btn btn-primary btn-sm">Review</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="verification-item">
+                                        <div class="verification-avatar">KB</div>
+                                        <div class="verification-content">
+                                            <div class="verification-name">PT Keramik Bali Indah</div>
+                                            <div class="verification-meta">
+                                                <span>Kerajinan</span>
+                                                <span>•</span>
+                                                <span>Denpasar</span>
+                                            </div>
+                                            <div class="verification-docs">
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> NIB</span>
+                                                <span class="doc-badge pending"><i data-lucide="clock"></i> NPWP</span>
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> Foto</span>
+                                            </div>
+                                        </div>
+                                        <div class="verification-actions">
+                                            <button class="btn btn-primary btn-sm">Review</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="verification-item">
+                                        <div class="verification-avatar">RS</div>
+                                        <div class="verification-content">
+                                            <div class="verification-name">UD Rempah Sumatra</div>
+                                            <div class="verification-meta">
+                                                <span>Agrikultur</span>
+                                                <span>•</span>
+                                                <span>Medan</span>
+                                            </div>
+                                            <div class="verification-docs">
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> NIB</span>
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> NPWP</span>
+                                                <span class="doc-badge complete"><i data-lucide="check"></i> Foto</span>
+                                            </div>
+                                        </div>
+                                        <div class="verification-actions">
+                                            <button class="btn btn-secondary btn-sm">Approve</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>📋 Platform Activity</h3>
+                                <select class="sort-select" style="padding: 6px 12px; font-size: 12px;">
+                                    <option>Hari ini</option>
+                                    <option>7 Hari</option>
+                                    <option>30 Hari</option>
+                                </select>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon success">
+                                            <i data-lucide="user-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Client baru: <strong>CV Kayu Jati Prima</strong>
+                                                terdaftar</div>
+                                            <div class="activity-time">15 menit lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon info">
+                                            <i data-lucide="message-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">RFQ baru dari <strong>Singapore Imports Pte
+                                                    Ltd</strong></div>
+                                            <div class="activity-time">32 menit lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon success">
+                                            <i data-lucide="check-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Verifikasi approved: <strong>PT Kulit
+                                                    Nusantara</strong></div>
+                                            <div class="activity-time">1 jam lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon warning">
+                                            <i data-lucide="alert-circle"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Campaign ended: <strong>Batik Sekar
+                                                    Arum</strong> Instagram Ads</div>
+                                            <div class="activity-time">2 jam lalu</div>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon info">
+                                            <i data-lucide="credit-card"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <div class="activity-title">Payment received: <strong>Rp 15.000.000</strong>
+                                                dari Kopi Gayo Premium</div>
+                                            <div class="activity-time">3 jam lalu</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div>
+                        <!-- Quick Stats -->
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>📊 Quick Stats</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="quick-stat-list">
+                                    <div class="quick-stat-item">
+                                        <span class="quick-stat-label">Avg Health Score</span>
+                                        <span class="quick-stat-value">72/100</span>
+                                    </div>
+                                    <div class="quick-stat-item">
+                                        <span class="quick-stat-label">Export Ready Clients</span>
+                                        <span class="quick-stat-value">156 (63%)</span>
+                                    </div>
+                                    <div class="quick-stat-item">
+                                        <span class="quick-stat-label">Active Campaigns</span>
+                                        <span class="quick-stat-value">24</span>
+                                    </div>
+                                    <div class="quick-stat-item">
+                                        <span class="quick-stat-label">RFQ Match Rate</span>
+                                        <span class="quick-stat-value">78%</span>
+                                    </div>
+                                    <div class="quick-stat-item">
+                                        <span class="quick-stat-label">Avg Response Time</span>
+                                        <span class="quick-stat-value">4.2 hours</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Top Categories -->
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>🏆 Top Categories</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="category-ranking">
+                                    <div class="ranking-item">
+                                        <span class="ranking-position">1</span>
+                                        <span class="ranking-name">Manufaktur</span>
+                                        <span class="ranking-value">120 clients</span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="ranking-position">2</span>
+                                        <span class="ranking-name">Fashion & Tekstil</span>
+                                        <span class="ranking-value">110 clients</span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="ranking-position">3</span>
+                                        <span class="ranking-name">Food & Beverage</span>
+                                        <span class="ranking-value">95 clients</span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="ranking-position">4</span>
+                                        <span class="ranking-name">Kerajinan</span>
+                                        <span class="ranking-value">85 clients</span>
+                                    </div>
+                                    <div class="ranking-item">
+                                        <span class="ranking-position">5</span>
+                                        <span class="ranking-name">Agrikultur</span>
+                                        <span class="ranking-value">75 clients</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pending Tasks -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>✅ My Tasks</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="task-list">
+                                    <label class="task-item">
+                                        <input type="checkbox">
+                                        <span>Review 5 pending verifications</span>
+                                    </label>
+                                    <label class="task-item">
+                                        <input type="checkbox">
+                                        <span>Follow up RFQ #1247</span>
+                                    </label>
+                                    <label class="task-item">
+                                        <input type="checkbox">
+                                        <span>Prepare monthly report</span>
+                                    </label>
+                                    <label class="task-item">
+                                        <input type="checkbox" checked>
+                                        <span>Client onboarding call - PT ABC</span>
+                                    </label>
+                                    <label class="task-item">
+                                        <input type="checkbox" checked>
+                                        <span>Update campaign performance</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Navigation (simplified for admin) -->
+        <nav class="dashboard-mobile-nav">
+            <a href="admin.html" class="mobile-nav-item active">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-clients.html" class="mobile-nav-item">
+                <i data-lucide="building-2"></i>
+                <span>Clients</span>
+            </a>
+            <a href="admin-projects.html" class="mobile-nav-item">
+                <i data-lucide="folder-kanban"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
