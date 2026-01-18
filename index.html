@@ -10,7 +10,9 @@
     <title>Uplokal - From Local Up To Global</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png"><link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png"><link rel="shortcut icon" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="assets/logo.jpg">
 
     <!-- Google Fonts -->
@@ -29,35 +31,9 @@
     <link rel="stylesheet" href="css/landing.css">
 </head>
 
-<body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container navbar-container">
-            <a href="/" class="navbar-brand">
-                <div class="logo">
-                    <img src="assets/logo.jpg" alt="Uplokal" class="logo-image">
-                </div>
-            </a>
-
-            <ul class="navbar-menu" id="navMenu">
-                <li><a href="directory.html" class="nav-link">Direktori</a></li>
-                <li><a href="about.html" class="nav-link">Tentang</a></li>
-                <li><a href="contact.html" class="nav-link">Kontak</a></li>
-            </ul>
-
-            <div class="navbar-actions">
-                <button class="btn-lang" id="langToggle" title="Switch Language">
-                    <span>ID</span> / <span class="lang-inactive">EN</span>
-                </button>
-                <a href="login.html" class="btn btn-ghost">Masuk</a>
-                <a href="register.html" class="btn btn-primary">Daftar</a>
-            </div>
-
-            <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
-                <i data-lucide="menu"></i>
-            </button>
-        </div>
-    </nav>
+<body data-active-page="home">
+    <!-- Header Component Container -->
+    <div id="header-container"></div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -512,86 +488,14 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">
-                        <img src="assets/logo.jpg" alt="Uplokal" class="logo-image">
-                    </div>
-                    <p>Jembatan UMKM Indonesia ke pasar global. Dari konsultasi bisnis hingga digital marketing dalam
-                        satu platform.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-                        <a href="#" aria-label="YouTube"><i data-lucide="youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Layanan</h4>
-                    <ul>
-                        <li><a href="#">Business Diagnostic</a></li>
-                        <li><a href="#">Tax & Finance</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">Export Readiness</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Perusahaan</h4>
-                    <ul>
-                        <li><a href="about.html">Tentang Kami</a></li>
-                        <li><a href="#">Karir</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="contact.html">Kontak</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">Kebijakan Privasi</a></li>
-                        <li><a href="#">FAQ</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Kontak</h4>
-                    <ul>
-                        <li><i data-lucide="mail"></i> hello@uplokal.com</li>
-                        <li><i data-lucide="phone"></i> +62 21 1234 5678</li>
-                        <li><i data-lucide="map-pin"></i> Jakarta, Indonesia</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Uplokal. All rights reserved.</p>
-                <p>Made with ❤️ for Indonesian SMEs</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer Component Container -->
+    <div id="footer-container"></div>
 
-    <!-- Mobile Navigation -->
-    <nav class="mobile-nav" id="mobileNav">
-        <a href="index.html" class="mobile-nav-item active">
-            <i data-lucide="home"></i>
-            <span>Beranda</span>
-        </a>
-        <a href="directory.html" class="mobile-nav-item">
-            <i data-lucide="search"></i>
-            <span>Direktori</span>
-        </a>
-        <a href="register.html" class="mobile-nav-item highlight">
-            <i data-lucide="plus-circle"></i>
-            <span>Daftar</span>
-        </a>
-        <a href="login.html" class="mobile-nav-item">
-            <i data-lucide="user"></i>
-            <span>Masuk</span>
-        </a>
-    </nav>
+    <!-- Mobile Navigation Component Container -->
+    <div id="mobile-nav-container"></div>
 
     <!-- Scripts -->
+    <script src="js/components/loader.js"></script>
     <script src="js/app.js"></script>
 </body>
 

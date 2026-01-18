@@ -3,7 +3,7 @@
    =========================================== */
 
 // Initialize Lucide icons
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     lucide.createIcons();
     initNavbar();
     initMobileNav();
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function initNavbar() {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
-    
+
     function handleScroll() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
@@ -22,7 +22,7 @@ function initNavbar() {
             navbar.classList.remove('scrolled');
         }
     }
-    
+
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial check
 }
@@ -31,9 +31,9 @@ function initNavbar() {
 function initMobileNav() {
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
-    
+
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', function () {
             navMenu.classList.toggle('open');
             navToggle.classList.toggle('active');
         });
@@ -43,9 +43,9 @@ function initMobileNav() {
 // ========== Scroll Animations ==========
 function initAnimations() {
     const animatedElements = document.querySelectorAll('[data-animate]');
-    
+
     if (!animatedElements.length) return;
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -58,7 +58,7 @@ function initAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     animatedElements.forEach(el => observer.observe(el));
 }
 
@@ -68,7 +68,7 @@ function toggleLanguage() {
     const currentLang = html.getAttribute('lang') || 'id';
     const newLang = currentLang === 'id' ? 'en' : 'id';
     html.setAttribute('lang', newLang);
-    
+
     // Update button text
     const langBtn = document.getElementById('langToggle');
     if (langBtn) {
@@ -81,7 +81,7 @@ function toggleLanguage() {
             }
         });
     }
-    
+
     // Store preference
     localStorage.setItem('uplokal-lang', newLang);
 }
@@ -107,19 +107,19 @@ function toggleFilters() {
 function setView(view) {
     const suppliersList = document.getElementById('suppliersListing');
     const viewBtns = document.querySelectorAll('.view-btn');
-    
+
     if (suppliersList) {
         suppliersList.classList.remove('grid-view', 'list-view');
         suppliersList.classList.add(`${view}-view`);
     }
-    
+
     viewBtns.forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.view === view) {
             btn.classList.add('active');
         }
     });
-    
+
     localStorage.setItem('uplokal-view', view);
 }
 
@@ -127,7 +127,7 @@ function setView(view) {
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
     const btn = input.parentElement.querySelector('.password-toggle');
-    
+
     if (input.type === 'password') {
         input.type = 'text';
         btn.innerHTML = '<i data-lucide="eye-off"></i>';
@@ -135,7 +135,7 @@ function togglePassword(inputId) {
         input.type = 'password';
         btn.innerHTML = '<i data-lucide="eye"></i>';
     }
-    
+
     lucide.createIcons();
 }
 
@@ -143,14 +143,14 @@ function togglePassword(inputId) {
 function validateForm(formId) {
     const form = document.getElementById(formId);
     if (!form) return false;
-    
+
     const inputs = form.querySelectorAll('[required]');
     let isValid = true;
-    
+
     inputs.forEach(input => {
         const group = input.closest('.form-group');
         const error = group ? group.querySelector('.form-error') : null;
-        
+
         if (!input.value.trim()) {
             isValid = false;
             input.classList.add('error');
@@ -164,7 +164,7 @@ function validateForm(formId) {
             if (error) error.textContent = '';
         }
     });
-    
+
     return isValid;
 }
 
@@ -210,7 +210,7 @@ function updateQuizProgress() {
         const percentage = (currentQuizStep / totalQuizSteps) * 100;
         progress.style.width = `${percentage}%`;
     }
-    
+
     const steps = document.querySelectorAll('.progress-step');
     steps.forEach((step, index) => {
         step.classList.remove('active', 'completed');
@@ -228,7 +228,7 @@ function showToast(message, type = 'info') {
     if (existingToast) {
         existingToast.remove();
     }
-    
+
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     toast.innerHTML = `
@@ -238,10 +238,10 @@ function showToast(message, type = 'info') {
             <i data-lucide="x"></i>
         </button>
     `;
-    
+
     document.body.appendChild(toast);
     lucide.createIcons();
-    
+
     // Auto remove after 5 seconds
     setTimeout(() => {
         toast.classList.add('toast-hide');
@@ -277,7 +277,7 @@ function closeModal(modalId) {
 }
 
 // Close modal on backdrop click
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     if (e.target.classList.contains('modal-backdrop')) {
         e.target.closest('.modal').classList.remove('open');
         document.body.classList.remove('overflow-hidden');
@@ -285,7 +285,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Close modal on escape key
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         const openModals = document.querySelectorAll('.modal.open');
         openModals.forEach(modal => {
@@ -342,27 +342,27 @@ function formatRelativeTime(dateString) {
     const date = new Date(dateString);
     const now = new Date();
     const diff = now - date;
-    
+
     const minutes = Math.floor(diff / 60000);
     const hours = Math.floor(diff / 3600000);
     const days = Math.floor(diff / 86400000);
-    
+
     if (minutes < 1) return 'Baru saja';
     if (minutes < 60) return `${minutes} menit lalu`;
     if (hours < 24) return `${hours} jam lalu`;
     if (days < 7) return `${days} hari lalu`;
-    
+
     return formatDate(dateString);
 }
 
 // ========== Initialize on Load ==========
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Restore language preference
     const savedLang = localStorage.getItem('uplokal-lang');
     if (savedLang && savedLang !== document.documentElement.lang) {
         document.documentElement.lang = savedLang;
     }
-    
+
     // Restore view preference
     const savedView = localStorage.getItem('uplokal-view');
     if (savedView) {
@@ -371,7 +371,7 @@ window.addEventListener('load', function() {
 });
 
 // ========== Smooth Scroll for Anchor Links ==========
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const link = e.target.closest('a[href^="#"]');
     if (link) {
         e.preventDefault();
