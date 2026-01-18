@@ -98,6 +98,11 @@
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+
+        // Re-initialize navbar scroll behavior after header is loaded
+        if (typeof initNavbar === 'function') {
+            initNavbar();
+        }
     }
 
     // Initialize when DOM is ready

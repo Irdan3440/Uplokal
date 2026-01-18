@@ -15,15 +15,46 @@ function initNavbar() {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
 
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let showTimer = null;
+
     function handleScroll() {
-        if (window.scrollY > 50) {
+        const currentScrollY = window.scrollY;
+
+        // Add scrolled class when scrolled past 50px
+        if (currentScrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+
+        // Hide navbar on scroll down, show on scroll up
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            // Scrolling down
+            navbar.classList.add('navbar-hidden');
+        } else {
+            // Scrolling up
+            navbar.classList.remove('navbar-hidden');
+        }
+
+        // Auto-show header after 3 seconds of scroll inactivity
+        if (showTimer) clearTimeout(showTimer);
+        showTimer = setTimeout(() => {
+            navbar.classList.remove('navbar-hidden');
+        }, 3000);
+
+        lastScrollY = currentScrollY;
+        ticking = false;
     }
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    });
+
     handleScroll(); // Initial check
 }
 

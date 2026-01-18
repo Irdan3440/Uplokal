@@ -292,8 +292,68 @@
 /* ========== Categories Section ========== */
 .categories {
     background: white;
+    overflow: hidden;
 }
 
+/* Slider Animation */
+.categories-marquee,
+.categories-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: var(--space-4) 0;
+}
+
+.categories-marquee::before,
+.categories-marquee::after,
+.categories-slider::before,
+.categories-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.categories-marquee::before,
+.categories-slider::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.categories-marquee::after,
+.categories-slider::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
+.categories-track {
+    display: flex;
+    gap: 20px;
+    animation: slide-seamless 20s linear infinite;
+    width: max-content;
+    padding: var(--space-4);
+}
+
+.categories-track:hover {
+    animation-play-state: paused;
+}
+
+/* Seamless one-direction animation: starts visible, scrolls left */
+@keyframes slide-seamless {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Move exactly 50% (6 cards worth) to loop seamlessly */
+        transform: translateX(-50%);
+    }
+}
+
+/* Keep original grid for fallback */
 .categories-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -317,12 +377,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
     padding: var(--space-6);
     background: var(--color-gray-50);
     border-radius: var(--radius-2xl);
     transition: all var(--transition-base);
     text-decoration: none;
+    /* Fixed size 250x250px */
+    min-width: 250px;
+    width: 250px;
+    min-height: 250px;
+    height: 250px;
+    flex-shrink: 0;
 }
 
 .category-card:hover {
@@ -496,6 +563,58 @@
     }
 }
 
+/* Suppliers Slider Animation */
+.suppliers-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: var(--space-4) 0;
+}
+
+.suppliers-slider::before,
+.suppliers-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.suppliers-slider::before {
+    left: 0;
+    background: linear-gradient(to right, var(--color-gray-50), transparent);
+}
+
+.suppliers-slider::after {
+    right: 0;
+    background: linear-gradient(to left, var(--color-gray-50), transparent);
+}
+
+.suppliers-track {
+    display: flex;
+    gap: 20px;
+    animation: slide-suppliers 25s linear infinite;
+    width: max-content;
+    padding: var(--space-4);
+}
+
+.suppliers-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes slide-suppliers {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Keep original grid for fallback */
 .suppliers-grid {
     display: grid;
     gap: var(--space-6);
@@ -522,6 +641,10 @@
     transition: all var(--transition-base);
     display: flex;
     flex-direction: column;
+    /* Fixed width for slider */
+    min-width: 280px;
+    width: 280px;
+    flex-shrink: 0;
 }
 
 .supplier-card:hover {

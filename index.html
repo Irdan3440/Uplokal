@@ -10,10 +10,10 @@
     <title>Uplokal - From Local Up To Global</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
-    <link rel="shortcut icon" href="favicon.png">
-    <link rel="apple-touch-icon" href="assets/logo.jpg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,7 +128,53 @@
                 <h2 class="section-title">Jelajahi Kategori</h2>
                 <p class="section-subtitle">Temukan supplier dan mitra bisnis dari berbagai industri</p>
             </div>
-            <div class="categories-grid">
+        </div>
+        <div class="categories-slider">
+            <div class="categories-track">
+                <!-- Original 6 cards -->
+                <a href="directory.html?cat=manufaktur" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="factory"></i>
+                    </div>
+                    <h3>Manufaktur</h3>
+                    <span class="category-count">120+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=kerajinan" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="gem"></i>
+                    </div>
+                    <h3>Kerajinan</h3>
+                    <span class="category-count">85+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=fnb" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="utensils"></i>
+                    </div>
+                    <h3>Food & Beverage</h3>
+                    <span class="category-count">95+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=fashion" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="shirt"></i>
+                    </div>
+                    <h3>Fashion & Tekstil</h3>
+                    <span class="category-count">110+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=agrikultur" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <h3>Agrikultur</h3>
+                    <span class="category-count">75+ Supplier</span>
+                </a>
+                <a href="directory.html?cat=furniture" class="category-card">
+                    <div class="category-icon">
+                        <i data-lucide="armchair"></i>
+                    </div>
+                    <h3>Furniture</h3>
+                    <span class="category-count">60+ Supplier</span>
+                </a>
+                <!-- Duplicated 6 cards for seamless loop -->
                 <a href="directory.html?cat=manufaktur" class="category-card">
                     <div class="category-icon">
                         <i data-lucide="factory"></i>
@@ -248,7 +294,99 @@
                 <p class="section-subtitle">Mitra bisnis terkurasi yang siap melayani kebutuhan Anda</p>
                 <a href="directory.html" class="btn btn-outline">Lihat Semua <i data-lucide="arrow-right"></i></a>
             </div>
-            <div class="suppliers-grid">
+        </div>
+        <div class="suppliers-slider">
+            <div class="suppliers-track">
+                <!-- Original 4 supplier cards -->
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">🏭</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>PT Kulit Nusantara</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Bandung, Jawa Barat</p>
+                        <p class="supplier-category">Manufaktur Tas & Sepatu Kulit</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                            <span class="capacity">500+ pcs/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">Halal</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">🪑</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>CV Jepara Furniture</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Jepara, Jawa Tengah</p>
+                        <p class="supplier-category">Furniture Kayu Jati Custom</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.8</span>
+                            <span class="capacity">Custom Order</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">FSC Certified</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">☕</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>Kopi Gayo Premium</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Aceh Tengah</p>
+                        <p class="supplier-category">Specialty Coffee Beans</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.9</span>
+                            <span class="capacity">10 ton/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">Organic</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <div class="supplier-card">
+                    <div class="supplier-badge verified">
+                        <i data-lucide="badge-check"></i> Verified
+                    </div>
+                    <div class="supplier-image">
+                        <div class="placeholder-image">👗</div>
+                    </div>
+                    <div class="supplier-content">
+                        <h4>Batik Sekar Arum</h4>
+                        <p class="supplier-location"><i data-lucide="map-pin"></i> Solo, Jawa Tengah</p>
+                        <p class="supplier-category">Batik Tulis & Cap Premium</p>
+                        <div class="supplier-meta">
+                            <span class="rating"><i data-lucide="star"></i> 4.7</span>
+                            <span class="capacity">1000+ pcs/bulan</span>
+                        </div>
+                        <div class="supplier-tags">
+                            <span class="tag">Export Ready</span>
+                            <span class="tag">UNESCO Heritage</span>
+                        </div>
+                    </div>
+                    <a href="directory.html" class="btn btn-ghost btn-sm">Lihat Profil</a>
+                </div>
+                <!-- Duplicated 4 supplier cards for seamless loop -->
                 <div class="supplier-card">
                     <div class="supplier-badge verified">
                         <i data-lucide="badge-check"></i> Verified
