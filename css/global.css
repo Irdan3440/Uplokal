@@ -368,4 +368,44 @@ select {
     .hide-desktop {
         display: none !important;
     }
+}/* Mobile Table Scroll Wrapper */
+@media (max-width: 767px) {
+    .scroll-wrapper-mobile {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 calc(var(--space-4) * -1);
+        padding: 0 var(--space-4);
+    }
+}
+
+/* ========== Mobile Touch Optimization ========== */
+/* Ensure minimum 44px touch targets on mobile */
+@media (max-width: 767px) {
+    button,
+    input[type="button"],
+    input[type="submit"],
+    .btn {
+        min-height: 44px;
+        padding: 12px var(--space-4);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="tel"],
+    textarea,
+    select {
+        min-height: 44px;
+        /* Prevent iOS zoom on focus */
+        font-size: 16px !important;
+        padding: 12px var(--space-4);
+    }
+    
+    /* Increase spacing for better touch accuracy */
+    .nav-item,
+    .sidebar-nav a {
+        min-height: 44px;
+        padding: 12px var(--space-4);
+    }
 }
