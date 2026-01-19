@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan | Uplokal</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Backdrop for Mobile -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-uplokal.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="messages.html" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="settings.html" class="nav-item active">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="help.html" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Pengaturan</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="saveSettingsBtn">
+                        <i data-lucide="save"></i>
+                        <span class="btn-label">Simpan</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Settings Content -->
+            <div class="dashboard-content">
+                <div class="settings-container">
+                    <!-- Settings Navigation -->
+                    <div class="settings-nav">
+                        <a href="#account" class="settings-nav-item active" data-section="account">
+                            <i data-lucide="user"></i>
+                            <span>Akun</span>
+                        </a>
+                        <a href="#notifications" class="settings-nav-item" data-section="notifications">
+                            <i data-lucide="bell"></i>
+                            <span>Notifikasi</span>
+                        </a>
+                        <a href="#privacy" class="settings-nav-item" data-section="privacy">
+                            <i data-lucide="shield"></i>
+                            <span>Privasi & Keamanan</span>
+                        </a>
+                        <a href="#appearance" class="settings-nav-item" data-section="appearance">
+                            <i data-lucide="palette"></i>
+                            <span>Tampilan</span>
+                        </a>
+                        <a href="#billing" class="settings-nav-item" data-section="billing">
+                            <i data-lucide="credit-card"></i>
+                            <span>Langganan</span>
+                        </a>
+                    </div>
+
+                    <!-- Settings Content -->
+                    <div class="settings-content">
+                        <!-- Account Section -->
+                        <section id="account" class="settings-section active">
+                            <div class="settings-header">
+                                <h2>Pengaturan Akun</h2>
+                                <p>Kelola informasi akun dan profil Anda</p>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Informasi Profil</h3>
+                                <div class="profile-photo-section">
+                                    <img src="https://ui-avatars.com/api/?name=Rina+Amelia&background=3B82F6&color=fff&size=100"
+                                        alt="Profile Photo" class="profile-photo">
+                                    <div class="photo-actions">
+                                        <button class="btn btn-outline btn-sm">Ubah Foto</button>
+                                        <button class="btn btn-ghost btn-sm">Hapus</button>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Nama Lengkap</label>
+                                        <input type="text" class="form-input" value="Rina Amelia">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-input" value="rina@kulitnusantara.com">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Nomor Telepon</label>
+                                        <input type="tel" class="form-input" value="+62 812-3456-7890">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Jabatan</label>
+                                        <input type="text" class="form-input" value="Owner / CEO">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Ubah Password</h3>
+                                <div class="form-group">
+                                    <label class="form-label">Password Saat Ini</label>
+                                    <input type="password" class="form-input" placeholder="Masukkan password saat ini">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Password Baru</label>
+                                        <input type="password" class="form-input" placeholder="Masukkan password baru">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Konfirmasi Password</label>
+                                        <input type="password" class="form-input"
+                                            placeholder="Konfirmasi password baru">
+                                    </div>
+                                </div>
+                                <button class="btn btn-primary">Update Password</button>
+                            </div>
+                        </section>
+
+                        <!-- Notifications Section -->
+                        <section id="notifications" class="settings-section">
+                            <div class="settings-header">
+                                <h2>Pengaturan Notifikasi</h2>
+                                <p>Kelola bagaimana Anda menerima notifikasi</p>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Email Notifikasi</h3>
+                                <div class="toggle-group">
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <span class="toggle-label">Inquiry Baru</span>
+                                            <span class="toggle-desc">Dapatkan email saat ada inquiry baru</span>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <span class="toggle-label">Pesan Baru</span>
+                                            <span class="toggle-desc">Notifikasi untuk pesan dari buyer/partner</span>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <span class="toggle-label">Update Sistem</span>
+                                            <span class="toggle-desc">Pemberitahuan fitur baru dan maintenance</span>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <span class="toggle-label">Laporan Mingguan</span>
+                                            <span class="toggle-desc">Ringkasan performa bisnis setiap minggu</span>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Push Notifikasi</h3>
+                                <div class="toggle-group">
+                                    <div class="toggle-item">
+                                        <div class="toggle-info">
+                                            <span class="toggle-label">Aktifkan Push</span>
+                                            <span class="toggle-desc">Terima notifikasi di browser</span>
+                                        </div>
+                                        <label class="toggle">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Privacy Section -->
+                        <section id="privacy" class="settings-section">
+                            <div class="settings-header">
+                                <h2>Privasi & Keamanan</h2>
+                                <p>Kelola keamanan akun Anda</p>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Autentikasi Dua Faktor</h3>
+                                <p class="card-desc">Tambahkan lapisan keamanan ekstra untuk akun Anda</p>
+                                <div class="toggle-item standalone">
+                                    <div class="toggle-info">
+                                        <span class="toggle-label">Aktifkan 2FA</span>
+                                        <span class="toggle-desc">Gunakan aplikasi authenticator atau SMS</span>
+                                    </div>
+                                    <label class="toggle">
+                                        <input type="checkbox">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Sesi Aktif</h3>
+                                <div class="session-list">
+                                    <div class="session-item">
+                                        <i data-lucide="monitor"></i>
+                                        <div class="session-info">
+                                            <span class="session-device">Windows PC - Chrome</span>
+                                            <span class="session-location">Jakarta, Indonesia • Aktif sekarang</span>
+                                        </div>
+                                        <span class="badge badge-success">Perangkat ini</span>
+                                    </div>
+                                    <div class="session-item">
+                                        <i data-lucide="smartphone"></i>
+                                        <div class="session-info">
+                                            <span class="session-device">iPhone 14 - Safari</span>
+                                            <span class="session-location">Jakarta, Indonesia • 2 jam lalu</span>
+                                        </div>
+                                        <button class="btn btn-ghost btn-sm">Logout</button>
+                                    </div>
+                                </div>
+                                <button class="btn btn-outline">Logout Semua Perangkat</button>
+                            </div>
+
+                            <div class="settings-card danger-zone">
+                                <h3>Zona Berbahaya</h3>
+                                <div class="danger-actions">
+                                    <div class="danger-item">
+                                        <div class="danger-info">
+                                            <span class="danger-label">Nonaktifkan Akun</span>
+                                            <span class="danger-desc">Akun Anda akan dinonaktifkan sementara</span>
+                                        </div>
+                                        <button class="btn btn-outline btn-sm">Nonaktifkan</button>
+                                    </div>
+                                    <div class="danger-item">
+                                        <div class="danger-info">
+                                            <span class="danger-label">Hapus Akun</span>
+                                            <span class="danger-desc">Semua data akan dihapus permanen</span>
+                                        </div>
+                                        <button class="btn btn-outline btn-sm"
+                                            style="border-color: var(--color-error); color: var(--color-error);">Hapus
+                                            Akun</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Appearance Section -->
+                        <section id="appearance" class="settings-section">
+                            <div class="settings-header">
+                                <h2>Tampilan</h2>
+                                <p>Sesuaikan tampilan dashboard Anda</p>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Tema</h3>
+                                <div class="theme-options">
+                                    <label class="theme-option active">
+                                        <input type="radio" name="theme" value="light" checked>
+                                        <div class="theme-preview light">
+                                            <i data-lucide="sun"></i>
+                                        </div>
+                                        <span>Light</span>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="dark">
+                                        <div class="theme-preview dark">
+                                            <i data-lucide="moon"></i>
+                                        </div>
+                                        <span>Dark</span>
+                                    </label>
+                                    <label class="theme-option">
+                                        <input type="radio" name="theme" value="system">
+                                        <div class="theme-preview system">
+                                            <i data-lucide="laptop"></i>
+                                        </div>
+                                        <span>System</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Bahasa</h3>
+                                <div class="form-group">
+                                    <select class="form-select">
+                                        <option value="id" selected>Bahasa Indonesia</option>
+                                        <option value="en">English</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Billing Section -->
+                        <section id="billing" class="settings-section">
+                            <div class="settings-header">
+                                <h2>Langganan</h2>
+                                <p>Kelola paket langganan Anda</p>
+                            </div>
+
+                            <div class="settings-card current-plan">
+                                <div class="plan-badge">Paket Saat Ini</div>
+                                <h3>Professional</h3>
+                                <p class="plan-price">Rp 299.000<span>/bulan</span></p>
+                                <ul class="plan-features">
+                                    <li><i data-lucide="check"></i> Unlimited Products</li>
+                                    <li><i data-lucide="check"></i> Priority Support</li>
+                                    <li><i data-lucide="check"></i> Analytics Dashboard</li>
+                                    <li><i data-lucide="check"></i> Export Tools</li>
+                                </ul>
+                                <div class="plan-actions">
+                                    <button class="btn btn-outline">Upgrade Plan</button>
+                                    <button class="btn btn-ghost">Cancel Subscription</button>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>Riwayat Pembayaran</h3>
+                                <div class="payment-history">
+                                    <div class="payment-item">
+                                        <div class="payment-info">
+                                            <span class="payment-date">18 Jan 2024</span>
+                                            <span class="payment-desc">Professional Plan - Januari 2024</span>
+                                        </div>
+                                        <div class="payment-amount">
+                                            <span>Rp 299.000</span>
+                                            <span class="badge badge-success">Lunas</span>
+                                        </div>
+                                    </div>
+                                    <div class="payment-item">
+                                        <div class="payment-info">
+                                            <span class="payment-date">18 Des 2023</span>
+                                            <span class="payment-desc">Professional Plan - Desember 2023</span>
+                                        </div>
+                                        <div class="payment-amount">
+                                            <span>Rp 299.000</span>
+                                            <span class="badge badge-success">Lunas</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="messages.html" class="mobile-nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Pesan</span>
+            </a>
+            <a href="settings.html" class="mobile-nav-item active">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+            <a href="account-settings.html" class="mobile-nav-item">
+                <i data-lucide="user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/dashboard-common.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+
+</html>

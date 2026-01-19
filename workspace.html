@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Collaboration Workspace - Uplokal">
+    <title>Workspace | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/workspace.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item active">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Workspace</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm" onclick="openNewProjectModal()">
+                        <i data-lucide="plus"></i>
+                        <span>Project Baru</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Workspace Content -->
+            <div class="dashboard-content">
+                <!-- Project Selector -->
+                <div class="project-selector">
+                    <div class="project-tabs">
+                        <button class="project-tab active" data-project="leather">
+                            <span class="project-color" style="background: #3B82F6;"></span>
+                            Koleksi Kulit 2024
+                        </button>
+                        <button class="project-tab" data-project="export">
+                            <span class="project-color" style="background: #10B981;"></span>
+                            Ekspor Jepang
+                        </button>
+                        <button class="project-tab" data-project="marketing">
+                            <span class="project-color" style="background: #F59E0B;"></span>
+                            Campaign Ramadan
+                        </button>
+                    </div>
+                    <div class="project-actions">
+                        <button class="icon-btn" title="Settings">
+                            <i data-lucide="settings"></i>
+                        </button>
+                        <button class="icon-btn" title="Share">
+                            <i data-lucide="share-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- View Tabs -->
+                <div class="view-tabs">
+                    <button class="view-tab active" data-view="board">
+                        <i data-lucide="columns"></i>
+                        Board
+                    </button>
+                    <button class="view-tab" data-view="timeline">
+                        <i data-lucide="gantt-chart"></i>
+                        Timeline
+                    </button>
+                    <button class="view-tab" data-view="list">
+                        <i data-lucide="list"></i>
+                        List
+                    </button>
+                </div>
+
+                <!-- Board View (Kanban) -->
+                <div class="view-content active" id="board-view">
+                    <div class="kanban-board">
+                        <!-- To Do Column -->
+                        <div class="kanban-column" data-status="todo">
+                            <div class="column-header">
+                                <div class="column-title">
+                                    <span class="status-dot todo"></span>
+                                    <h3>To Do</h3>
+                                    <span class="task-count">3</span>
+                                </div>
+                                <button class="add-task-btn" onclick="addTask('todo')">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <div class="task-list">
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label design">Design</span>
+                                    </div>
+                                    <h4>Desain kemasan premium</h4>
+                                    <p>Buat mockup kemasan untuk produk premium leather goods</p>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Rina&background=3B82F6&color=fff&size=28"
+                                                alt="Rina">
+                                        </div>
+                                        <div class="task-due">
+                                            <i data-lucide="calendar"></i>
+                                            <span>25 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label marketing">Marketing</span>
+                                    </div>
+                                    <h4>Konten TikTok mingguan</h4>
+                                    <p>Buat 3 video TikTok: BTS, tutorial perawatan, testimonial</p>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Dian&background=10B981&color=fff&size=28"
+                                                alt="Dian">
+                                        </div>
+                                        <div class="task-due warning">
+                                            <i data-lucide="calendar"></i>
+                                            <span>21 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label production">Produksi</span>
+                                    </div>
+                                    <h4>Order bahan baku Q1</h4>
+                                    <p>Koordinasi dengan supplier kulit untuk stok 3 bulan</p>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Budi&background=F59E0B&color=fff&size=28"
+                                                alt="Budi">
+                                        </div>
+                                        <div class="task-due">
+                                            <i data-lucide="calendar"></i>
+                                            <span>30 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- In Progress Column -->
+                        <div class="kanban-column" data-status="progress">
+                            <div class="column-header">
+                                <div class="column-title">
+                                    <span class="status-dot progress"></span>
+                                    <h3>In Progress</h3>
+                                    <span class="task-count">2</span>
+                                </div>
+                                <button class="add-task-btn" onclick="addTask('progress')">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <div class="task-list">
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label design">Design</span>
+                                        <span class="label urgent">Urgent</span>
+                                    </div>
+                                    <h4>Foto produk koleksi baru</h4>
+                                    <p>Photoshoot 12 produk baru dengan setting studio</p>
+                                    <div class="task-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 60%;"></div>
+                                        </div>
+                                        <span>60%</span>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Rina&background=3B82F6&color=fff&size=28"
+                                                alt="Rina">
+                                            <img src="https://ui-avatars.com/api/?name=Dian&background=10B981&color=fff&size=28"
+                                                alt="Dian">
+                                        </div>
+                                        <div class="task-due overdue">
+                                            <i data-lucide="calendar"></i>
+                                            <span>18 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label production">Produksi</span>
+                                    </div>
+                                    <h4>Sampel untuk buyer Jepang</h4>
+                                    <p>Produksi 5 sampel produk untuk dikirim ke Tokyo</p>
+                                    <div class="task-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 80%;"></div>
+                                        </div>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Budi&background=F59E0B&color=fff&size=28"
+                                                alt="Budi">
+                                        </div>
+                                        <div class="task-due">
+                                            <i data-lucide="calendar"></i>
+                                            <span>22 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review Column -->
+                        <div class="kanban-column" data-status="review">
+                            <div class="column-header">
+                                <div class="column-title">
+                                    <span class="status-dot review"></span>
+                                    <h3>Review</h3>
+                                    <span class="task-count">1</span>
+                                </div>
+                                <button class="add-task-btn" onclick="addTask('review')">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <div class="task-list">
+                                <div class="task-card" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label legal">Legal</span>
+                                    </div>
+                                    <h4>Review kontrak distributor</h4>
+                                    <p>Periksa dan tandatangani kontrak dengan distributor baru</p>
+                                    <div class="task-attachments">
+                                        <i data-lucide="paperclip"></i>
+                                        <span>2 files</span>
+                                    </div>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Rina&background=3B82F6&color=fff&size=28"
+                                                alt="Rina">
+                                        </div>
+                                        <div class="task-due">
+                                            <i data-lucide="calendar"></i>
+                                            <span>23 Jan</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Done Column -->
+                        <div class="kanban-column" data-status="done">
+                            <div class="column-header">
+                                <div class="column-title">
+                                    <span class="status-dot done"></span>
+                                    <h3>Done</h3>
+                                    <span class="task-count">4</span>
+                                </div>
+                                <button class="add-task-btn" onclick="addTask('done')">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <div class="task-list">
+                                <div class="task-card completed" draggable="true">
+                                    <div class="task-labels">
+                                        <span class="label design">Design</span>
+                                    </div>
+                                    <h4>Update katalog produk</h4>
+                                    <p>Tambahkan 15 produk baru ke katalog digital</p>
+                                    <div class="task-meta">
+                                        <div class="task-assignees">
+                                            <img src="https://ui-avatars.com/api/?name=Dian&background=10B981&color=fff&size=28"
+                                                alt="Dian">
+                                        </div>
+                                        <div class="task-completed">
+                                            <i data-lucide="check-circle"></i>
+                                            <span>Selesai</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline View -->
+                <div class="view-content" id="timeline-view">
+                    <div class="timeline-container">
+                        <div class="timeline-header">
+                            <div class="timeline-nav">
+                                <button class="nav-btn"><i data-lucide="chevron-left"></i></button>
+                                <span>Januari 2024</span>
+                                <button class="nav-btn"><i data-lucide="chevron-right"></i></button>
+                            </div>
+                        </div>
+                        <div class="timeline-grid">
+                            <div class="timeline-labels">
+                                <div class="label">Desain Kemasan</div>
+                                <div class="label">Foto Produk</div>
+                                <div class="label">Sampel Jepang</div>
+                                <div class="label">Kontrak Distributor</div>
+                            </div>
+                            <div class="timeline-bars">
+                                <div class="timeline-weeks">
+                                    <span>Week 1</span>
+                                    <span>Week 2</span>
+                                    <span>Week 3</span>
+                                    <span>Week 4</span>
+                                </div>
+                                <div class="bar-row">
+                                    <div class="timeline-bar design" style="margin-left: 50%; width: 25%;"></div>
+                                </div>
+                                <div class="bar-row">
+                                    <div class="timeline-bar design overdue" style="margin-left: 0; width: 45%;"></div>
+                                </div>
+                                <div class="bar-row">
+                                    <div class="timeline-bar production" style="margin-left: 25%; width: 35%;"></div>
+                                </div>
+                                <div class="bar-row">
+                                    <div class="timeline-bar legal" style="margin-left: 50%; width: 20%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity Feed -->
+                <div class="activity-section">
+                    <h3>Aktivitas Terbaru</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <img src="https://ui-avatars.com/api/?name=Dian&background=10B981&color=fff&size=32"
+                                alt="Dian">
+                            <div class="activity-content">
+                                <p><strong>Dian</strong> menyelesaikan task "Update katalog produk"</p>
+                                <span class="activity-time">2 jam lalu</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <img src="https://ui-avatars.com/api/?name=Rina&background=3B82F6&color=fff&size=32"
+                                alt="Rina">
+                            <div class="activity-content">
+                                <p><strong>Rina</strong> menambahkan komentar di "Foto produk koleksi baru"</p>
+                                <span class="activity-time">3 jam lalu</span>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <img src="https://ui-avatars.com/api/?name=Budi&background=F59E0B&color=fff&size=32"
+                                alt="Budi">
+                            <div class="activity-content">
+                                <p><strong>Budi</strong> mengupdate progress "Sampel untuk buyer Jepang" ke 80%</p>
+                                <span class="activity-time">5 jam lalu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="workspace.html" class="mobile-nav-item active">
+                <i data-lucide="folder-kanban"></i>
+                <span>Workspace</span>
+            </a>
+            <a href="document-vault.html" class="mobile-nav-item">
+                <i data-lucide="file-archive"></i>
+                <span>Dokumen</span>
+            </a>
+            <a href="profile-editor.html" class="mobile-nav-item">
+                <i data-lucide="building-2"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- New Task Modal -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Task Baru</h2>
+                <button class="modal-close" onclick="closeTaskModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Judul Task *</label>
+                    <input type="text" class="form-input" id="taskTitle" placeholder="Nama task...">
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <textarea class="form-input" id="taskDesc" rows="3" placeholder="Detail task..."></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Due Date</label>
+                        <input type="date" class="form-input" id="taskDue">
+                    </div>
+                    <div class="form-group">
+                        <label>Label</label>
+                        <select class="form-input" id="taskLabel">
+                            <option value="design">Design</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="production">Produksi</option>
+                            <option value="legal">Legal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Assign to</label>
+                    <div class="assignee-select">
+                        <label class="assignee-option">
+                            <input type="checkbox" value="rina">
+                            <img src="https://ui-avatars.com/api/?name=Rina&background=3B82F6&color=fff&size=28"
+                                alt="Rina">
+                            <span>Rina</span>
+                        </label>
+                        <label class="assignee-option">
+                            <input type="checkbox" value="dian">
+                            <img src="https://ui-avatars.com/api/?name=Dian&background=10B981&color=fff&size=28"
+                                alt="Dian">
+                            <span>Dian</span>
+                        </label>
+                        <label class="assignee-option">
+                            <input type="checkbox" value="budi">
+                            <img src="https://ui-avatars.com/api/?name=Budi&background=F59E0B&color=fff&size=28"
+                                alt="Budi">
+                            <span>Budi</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeTaskModal()">Batal</button>
+                <button class="btn btn-primary" onclick="saveTask()">
+                    <i data-lucide="plus"></i>
+                    Tambah Task
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/workspace.js"></script>
+</body>
+
+</html>

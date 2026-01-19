@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Edit Profil Bisnis - Uplokal">
+    <title>Edit Profil Bisnis | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/profile-editor.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item active">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Profil Bisnis</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Pencarian">
+                        <i data-lucide="search"></i>
+                    </button>
+                    <button class="topbar-btn" title="Notifikasi">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <button class="btn-lang" onclick="toggleLanguage()" title="Switch Language">
+                        <span>ID</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Profile Editor Content -->
+            <div class="dashboard-content">
+                <!-- Header with Save Buttons -->
+                <div class="profile-editor-header">
+                    <div>
+                        <h1>Edit Profil Bisnis</h1>
+                        <p style="color: var(--color-gray-600); margin: 0;">Kelola informasi bisnis Anda yang tampil di
+                            direktori</p>
+                    </div>
+                    <div class="profile-actions">
+                        <button class="btn btn-secondary" id="cancelBtn">
+                            <i data-lucide="x"></i>
+                            Batal
+                        </button>
+                        <button class="btn btn-primary" id="saveBtn">
+                            <i data-lucide="save"></i>
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Profile Editor Form -->
+                <form id="profileForm" class="profile-form">
+                    <!-- Company Logo Section -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="image"></i> Logo Perusahaan</h3>
+                            <p>Upload logo untuk tampil di profil dan direktori</p>
+                        </div>
+                        <div class="logo-upload-section">
+                            <div class="logo-preview" id="logoPreview">
+                                <div class="logo-placeholder">
+                                    <i data-lucide="building-2"></i>
+                                    <span>Logo perusahaan</span>
+                                </div>
+                            </div>
+                            <div class="upload-instructions">
+                                <button type="button" class="btn btn-outline btn-sm"
+                                    onclick="document.getElementById('logoInput').click()">
+                                    <i data-lucide="upload"></i>
+                                    Upload Logo
+                                </button>
+                                <input type="file" id="logoInput" accept="image/*" style="display: none;">
+                                <p class="upload-hint">PNG, JPG atau SVG. Maks 2MB. Ukuran rekomendasi: 400x400px</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Company Information -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="briefcase"></i> Informasi Perusahaan</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="companyName">Nama Perusahaan *</label>
+                                <input type="text" id="companyName" class="form-input"
+                                    placeholder="PT. Contoh Nama Perusahaan" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="industry">Industri/Kategori *</label>
+                                <select id="industry" class="form-input" required>
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="fashion">Fashion & Tekstil</option>
+                                    <option value="furniture">Furniture</option>
+                                    <option value="food">Makanan & Minuman</option>
+                                    <option value="agriculture">Pertanian</option>
+                                    <option value="handicraft">Kerajinan Tangan</option>
+                                    <option value="technology">Teknologi</option>
+                                    <option value="other">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="yearFounded">Tahun Berdiri</label>
+                                <input type="number" id="yearFounded" class="form-input" placeholder="2020" min="1900"
+                                    max="2026">
+                            </div>
+                            <div class="form-group">
+                                <label for="employees">Jumlah Karyawan</label>
+                                <select id="employees" class="form-input">
+                                    <option value="">Pilih Range</option>
+                                    <option value="1-10">1-10 Orang</option>
+                                    <option value="11-50">11-50 Orang</option>
+                                    <option value="51-200">51-200 Orang</option>
+                                    <option value="200+">200+ Orang</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Business Description -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="file-text"></i> Deskripsi Bisnis</h3>
+                            <p>Ceritakan tentang produk dan keunggulan bisnis Anda</p>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Deskripsi *</label>
+                            <div class="rich-text-toolbar">
+                                <button type="button" class="toolbar-btn" data-command="bold" title="Bold">
+                                    <i data-lucide="bold"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-command="italic" title="Italic">
+                                    <i data-lucide="italic"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-command="insertUnorderedList"
+                                    title="Bullet List">
+                                    <i data-lucide="list"></i>
+                                </button>
+                                <button type="button" class="toolbar-btn" data-command="insertOrderedList"
+                                    title="Numbered List">
+                                    <i data-lucide="list-ordered"></i>
+                                </button>
+                            </div>
+                            <div id="description" class="rich-text-editor" contenteditable="true"
+                                data-placeholder="Tulis deskripsi bisnis Anda di sini...">
+                            </div>
+                            <p class="form-hint">Minimum 50 karakter. Jelaskan produk, layanan, dan keunggulan bisnis
+                                Anda.</p>
+                        </div>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="phone"></i> Informasi Kontak</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="email">Email Bisnis *</label>
+                                <input type="email" id="email" class="form-input" placeholder="bisnis@example.com"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor Telepon *</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+62 812 3456 7890"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" id="website" class="form-input" placeholder="https://website.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="whatsapp">WhatsApp Business</label>
+                                <input type="tel" id="whatsapp" class="form-input" placeholder="+62 812 3456 7890">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="map-pin"></i> Alamat & Lokasi</h3>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="address">Alamat Lengkap *</label>
+                                <textarea id="address" class="form-input" rows="3" placeholder="Jl. Contoh No. 123"
+                                    required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Provinsi *</label>
+                                <select id="province" class="form-input" required>
+                                    <option value="">Pilih Provinsi</option>
+                                    <option value="Aceh">Aceh</option>
+                                    <option value="Sumatera Utara">Sumatera Utara</option>
+                                    <option value="Sumatera Barat">Sumatera Barat</option>
+                                    <option value="Riau">Riau</option>
+                                    <option value="Kepulauan Riau">Kepulauan Riau</option>
+                                    <option value="Jambi">Jambi</option>
+                                    <option value="Sumatera Selatan">Sumatera Selatan</option>
+                                    <option value="Bengkulu">Bengkulu</option>
+                                    <option value="Lampung">Lampung</option>
+                                    <option value="Bangka Belitung">Kepulauan Bangka Belitung</option>
+                                    <option value="DKI Jakarta">DKI Jakarta</option>
+                                    <option value="Banten">Banten</option>
+                                    <option value="Jawa Barat">Jawa Barat</option>
+                                    <option value="Jawa Tengah">Jawa Tengah</option>
+                                    <option value="DI Yogyakarta">DI Yogyakarta</option>
+                                    <option value="Jawa Timur">Jawa Timur</option>
+                                    <option value="Bali">Bali</option>
+                                    <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+                                    <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+                                    <option value="Kalimantan Barat">Kalimantan Barat</option>
+                                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                                    <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                    <option value="Kalimantan Utara">Kalimantan Utara</option>
+                                    <option value="Sulawesi Utara">Sulawesi Utara</option>
+                                    <option value="Gorontalo">Gorontalo</option>
+                                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                                    <option value="Sulawesi Barat">Sulawesi Barat</option>
+                                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                                    <option value="Maluku">Maluku</option>
+                                    <option value="Maluku Utara">Maluku Utara</option>
+                                    <option value="Papua Barat">Papua Barat</option>
+                                    <option value="Papua">Papua</option>
+                                    <option value="Papua Barat Daya">Papua Barat Daya</option>
+                                    <option value="Papua Tengah">Papua Tengah</option>
+                                    <option value="Papua Pegunungan">Papua Pegunungan</option>
+                                    <option value="Papua Selatan">Papua Selatan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Kota/Kabupaten *</label>
+                                <select id="city" class="form-input" required>
+                                    <option value="">Pilih Provinsi terlebih dahulu</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="postalCode">Kode Pos</label>
+                                <input type="text" id="postalCode" class="form-input" placeholder="12345" maxlength="5">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="share-2"></i> Media Sosial</h3>
+                            <p>Tambahkan link ke profil media sosial bisnis Anda</p>
+                        </div>
+                        <div class="social-media-grid">
+                            <div class="social-input-group">
+                                <div class="social-icon instagram">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <div class="social-input-wrapper">
+                                    <span class="social-prefix">instagram.com/</span>
+                                    <input type="text" id="instagram" class="form-input" placeholder="username">
+                                </div>
+                            </div>
+                            <div class="social-input-group">
+                                <div class="social-icon facebook">
+                                    <i data-lucide="facebook"></i>
+                                </div>
+                                <div class="social-input-wrapper">
+                                    <span class="social-prefix">facebook.com/</span>
+                                    <input type="text" id="facebook" class="form-input" placeholder="page">
+                                </div>
+                            </div>
+                            <div class="social-input-group">
+                                <div class="social-icon tiktok">
+                                    <i data-lucide="music"></i>
+                                </div>
+                                <div class="social-input-wrapper">
+                                    <span class="social-prefix">tiktok.com/@</span>
+                                    <input type="text" id="tiktok" class="form-input" placeholder="username">
+                                </div>
+                            </div>
+                            <div class="social-input-group">
+                                <div class="social-icon youtube">
+                                    <i data-lucide="youtube"></i>
+                                </div>
+                                <div class="social-input-wrapper">
+                                    <span class="social-prefix">youtube.com/</span>
+                                    <input type="text" id="youtube" class="form-input" placeholder="channel">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Gallery -->
+                    <div class="form-card">
+                        <div class="form-card-header">
+                            <h3><i data-lucide="images"></i> Galeri Produk</h3>
+                            <p>Upload foto produk (maksimal 6 foto)</p>
+                        </div>
+                        <div class="product-gallery" id="productGallery">
+                            <div class="gallery-item upload-placeholder"
+                                onclick="document.getElementById('productInput').click()">
+                                <i data-lucide="plus"></i>
+                                <span>Upload Foto</span>
+                            </div>
+                            <input type="file" id="productInput" accept="image/*" multiple style="display: none;">
+                        </div>
+                        <p class="form-hint">PNG atau JPG. Maks 2MB per foto. Ukuran rekomendasi: 800x600px</p>
+                    </div>
+
+                    <!-- Save Buttons (Bottom) -->
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary btn-lg" id="cancelBtnBottom">Batal</button>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i data-lucide="save"></i>
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="mobile-nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Pesan</span>
+            </a>
+            <a href="dashboard-diagnostic.html" class="mobile-nav-item">
+                <i data-lucide="stethoscope"></i>
+                <span>Diagnosa</span>
+            </a>
+            <a href="profile-editor.html" class="mobile-nav-item active">
+                <i data-lucide="user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/province-city-data.js"></script>
+    <script src="js/profile-editor.js"></script>
+</body>
+
+</html>

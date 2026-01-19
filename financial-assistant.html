@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Financial Assistant - Uplokal">
+    <title>Financial Assistant | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/financial-assistant.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item active">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Financial Assistant</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Periode">
+                        <i data-lucide="calendar"></i>
+                        <span class="btn-label">Januari 2024</span>
+                    </button>
+                    <button class="topbar-btn" title="Export" id="exportBtn">
+                        <i data-lucide="download"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Financial Content -->
+            <div class="dashboard-content">
+                <!-- Financial Summary Cards -->
+                <div class="financial-summary">
+                    <div class="summary-card income">
+                        <div class="card-icon">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Total Pemasukan</span>
+                            <span class="card-value">Rp 45.750.000</span>
+                            <span class="card-change positive">
+                                <i data-lucide="arrow-up-right"></i>
+                                +12.5% dari bulan lalu
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary-card expense">
+                        <div class="card-icon">
+                            <i data-lucide="trending-down"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Total Pengeluaran</span>
+                            <span class="card-value">Rp 28.340.000</span>
+                            <span class="card-change negative">
+                                <i data-lucide="arrow-up-right"></i>
+                                +8.2% dari bulan lalu
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary-card profit">
+                        <div class="card-icon">
+                            <i data-lucide="wallet"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Laba Bersih</span>
+                            <span class="card-value">Rp 17.410.000</span>
+                            <span class="card-change positive">
+                                <i data-lucide="arrow-up-right"></i>
+                                +18.3% dari bulan lalu
+                            </span>
+                        </div>
+                    </div>
+                    <div class="summary-card tax">
+                        <div class="card-icon">
+                            <i data-lucide="receipt"></i>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-label">Estimasi Pajak</span>
+                            <span class="card-value">Rp 870.500</span>
+                            <span class="card-note">PPh Final 0.5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Grid -->
+                <div class="financial-grid">
+                    <!-- Cash Flow Chart -->
+                    <div class="financial-card chart-card">
+                        <div class="card-header">
+                            <h3>Cash Flow</h3>
+                            <div class="chart-legend">
+                                <span class="legend-item income"><span class="dot"></span> Pemasukan</span>
+                                <span class="legend-item expense"><span class="dot"></span> Pengeluaran</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="cashFlowChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="financial-card actions-card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="action-item" onclick="openTransactionModal('income')">
+                                <div class="action-icon income">
+                                    <i data-lucide="plus-circle"></i>
+                                </div>
+                                <span>Tambah Pemasukan</span>
+                            </button>
+                            <button class="action-item" onclick="openTransactionModal('expense')">
+                                <div class="action-icon expense">
+                                    <i data-lucide="minus-circle"></i>
+                                </div>
+                                <span>Tambah Pengeluaran</span>
+                            </button>
+                            <button class="action-item" onclick="generateReport()">
+                                <div class="action-icon report">
+                                    <i data-lucide="file-text"></i>
+                                </div>
+                                <span>Generate Laporan</span>
+                            </button>
+                            <button class="action-item" onclick="calculateTax()">
+                                <div class="action-icon tax">
+                                    <i data-lucide="calculator"></i>
+                                </div>
+                                <span>Hitung Pajak</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Transactions -->
+                    <div class="financial-card transactions-card">
+                        <div class="card-header">
+                            <h3>Transaksi Terbaru</h3>
+                            <a href="#" class="view-all">Lihat Semua <i data-lucide="chevron-right"></i></a>
+                        </div>
+                        <div class="transactions-list">
+                            <div class="transaction-item income">
+                                <div class="transaction-icon">
+                                    <i data-lucide="arrow-down-left"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <strong>Penjualan Online - Tokopedia</strong>
+                                    <span>18 Jan 2024</span>
+                                </div>
+                                <div class="transaction-amount income">+Rp 2.500.000</div>
+                            </div>
+                            <div class="transaction-item expense">
+                                <div class="transaction-icon">
+                                    <i data-lucide="arrow-up-right"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <strong>Pembelian Bahan Baku</strong>
+                                    <span>17 Jan 2024</span>
+                                </div>
+                                <div class="transaction-amount expense">-Rp 1.800.000</div>
+                            </div>
+                            <div class="transaction-item income">
+                                <div class="transaction-icon">
+                                    <i data-lucide="arrow-down-left"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <strong>Penjualan Offline - Reseller</strong>
+                                    <span>16 Jan 2024</span>
+                                </div>
+                                <div class="transaction-amount income">+Rp 5.200.000</div>
+                            </div>
+                            <div class="transaction-item expense">
+                                <div class="transaction-icon">
+                                    <i data-lucide="arrow-up-right"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <strong>Biaya Operasional</strong>
+                                    <span>15 Jan 2024</span>
+                                </div>
+                                <div class="transaction-amount expense">-Rp 950.000</div>
+                            </div>
+                            <div class="transaction-item income">
+                                <div class="transaction-icon">
+                                    <i data-lucide="arrow-down-left"></i>
+                                </div>
+                                <div class="transaction-info">
+                                    <strong>Penjualan Online - Shopee</strong>
+                                    <span>14 Jan 2024</span>
+                                </div>
+                                <div class="transaction-amount income">+Rp 3.750.000</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expense Breakdown -->
+                    <div class="financial-card expense-card">
+                        <div class="card-header">
+                            <h3>Breakdown Pengeluaran</h3>
+                        </div>
+                        <div class="chart-container small">
+                            <canvas id="expenseChart"></canvas>
+                        </div>
+                        <div class="expense-list">
+                            <div class="expense-item">
+                                <span class="expense-category">
+                                    <span class="dot" style="background: #3B82F6;"></span>
+                                    Bahan Baku
+                                </span>
+                                <span class="expense-value">Rp 12,500,000 (44%)</span>
+                            </div>
+                            <div class="expense-item">
+                                <span class="expense-category">
+                                    <span class="dot" style="background: #10B981;"></span>
+                                    Operasional
+                                </span>
+                                <span class="expense-value">Rp 8,200,000 (29%)</span>
+                            </div>
+                            <div class="expense-item">
+                                <span class="expense-category">
+                                    <span class="dot" style="background: #F59E0B;"></span>
+                                    Marketing
+                                </span>
+                                <span class="expense-value">Rp 4,500,000 (16%)</span>
+                            </div>
+                            <div class="expense-item">
+                                <span class="expense-category">
+                                    <span class="dot" style="background: #8B5CF6;"></span>
+                                    Lainnya
+                                </span>
+                                <span class="expense-value">Rp 3,140,000 (11%)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tax Estimator -->
+                    <div class="financial-card tax-card">
+                        <div class="card-header">
+                            <h3>Estimasi Pajak UMKM</h3>
+                            <span class="badge info">PPh Final 0.5%</span>
+                        </div>
+                        <div class="tax-content">
+                            <div class="tax-info">
+                                <p>Berdasarkan PP 23/2018, UMKM dengan omzet di bawah Rp4.8 miliar/tahun dikenakan PPh
+                                    Final sebesar 0.5% dari omzet.</p>
+                            </div>
+                            <div class="tax-calculation">
+                                <div class="calc-row">
+                                    <span>Omzet Bulan Ini</span>
+                                    <span class="value">Rp 45.750.000</span>
+                                </div>
+                                <div class="calc-row">
+                                    <span>Tarif PPh Final</span>
+                                    <span class="value">0.5%</span>
+                                </div>
+                                <div class="calc-row total">
+                                    <span>Pajak Terutang</span>
+                                    <span class="value">Rp 228.750</span>
+                                </div>
+                            </div>
+                            <div class="tax-summary">
+                                <div class="summary-row">
+                                    <span>Total Pajak YTD</span>
+                                    <span class="value">Rp 870.500</span>
+                                </div>
+                                <div class="summary-row">
+                                    <span>Deadline Pembayaran</span>
+                                    <span class="value deadline">15 Feb 2024</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" onclick="payTax()">
+                                <i data-lucide="credit-card"></i>
+                                Bayar Pajak Online
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="financial-assistant.html" class="mobile-nav-item active">
+                <i data-lucide="calculator"></i>
+                <span>Keuangan</span>
+            </a>
+            <a href="marketing-dashboard.html" class="mobile-nav-item">
+                <i data-lucide="trending-up"></i>
+                <span>Marketing</span>
+            </a>
+            <a href="profile-editor.html" class="mobile-nav-item">
+                <i data-lucide="building-2"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Transaction Modal -->
+    <div class="modal-overlay" id="transactionModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="transactionModalTitle">Tambah Transaksi</h2>
+                <button class="modal-close" onclick="closeTransactionModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Jenis Transaksi</label>
+                    <div class="toggle-buttons">
+                        <button type="button" class="toggle-btn active" data-type="income"
+                            onclick="setTransactionType('income')">
+                            <i data-lucide="arrow-down-left"></i> Pemasukan
+                        </button>
+                        <button type="button" class="toggle-btn" data-type="expense"
+                            onclick="setTransactionType('expense')">
+                            <i data-lucide="arrow-up-right"></i> Pengeluaran
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Jumlah *</label>
+                    <div class="input-with-prefix">
+                        <span class="prefix">Rp</span>
+                        <input type="text" class="form-input" id="transactionAmount" placeholder="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Kategori *</label>
+                    <select class="form-input" id="transactionCategory">
+                        <option value="">Pilih Kategori</option>
+                        <option value="sales_online">Penjualan Online</option>
+                        <option value="sales_offline">Penjualan Offline</option>
+                        <option value="raw_material">Bahan Baku</option>
+                        <option value="operational">Operasional</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="other">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi</label>
+                    <input type="text" class="form-input" id="transactionDesc" placeholder="Deskripsi transaksi...">
+                </div>
+                <div class="form-group">
+                    <label>Tanggal</label>
+                    <input type="date" class="form-input" id="transactionDate">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeTransactionModal()">Batal</button>
+                <button class="btn btn-primary" onclick="saveTransaction()">
+                    <i data-lucide="check"></i>
+                    Simpan Transaksi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/financial-assistant.js"></script>
+</body>
+
+</html>

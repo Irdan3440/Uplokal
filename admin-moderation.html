@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Moderation - Uplokal">
+    <title>Admin Moderation | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-verification.css">
+    <link rel="stylesheet" href="css/admin-moderation.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="user-check"></i>
+                        <span>Verification</span>
+                        <span class="nav-badge">12</span>
+                    </a>
+                    <a href="admin-moderation.html" class="nav-item active">
+                        <i data-lucide="shield-alert"></i>
+                        <span>Moderation</span>
+                        <span class="nav-badge warning">5</span>
+                    </a>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Clients</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Settings</span>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>System Settings</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="bell"></i>
+                        <span>Notifications</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <div class="user-name">Admin User</div>
+                        <div class="user-role">Super Admin</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Content Moderation</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Pencarian">
+                        <i data-lucide="search"></i>
+                    </button>
+                    <button class="topbar-btn" title="Notifikasi">
+                        <i data-lucide="bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Moderation Content -->
+            <div class="dashboard-content">
+                <!-- Stats Overview -->
+                <div class="moderation-stats">
+                    <div class="stat-card flagged">
+                        <div class="stat-icon">
+                            <i data-lucide="flag"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Konten Diflag</span>
+                        </div>
+                    </div>
+                    <div class="stat-card suspended">
+                        <div class="stat-icon">
+                            <i data-lucide="user-x"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">8</span>
+                            <span class="stat-label">User Disuspend</span>
+                        </div>
+                    </div>
+                    <div class="stat-card resolved">
+                        <div class="stat-icon">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">47</span>
+                            <span class="stat-label">Resolved Hari Ini</span>
+                        </div>
+                    </div>
+                    <div class="stat-card reports">
+                        <div class="stat-icon">
+                            <i data-lucide="message-square-warning"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">23</span>
+                            <span class="stat-label">Report Masuk</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="moderation-tabs">
+                    <button class="mod-tab active" data-tab="flagged">
+                        <i data-lucide="flag"></i>
+                        Konten Diflag
+                        <span class="tab-badge">5</span>
+                    </button>
+                    <button class="mod-tab" data-tab="suspended">
+                        <i data-lucide="user-x"></i>
+                        User Disuspend
+                        <span class="tab-badge">8</span>
+                    </button>
+                    <button class="mod-tab" data-tab="categories">
+                        <i data-lucide="folder-tree"></i>
+                        Kategori
+                    </button>
+                </div>
+
+                <!-- Flagged Content Section -->
+                <div class="tab-content active" id="flagged-content">
+                    <div class="flagged-list">
+                        <!-- Flagged Item 1 -->
+                        <div class="flagged-item" data-id="1">
+                            <div class="flagged-header">
+                                <div class="content-type">
+                                    <span class="type-badge profile"><i data-lucide="user"></i> Profil Bisnis</span>
+                                    <span class="report-count"><i data-lucide="flag"></i> 3 reports</span>
+                                </div>
+                                <div class="flagged-time">2 jam lalu</div>
+                            </div>
+                            <div class="flagged-content">
+                                <div class="business-preview">
+                                    <img src="https://ui-avatars.com/api/?name=Toko+XYZ&background=DC2626&color=fff"
+                                        alt="Toko XYZ">
+                                    <div class="business-info">
+                                        <h4>Toko XYZ Fashion</h4>
+                                        <p>Fashion & Aksesoris</p>
+                                    </div>
+                                </div>
+                                <div class="report-reason">
+                                    <strong>Alasan Report:</strong>
+                                    <ul>
+                                        <li>Konten tidak sesuai dengan deskripsi</li>
+                                        <li>Gambar produk berpotensi melanggar hak cipta</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flagged-actions">
+                                <button class="btn btn-success btn-sm" onclick="dismissFlag(1)">
+                                    <i data-lucide="check"></i> Abaikan
+                                </button>
+                                <button class="btn btn-warning btn-sm" onclick="warnUser(1)">
+                                    <i data-lucide="alert-triangle"></i> Peringatan
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="suspendUser(1)">
+                                    <i data-lucide="user-x"></i> Suspend
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="viewContent(1)">
+                                    <i data-lucide="external-link"></i> Lihat
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Flagged Item 2 -->
+                        <div class="flagged-item" data-id="2">
+                            <div class="flagged-header">
+                                <div class="content-type">
+                                    <span class="type-badge product"><i data-lucide="package"></i> Produk</span>
+                                    <span class="report-count"><i data-lucide="flag"></i> 5 reports</span>
+                                </div>
+                                <div class="flagged-time">5 jam lalu</div>
+                            </div>
+                            <div class="flagged-content">
+                                <div class="business-preview">
+                                    <img src="https://ui-avatars.com/api/?name=Elektronik+Murah&background=F59E0B&color=fff"
+                                        alt="Elektronik Murah">
+                                    <div class="business-info">
+                                        <h4>Elektronik Murah 88</h4>
+                                        <p>Elektronik</p>
+                                    </div>
+                                </div>
+                                <div class="report-reason">
+                                    <strong>Alasan Report:</strong>
+                                    <ul>
+                                        <li>Produk palsu / imitasi</li>
+                                        <li>Harga tidak wajar (terlalu murah)</li>
+                                        <li>Deskripsi menyesatkan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flagged-actions">
+                                <button class="btn btn-success btn-sm" onclick="dismissFlag(2)">
+                                    <i data-lucide="check"></i> Abaikan
+                                </button>
+                                <button class="btn btn-warning btn-sm" onclick="warnUser(2)">
+                                    <i data-lucide="alert-triangle"></i> Peringatan
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="suspendUser(2)">
+                                    <i data-lucide="user-x"></i> Suspend
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="viewContent(2)">
+                                    <i data-lucide="external-link"></i> Lihat
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Flagged Item 3 -->
+                        <div class="flagged-item urgent" data-id="3">
+                            <div class="flagged-header">
+                                <div class="content-type">
+                                    <span class="type-badge review"><i data-lucide="message-circle"></i> Review</span>
+                                    <span class="report-count urgent"><i data-lucide="alert-octagon"></i> 10+
+                                        reports</span>
+                                </div>
+                                <div class="flagged-time">1 jam lalu</div>
+                            </div>
+                            <div class="flagged-content">
+                                <div class="business-preview">
+                                    <img src="https://ui-avatars.com/api/?name=Anonymous&background=6B7280&color=fff"
+                                        alt="Anonymous">
+                                    <div class="business-info">
+                                        <h4>Review oleh UserABC</h4>
+                                        <p>Pada: Toko Sinar Jaya</p>
+                                    </div>
+                                </div>
+                                <div class="report-reason">
+                                    <strong>Alasan Report:</strong>
+                                    <ul>
+                                        <li>Bahasa kasar / tidak sopan</li>
+                                        <li>Konten tidak relevan (spam)</li>
+                                        <li>Fitnah / informasi palsu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flagged-actions">
+                                <button class="btn btn-success btn-sm" onclick="dismissFlag(3)">
+                                    <i data-lucide="check"></i> Abaikan
+                                </button>
+                                <button class="btn btn-warning btn-sm" onclick="warnUser(3)">
+                                    <i data-lucide="alert-triangle"></i> Peringatan
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="suspendUser(3)">
+                                    <i data-lucide="user-x"></i> Suspend
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="viewContent(3)">
+                                    <i data-lucide="external-link"></i> Lihat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Suspended Users Section -->
+                <div class="tab-content" id="suspended-content">
+                    <div class="suspended-table-wrapper">
+                        <table class="suspended-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Bisnis</th>
+                                    <th>Alasan</th>
+                                    <th>Tanggal Suspend</th>
+                                    <th>Durasi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=EF4444&color=fff"
+                                                alt="John Doe">
+                                            <span>John Doe</span>
+                                        </div>
+                                    </td>
+                                    <td>Toko Elektronik JD</td>
+                                    <td><span class="reason-badge">Produk Palsu</span></td>
+                                    <td>15 Jan 2024</td>
+                                    <td>7 hari</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn unsuspend" title="Cabut Suspend"
+                                                onclick="unsuspendUser('john')">
+                                                <i data-lucide="user-check"></i>
+                                            </button>
+                                            <button class="action-btn extend" title="Perpanjang"
+                                                onclick="extendSuspension('john')">
+                                                <i data-lucide="clock"></i>
+                                            </button>
+                                            <button class="action-btn ban" title="Ban Permanen"
+                                                onclick="banUser('john')">
+                                                <i data-lucide="ban"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="user-cell">
+                                            <img src="https://ui-avatars.com/api/?name=Sarah+Lee&background=F59E0B&color=fff"
+                                                alt="Sarah Lee">
+                                            <span>Sarah Lee</span>
+                                        </div>
+                                    </td>
+                                    <td>Fashion SL Store</td>
+                                    <td><span class="reason-badge">Spam</span></td>
+                                    <td>12 Jan 2024</td>
+                                    <td>3 hari</td>
+                                    <td>
+                                        <div class="action-buttons">
+                                            <button class="action-btn unsuspend" title="Cabut Suspend"
+                                                onclick="unsuspendUser('sarah')">
+                                                <i data-lucide="user-check"></i>
+                                            </button>
+                                            <button class="action-btn extend" title="Perpanjang"
+                                                onclick="extendSuspension('sarah')">
+                                                <i data-lucide="clock"></i>
+                                            </button>
+                                            <button class="action-btn ban" title="Ban Permanen"
+                                                onclick="banUser('sarah')">
+                                                <i data-lucide="ban"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Categories Section -->
+                <div class="tab-content" id="categories-content">
+                    <div class="categories-header">
+                        <h3>Kelola Kategori Bisnis</h3>
+                        <button class="btn btn-primary" onclick="addCategory()">
+                            <i data-lucide="plus"></i>
+                            Tambah Kategori
+                        </button>
+                    </div>
+                    <div class="categories-grid">
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #3B82F6;">
+                                <i data-lucide="shirt"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Fashion & Tekstil</h4>
+                                <span>245 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #10B981;">
+                                <i data-lucide="utensils"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Makanan & Minuman</h4>
+                                <span>189 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #8B5CF6;">
+                                <i data-lucide="gem"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Kerajinan Tangan</h4>
+                                <span>156 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #EC4899;">
+                                <i data-lucide="sofa"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Furniture</h4>
+                                <span>98 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #F59E0B;">
+                                <i data-lucide="cpu"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Elektronik</h4>
+                                <span>134 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon" style="background: #6B7280;">
+                                <i data-lucide="package"></i>
+                            </div>
+                            <div class="category-info">
+                                <h4>Lainnya</h4>
+                                <span>67 bisnis</span>
+                            </div>
+                            <div class="category-actions">
+                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="admin.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="admin-verification.html" class="mobile-nav-item">
+                <i data-lucide="user-check"></i>
+                <span>Verify</span>
+            </a>
+            <a href="admin-moderation.html" class="mobile-nav-item active">
+                <i data-lucide="shield-alert"></i>
+                <span>Moderate</span>
+            </a>
+            <a href="admin-clients.html" class="mobile-nav-item">
+                <i data-lucide="users"></i>
+                <span>Clients</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Suspend User Modal -->
+    <div class="modal-overlay" id="suspendModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Suspend User</h2>
+                <button class="modal-close" onclick="closeSuspendModal()">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Durasi Suspend *</label>
+                    <select class="form-input" id="suspendDuration">
+                        <option value="">Pilih Durasi</option>
+                        <option value="1">1 Hari</option>
+                        <option value="3">3 Hari</option>
+                        <option value="7">7 Hari</option>
+                        <option value="14">14 Hari</option>
+                        <option value="30">30 Hari</option>
+                        <option value="permanent">Permanen (Ban)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Alasan Suspend *</label>
+                    <select class="form-input" id="suspendReason">
+                        <option value="">Pilih Alasan</option>
+                        <option value="fake_product">Produk Palsu</option>
+                        <option value="spam">Spam/Konten Berulang</option>
+                        <option value="inappropriate">Konten Tidak Pantas</option>
+                        <option value="fraud">Penipuan</option>
+                        <option value="harassment">Pelecehan</option>
+                        <option value="other">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Catatan Internal</label>
+                    <textarea class="form-input" id="suspendNote" rows="3"
+                        placeholder="Catatan untuk admin lain..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="notifyUser" checked>
+                        <span>Kirim notifikasi ke user</span>
+                    </label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeSuspendModal()">Batal</button>
+                <button class="btn btn-danger" onclick="confirmSuspend()">
+                    <i data-lucide="user-x"></i>
+                    Suspend User
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/admin-moderation.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketing Dashboard - Uplokal">
+    <title>Marketing Dashboard | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/marketing-dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item active">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="#" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Marketing Dashboard</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="topbar-btn" title="Periode">
+                        <i data-lucide="calendar"></i>
+                        <span class="btn-label">30 Hari Terakhir</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Marketing Content -->
+            <div class="dashboard-content">
+                <!-- Marketing Stats -->
+                <div class="marketing-stats">
+                    <div class="stat-card reach">
+                        <div class="stat-icon">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Total Reach</span>
+                            <span class="stat-value">24.5K</span>
+                            <span class="stat-change positive">
+                                <i data-lucide="arrow-up-right"></i>
+                                +18.2%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stat-card engagement">
+                        <div class="stat-icon">
+                            <i data-lucide="heart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Engagement Rate</span>
+                            <span class="stat-value">4.8%</span>
+                            <span class="stat-change positive">
+                                <i data-lucide="arrow-up-right"></i>
+                                +0.6%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stat-card clicks">
+                        <div class="stat-icon">
+                            <i data-lucide="mouse-pointer-click"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Link Clicks</span>
+                            <span class="stat-value">1,234</span>
+                            <span class="stat-change negative">
+                                <i data-lucide="arrow-down-right"></i>
+                                -3.1%
+                            </span>
+                        </div>
+                    </div>
+                    <div class="stat-card conversion">
+                        <div class="stat-icon">
+                            <i data-lucide="shopping-cart"></i>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-label">Conversion Rate</span>
+                            <span class="stat-value">2.3%</span>
+                            <span class="stat-change positive">
+                                <i data-lucide="arrow-up-right"></i>
+                                +0.4%
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media Channels -->
+                <div class="social-channels">
+                    <h2 class="section-title">Platform Performance</h2>
+                    <div class="channels-grid">
+                        <div class="channel-card instagram">
+                            <div class="channel-header">
+                                <div class="channel-icon">
+                                    <i data-lucide="instagram"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <h4>Instagram</h4>
+                                    <span>@kulitnusantara</span>
+                                </div>
+                                <span class="status-badge connected">Connected</span>
+                            </div>
+                            <div class="channel-stats">
+                                <div class="channel-stat">
+                                    <span class="stat-number">8.5K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">156</span>
+                                    <span class="stat-label">Posts</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">5.2%</span>
+                                    <span class="stat-label">Eng. Rate</span>
+                                </div>
+                            </div>
+                            <div class="channel-growth">
+                                <span class="growth-label">Growth (30 days)</span>
+                                <div class="growth-bar">
+                                    <div class="growth-fill" style="width: 68%;"></div>
+                                </div>
+                                <span class="growth-value">+234 followers</span>
+                            </div>
+                        </div>
+
+                        <div class="channel-card facebook">
+                            <div class="channel-header">
+                                <div class="channel-icon">
+                                    <i data-lucide="facebook"></i>
+                                </div>
+                                <div class="channel-info">
+                                    <h4>Facebook</h4>
+                                    <span>Kulit Nusantara</span>
+                                </div>
+                                <span class="status-badge connected">Connected</span>
+                            </div>
+                            <div class="channel-stats">
+                                <div class="channel-stat">
+                                    <span class="stat-number">3.2K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">89</span>
+                                    <span class="stat-label">Posts</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">3.1%</span>
+                                    <span class="stat-label">Eng. Rate</span>
+                                </div>
+                            </div>
+                            <div class="channel-growth">
+                                <span class="growth-label">Growth (30 days)</span>
+                                <div class="growth-bar">
+                                    <div class="growth-fill" style="width: 45%;"></div>
+                                </div>
+                                <span class="growth-value">+98 followers</span>
+                            </div>
+                        </div>
+
+                        <div class="channel-card tiktok">
+                            <div class="channel-header">
+                                <div class="channel-icon">
+                                    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                                        <path
+                                            d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                                    </svg>
+                                </div>
+                                <div class="channel-info">
+                                    <h4>TikTok</h4>
+                                    <span>@kulitnusantara</span>
+                                </div>
+                                <span class="status-badge connected">Connected</span>
+                            </div>
+                            <div class="channel-stats">
+                                <div class="channel-stat">
+                                    <span class="stat-number">12.8K</span>
+                                    <span class="stat-label">Followers</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">45</span>
+                                    <span class="stat-label">Videos</span>
+                                </div>
+                                <div class="channel-stat">
+                                    <span class="stat-number">8.4%</span>
+                                    <span class="stat-label">Eng. Rate</span>
+                                </div>
+                            </div>
+                            <div class="channel-growth">
+                                <span class="growth-label">Growth (30 days)</span>
+                                <div class="growth-bar">
+                                    <div class="growth-fill" style="width: 85%;"></div>
+                                </div>
+                                <span class="growth-value">+1.2K followers</span>
+                            </div>
+                        </div>
+
+                        <div class="channel-card add-channel">
+                            <button class="add-channel-btn">
+                                <i data-lucide="plus-circle"></i>
+                                <span>Hubungkan Platform</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketing Grid -->
+                <div class="marketing-grid">
+                    <!-- Traffic Chart -->
+                    <div class="marketing-card chart-card">
+                        <div class="card-header">
+                            <h3>Traffic Overview</h3>
+                            <div class="chart-legend">
+                                <span class="legend-item organic"><span class="dot"></span> Organic</span>
+                                <span class="legend-item paid"><span class="dot"></span> Paid</span>
+                                <span class="legend-item referral"><span class="dot"></span> Referral</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- ROI Calculator -->
+                    <div class="marketing-card roi-card">
+                        <div class="card-header">
+                            <h3>ROI Calculator</h3>
+                        </div>
+                        <div class="roi-content">
+                            <div class="roi-input-group">
+                                <label>Budget Marketing</label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">Rp</span>
+                                    <input type="text" class="form-input" id="marketingBudget" value="5.000.000">
+                                </div>
+                            </div>
+                            <div class="roi-input-group">
+                                <label>Revenue dari Campaign</label>
+                                <div class="input-with-prefix">
+                                    <span class="prefix">Rp</span>
+                                    <input type="text" class="form-input" id="campaignRevenue" value="18.500.000">
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-block" onclick="calculateROI()">
+                                Hitung ROI
+                            </button>
+                            <div class="roi-result" id="roiResult">
+                                <div class="roi-value">
+                                    <span class="label">Return on Investment</span>
+                                    <span class="value positive">270%</span>
+                                </div>
+                                <div class="roi-breakdown">
+                                    <div class="breakdown-item">
+                                        <span>Profit dari Marketing</span>
+                                        <span class="value">Rp 13.500.000</span>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <span>Cost per Acquisition</span>
+                                        <span class="value">Rp 45.000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Campaigns -->
+                    <div class="marketing-card campaigns-card">
+                        <div class="card-header">
+                            <h3>Top Campaigns</h3>
+                            <a href="#" class="view-all">View All <i data-lucide="chevron-right"></i></a>
+                        </div>
+                        <div class="campaigns-list">
+                            <div class="campaign-item">
+                                <div class="campaign-info">
+                                    <span class="campaign-name">Promo Tahun Baru</span>
+                                    <span class="campaign-platform"><i data-lucide="instagram"></i> Instagram Ads</span>
+                                </div>
+                                <div class="campaign-metrics">
+                                    <span class="metric"><i data-lucide="eye"></i> 12.5K</span>
+                                    <span class="metric"><i data-lucide="mouse-pointer-click"></i> 456</span>
+                                </div>
+                                <span class="campaign-status active">Active</span>
+                            </div>
+                            <div class="campaign-item">
+                                <div class="campaign-info">
+                                    <span class="campaign-name">Flash Sale Weekend</span>
+                                    <span class="campaign-platform"><i data-lucide="facebook"></i> Facebook Ads</span>
+                                </div>
+                                <div class="campaign-metrics">
+                                    <span class="metric"><i data-lucide="eye"></i> 8.2K</span>
+                                    <span class="metric"><i data-lucide="mouse-pointer-click"></i> 234</span>
+                                </div>
+                                <span class="campaign-status completed">Completed</span>
+                            </div>
+                            <div class="campaign-item">
+                                <div class="campaign-info">
+                                    <span class="campaign-name">TikTok Challenge</span>
+                                    <span class="campaign-platform">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                                            <path
+                                                d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+                                        </svg>
+                                        TikTok Organic
+                                    </span>
+                                </div>
+                                <div class="campaign-metrics">
+                                    <span class="metric"><i data-lucide="eye"></i> 45.8K</span>
+                                    <span class="metric"><i data-lucide="mouse-pointer-click"></i> 1.2K</span>
+                                </div>
+                                <span class="campaign-status active">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Ideas -->
+                    <div class="marketing-card ideas-card">
+                        <div class="card-header">
+                            <h3>Content Ideas</h3>
+                            <button class="btn btn-sm btn-outline" onclick="generateIdeas()">
+                                <i data-lucide="sparkles"></i> Generate
+                            </button>
+                        </div>
+                        <div class="ideas-list">
+                            <div class="idea-item">
+                                <div class="idea-icon"><i data-lucide="video"></i></div>
+                                <div class="idea-content">
+                                    <strong>Behind the Scenes Production</strong>
+                                    <p>Tunjukkan proses pembuatan produk kulit untuk meningkatkan trust</p>
+                                </div>
+                            </div>
+                            <div class="idea-item">
+                                <div class="idea-icon"><i data-lucide="users"></i></div>
+                                <div class="idea-content">
+                                    <strong>Customer Testimonial</strong>
+                                    <p>Video review dari pelanggan dengan produk favoritnya</p>
+                                </div>
+                            </div>
+                            <div class="idea-item">
+                                <div class="idea-icon"><i data-lucide="gift"></i></div>
+                                <div class="idea-content">
+                                    <strong>Giveaway Campaign</strong>
+                                    <p>Follow & share untuk meningkatkan reach dan engagement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Navigation -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="financial-assistant.html" class="mobile-nav-item">
+                <i data-lucide="calculator"></i>
+                <span>Keuangan</span>
+            </a>
+            <a href="marketing-dashboard.html" class="mobile-nav-item active">
+                <i data-lucide="trending-up"></i>
+                <span>Marketing</span>
+            </a>
+            <a href="profile-editor.html" class="mobile-nav-item">
+                <i data-lucide="building-2"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+    <script src="js/marketing-dashboard.js"></script>
+</body>
+
+</html>
