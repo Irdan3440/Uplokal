@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Messages - Consultation and Internal Communication">
+    <title>Messages | Admin Uplokal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/messages.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="admin-customers.html" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="admin-rfq.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="admin-messages.html" class="nav-item active">
+                        <i data-lucide="message-square"></i>
+                        <span>Messages</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="admin-campaigns.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="admin-billing.html" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="admin-moderation.html" class="nav-item">
+                        <i data-lucide="shield-alert"></i>
+                        <span>Moderation</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="admin-settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="admin-team.html" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="admin-logs.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Admin Messages</h1>
+                </div>
+                <div class="topbar-right">
+                    <div class="status-indicator"
+                        style="display: flex; align-items: center; gap: var(--space-2); background: var(--color-success-50); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); border: 1px solid var(--color-success-200);">
+                        <i data-lucide="shield-check"
+                            style="width: 16px; height: 16px; color: var(--color-success);"></i>
+                        <span
+                            style="font-size: var(--text-sm); font-weight: 600; color: var(--color-success-700);">Admin
+                            Online</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-content" style="padding: var(--space-6); height: calc(100vh - 64px);">
+                <div class="messages-container"
+                    style="height: 100%; border-radius: var(--radius-2xl); border: 1px solid var(--color-gray-200); box-shadow: var(--shadow-xl);">
+                    <!-- Conversation List -->
+                    <div class="conversations-panel">
+                        <div class="conversations-header">
+                            <div class="search-conversations">
+                                <i data-lucide="search"></i>
+                                <input type="text" placeholder="Search clients or team...">
+                            </div>
+                            <div class="conversation-tabs">
+                                <button class="conv-tab active" data-tab="all">All</button>
+                                <button class="conv-tab" data-tab="clients">Clients</button>
+                                <button class="conv-tab" data-tab="team">Team</button>
+                            </div>
+                        </div>
+                        <div class="conversations-list">
+                            <!-- Client Conversation -->
+                            <div class="conversation-item active" data-type="clients" data-id="rina">
+                                <img src="https://ui-avatars.com/api/?name=Rina+Amelia&background=3B82F6&color=fff"
+                                    alt="Avatar">
+                                <div class="conversation-info">
+                                    <div class="conversation-header">
+                                        <span class="conversation-name">Rina Amelia (Client)</span>
+                                        <span class="conversation-time">10:30</span>
+                                    </div>
+                                    <p class="conversation-preview">Halo Admin, saya ingin konsultasi mengenai...</p>
+                                </div>
+                                <span class="unread-badge">2</span>
+                            </div>
+                            <!-- Team Conversation -->
+                            <div class="conversation-item" data-type="team" data-id="sarah">
+                                <img src="https://ui-avatars.com/api/?name=Sarah+Rahman&background=10B981&color=fff"
+                                    alt="Avatar">
+                                <div class="conversation-info">
+                                    <div class="conversation-header">
+                                        <span class="conversation-name">Sarah Rahman (Moderator)</span>
+                                        <span class="conversation-time">09:45</span>
+                                    </div>
+                                    <p class="conversation-preview">Laporan verifikasi harian sudah saya update.</p>
+                                </div>
+                            </div>
+                            <!-- Another Client -->
+                            <div class="conversation-item" data-type="clients" data-id="budi">
+                                <img src="https://ui-avatars.com/api/?name=Budi+Wicaksono&background=F59E0B&color=fff"
+                                    alt="Avatar">
+                                <div class="conversation-info">
+                                    <div class="conversation-header">
+                                        <span class="conversation-name">Budi Wicaksono (Client)</span>
+                                        <span class="conversation-time">Yesterday</span>
+                                    </div>
+                                    <p class="conversation-preview">Bagaimana kelanjutan RFQ saya?</p>
+                                </div>
+                            </div>
+                            <!-- Internal Team Group -->
+                            <div class="conversation-item" data-type="team" data-id="strategy">
+                                <div class="group-avatar"
+                                    style="width: 48px; height: 48px; background: #6366F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                    <i data-lucide="users" style="width: 24px; height: 24px;"></i>
+                                </div>
+                                <div class="conversation-info">
+                                    <div class="conversation-header">
+                                        <span class="conversation-name">Admin Strategy Room</span>
+                                        <span class="conversation-time">2 days</span>
+                                    </div>
+                                    <p class="conversation-preview">Jadwal meeting mingguan besok pukul 09:00.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Panel -->
+                    <div class="chat-panel">
+                        <div class="chat-header">
+                            <div class="chat-user">
+                                <img src="https://ui-avatars.com/api/?name=Rina+Amelia&background=3B82F6&color=fff"
+                                    alt="Avatar">
+                                <div class="chat-user-info">
+                                    <span class="chat-user-name">Rina Amelia</span>
+                                    <span class="chat-user-status">Online (Kulit Nusantara)</span>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="icon-btn" title="View Profile"><i data-lucide="user"></i></button>
+                                <button class="icon-btn" title="Project Details"><i
+                                        data-lucide="file-text"></i></button>
+                                <button class="icon-btn"><i data-lucide="more-vertical"></i></button>
+                            </div>
+                        </div>
+                        <div class="chat-messages">
+                            <div class="message-date">Today</div>
+                            <div class="message received">
+                                <div class="message-bubble">
+                                    <div class="message-content">
+                                        <p>Halo Admin, saya ingin konsultasi mengenai prosedur ekspor ke pasar Eropa.
+                                            Apakah ada panduan spesifik?</p>
+                                        <span class="message-time">10:15</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message sent">
+                                <div class="message-bubble">
+                                    <div class="message-content">
+                                        <p>Halo Bu Rina! Tentu, kami memiliki modul panduan ekspor Eropa. Saya akan
+                                            lampirkan dokumen ringkasannya di sini.</p>
+                                        <span class="message-time">10:25</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message received">
+                                <div class="message-bubble">
+                                    <div class="message-content">
+                                        <p>Terima kasih Admin. Menunggu lampirannya ya.</p>
+                                        <span class="message-time">10:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input" style="position: relative;">
+                            <input type="file" id="chatFileInput" class="hidden-input" style="display: none;">
+                            <button class="icon-btn" id="attachBtn" title="Attach File"><i
+                                    data-lucide="paperclip"></i></button>
+                            <input type="text" id="chatInputField" placeholder="Type a message to Rina Amelia...">
+                            <button class="icon-btn" id="emoteBtn" title="Select Emoji"><i
+                                    data-lucide="smile"></i></button>
+                            <button class="btn btn-primary btn-send">
+                                <i data-lucide="send"></i>
+                            </button>
+
+                            <!-- Emote Picker -->
+                            <div class="emote-picker-container hidden" id="emotePicker">
+                                <div class="emote-item">😊</div>
+                                <div class="emote-item">👍</div>
+                                <div class="emote-item">🙏</div>
+                                <div class="emote-item">🔥</div>
+                                <div class="emote-item">❤️</div>
+                                <div class="emote-item">🙌</div>
+                                <div class="emote-item">😂</div>
+                                <div class="emote-item">👋</div>
+                                <div class="emote-item">✨</div>
+                                <div class="emote-item">🚀</div>
+                                <div class="emote-item">🤔</div>
+                                <div class="emote-item">✅</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard-common.js"></script>
+    <script src="js/admin-messages.js"></script>
+</body>
+
+</html>

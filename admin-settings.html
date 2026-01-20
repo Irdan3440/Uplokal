@@ -73,6 +73,11 @@
 
                 <div class="nav-section">
                     <span class="nav-section-title">Operations</span>
+                    <a href="admin-messages.html" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Messages</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
                     <a href="admin-campaigns.html" class="nav-item">
                         <i data-lucide="megaphone"></i>
                         <span>Campaigns</span>
@@ -84,6 +89,11 @@
                     <a href="admin-verification.html" class="nav-item">
                         <i data-lucide="shield-check"></i>
                         <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="admin-moderation.html" class="nav-item">
+                        <i data-lucide="shield-alert"></i>
+                        <span>Moderation</span>
                         <span class="badge badge-warning">5</span>
                     </a>
                 </div>
@@ -136,111 +146,196 @@
 
             <div class="dashboard-content">
                 <!-- Settings Navigation -->
-                <div
-                    style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200); padding-bottom: var(--space-4);">
-                    <button class="btn btn-ghost active"
-                        style="border-bottom: 2px solid var(--color-primary-500);">Account</button>
-                    <button class="btn btn-ghost">Platform</button>
-                    <button class="btn btn-ghost">Notifications</button>
-                    <button class="btn btn-ghost">Security</button>
-                    <button class="btn btn-ghost">Integrations</button>
+                <div class="settings-tabs"
+                    style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200); padding-bottom: var(--space-4); overflow-x: auto;">
+                    <button class="btn btn-ghost tab-btn active" data-tab="account">Account</button>
+                    <button class="btn btn-ghost tab-btn" data-tab="platform">Platform</button>
+                    <button class="btn btn-ghost tab-btn" data-tab="notifications">Notifications</button>
+                    <button class="btn btn-ghost tab-btn" data-tab="security">Security</button>
+                    <button class="btn btn-ghost tab-btn" data-tab="integrations">Integrations</button>
                 </div>
 
-                <div class="dashboard-grid">
-                    <!-- Account Settings -->
-                    <div>
-                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
-                            <div class="card-header">
-                                <h3>👤 Account Settings</h3>
-                            </div>
-                            <div class="card-body">
-                                <!-- Profile Photo -->
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200);">
-                                    <div
-                                        style="width: 80px; height: 80px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-2xl); font-weight: 700;">
-                                        AD</div>
-                                    <div>
-                                        <div style="font-weight: 600; margin-bottom: var(--space-2);">Profile Photo
+                <div class="settings-content">
+                    <!-- Account Tab Content -->
+                    <div id="account" class="tab-pane active">
+                        <div class="dashboard-grid">
+                            <div>
+                                <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                                    <div class="card-header">
+                                        <h3>👤 Account Settings</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- Profile Photo -->
+                                        <div
+                                            style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200);">
+                                            <div class="profile-avatar-large"
+                                                style="width: 80px; height: 80px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-2xl); font-weight: 700;">
+                                                AD</div>
+                                            <div>
+                                                <div style="font-weight: 600; margin-bottom: var(--space-2);">Profile
+                                                    Photo</div>
+                                                <div style="display: flex; gap: var(--space-2);">
+                                                    <button class="btn btn-secondary btn-sm">Upload New</button>
+                                                    <button class="btn btn-ghost btn-sm">Remove</button>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div style="display: flex; gap: var(--space-2);">
-                                            <button class="btn btn-secondary btn-sm">Upload New</button>
-                                            <button class="btn btn-ghost btn-sm">Remove</button>
+
+                                        <!-- Form Fields -->
+                                        <div
+                                            style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
+                                            <div class="form-group">
+                                                <label class="form-label">Full Name</label>
+                                                <input type="text" class="form-input" value="Admin User">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Email Address</label>
+                                                <input type="email" class="form-input" value="admin@uplokal.com">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Phone Number</label>
+                                                <input type="tel" class="form-input" value="+62 812 3456 7890">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Role</label>
+                                                <select class="form-input">
+                                                    <option selected>Super Admin</option>
+                                                    <option>Admin</option>
+                                                    <option>Moderator</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <!-- Form Fields -->
-                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
-                                    <div class="form-group">
-                                        <label class="form-label">Full Name</label>
-                                        <input type="text" class="form-input" value="Admin User">
+                                <!-- Password Section -->
+                                <div class="dashboard-card">
+                                    <div class="card-header">
+                                        <h3>🔐 Change Password</h3>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Email Address</label>
-                                        <input type="email" class="form-input" value="admin@uplokal.com">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-input" value="+62 812 3456 7890">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Role</label>
-                                        <select class="form-input">
-                                            <option selected>Super Admin</option>
-                                            <option>Admin</option>
-                                            <option>Moderator</option>
-                                        </select>
+                                    <div class="card-body">
+                                        <div
+                                            style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
+                                            <div class="form-group">
+                                                <label class="form-label">Current Password</label>
+                                                <input type="password" class="form-input"
+                                                    placeholder="Enter current password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">New Password</label>
+                                                <input type="password" class="form-input"
+                                                    placeholder="Enter new password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label">Confirm New Password</label>
+                                                <input type="password" class="form-input"
+                                                    placeholder="Confirm new password">
+                                            </div>
+                                            <button class="btn btn-primary" style="width: fit-content;">Update
+                                                Password</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Password Section -->
-                        <div class="dashboard-card">
-                            <div class="card-header">
-                                <h3>🔐 Change Password</h3>
-                            </div>
-                            <div class="card-body">
-                                <div
-                                    style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
-                                    <div class="form-group">
-                                        <label class="form-label">Current Password</label>
-                                        <input type="password" class="form-input" placeholder="Enter current password">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>ℹ️ Profile Summary</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div style="text-align: center; padding: var(--space-6);">
+                                        <div
+                                            style="width: 120px; height: 120px; background: var(--color-primary-50); border: 4px solid white; border-radius: var(--radius-full); margin: 0 auto var(--space-4); display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
+                                            <i data-lucide="user"
+                                                style="width: 48px; height: 48px; color: var(--color-primary-500);"></i>
+                                        </div>
+                                        <h4 style="font-size: var(--text-lg); margin-bottom: 4px;">Admin User</h4>
+                                        <p style="color: var(--color-gray-500); font-size: var(--text-sm);">Super Admin
+                                            since Jan 2024</p>
+                                        <div
+                                            style="margin-top: var(--space-6); display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); text-align: left;">
+                                            <div
+                                                style="padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-md);">
+                                                <div
+                                                    style="font-size: var(--text-xs); color: var(--color-gray-500); text-transform: uppercase;">
+                                                    Last Login</div>
+                                                <div style="font-weight: 600; font-size: var(--text-sm);">Today, 10:45
+                                                </div>
+                                            </div>
+                                            <div
+                                                style="padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-md);">
+                                                <div
+                                                    style="font-size: var(--text-xs); color: var(--color-gray-500); text-transform: uppercase;">
+                                                    Status</div>
+                                                <div
+                                                    style="font-weight: 600; font-size: var(--text-sm); color: var(--color-success);">
+                                                    Active</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label">New Password</label>
-                                        <input type="password" class="form-input" placeholder="Enter new password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="form-label">Confirm New Password</label>
-                                        <input type="password" class="form-input" placeholder="Confirm new password">
-                                    </div>
-                                    <button class="btn btn-primary" style="width: fit-content;">Update Password</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Notifications & Security -->
-                    <div>
-                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                    <!-- Platform Tab Content -->
+                    <div id="platform" class="tab-pane">
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>🌐 Platform Configuration</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div style="display: grid; gap: var(--space-4);">
+                                        <div class="form-group">
+                                            <label class="form-label">Platform Name</label>
+                                            <input type="text" class="form-input" value="Uplokal">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Support Email</label>
+                                            <input type="email" class="form-input" value="support@uplokal.com">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Main Language</label>
+                                            <select class="form-input">
+                                                <option selected>Bahasa Indonesia</option>
+                                                <option>English</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label">Maintenance Mode</label>
+                                            <label class="switch-control"
+                                                style="display: flex; align-items: center; gap: 8px;">
+                                                <input type="checkbox">
+                                                <span>Enable Maintenance Mode</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications Tab Content -->
+                    <div id="notifications" class="tab-pane">
+                        <div class="dashboard-card" style="max-width: 800px;">
                             <div class="card-header">
                                 <h3>🔔 Notification Preferences</h3>
                             </div>
                             <div class="card-body">
                                 <div style="display: flex; flex-direction: column; gap: var(--space-4);">
                                     <label
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
                                         <div>
                                             <div style="font-weight: 500;">Email Notifications</div>
                                             <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                                Receive updates via email</div>
+                                                Receive
+                                                updates via email</div>
                                         </div>
                                         <input type="checkbox" checked style="width: 20px; height: 20px;">
                                     </label>
                                     <label
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
                                         <div>
                                             <div style="font-weight: 500;">New Client Alerts</div>
                                             <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Get
@@ -249,7 +344,7 @@
                                         <input type="checkbox" checked style="width: 20px; height: 20px;">
                                     </label>
                                     <label
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
                                         <div>
                                             <div style="font-weight: 500;">RFQ Notifications</div>
                                             <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Alert
@@ -258,7 +353,7 @@
                                         <input type="checkbox" checked style="width: 20px; height: 20px;">
                                     </label>
                                     <label
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
                                         <div>
                                             <div style="font-weight: 500;">Payment Alerts</div>
                                             <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Notify
@@ -269,47 +364,129 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- Security Tab Content -->
+                    <div id="security" class="tab-pane">
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="card-header">
+                                    <h3>🛡️ Security Settings</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                        <div
+                                            style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                            <div>
+                                                <div style="font-weight: 500;">Two-Factor Authentication</div>
+                                                <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
+                                                    Add
+                                                    extra security to your account</div>
+                                            </div>
+                                            <button class="btn btn-secondary btn-sm">Enable</button>
+                                        </div>
+                                        <div
+                                            style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                            <div>
+                                                <div style="font-weight: 500;">Active Sessions</div>
+                                                <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
+                                                    Manage your active login sessions</div>
+                                            </div>
+                                            <button class="btn btn-ghost btn-sm">View All</button>
+                                        </div>
+                                        <div
+                                            style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-error-50, #FEF2F2); border-radius: var(--radius-lg); border: 1px solid var(--color-error-200, #FECACA);">
+                                            <div>
+                                                <div style="font-weight: 500; color: var(--color-error);">Delete Account
+                                                </div>
+                                                <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
+                                                    Permanently delete your account</div>
+                                            </div>
+                                            <button class="btn btn-sm"
+                                                style="background: var(--color-error); color: white;">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integrations Tab Content -->
+                    <div id="integrations" class="tab-pane">
                         <div class="dashboard-card">
                             <div class="card-header">
-                                <h3>🛡️ Security Settings</h3>
+                                <h3>🔌 Third-party Integrations</h3>
                             </div>
                             <div class="card-body">
-                                <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                                    <div
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
-                                        <div>
-                                            <div style="font-weight: 500;">Two-Factor Authentication</div>
-                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Add
-                                                extra security to your account</div>
-                                        </div>
-                                        <button class="btn btn-secondary btn-sm">Enable</button>
+                                <div style="display: grid; gap: var(--space-4);">
+                                    <div class="form-group">
+                                        <label class="form-label">Google Analytics ID</label>
+                                        <input type="text" class="form-input" placeholder="G-XXXXXXXXXX">
                                     </div>
-                                    <div
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
-                                        <div>
-                                            <div style="font-weight: 500;">Active Sessions</div>
-                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Manage
-                                                your active login sessions</div>
-                                        </div>
-                                        <button class="btn btn-ghost btn-sm">View All</button>
+                                    <div class="form-group">
+                                        <label class="form-label">Meta Pixel ID</label>
+                                        <input type="text" class="form-input" placeholder="Pixel ID">
                                     </div>
-                                    <div
-                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-error-50, #FEF2F2); border-radius: var(--radius-lg); border: 1px solid var(--color-error-200, #FECACA);">
-                                        <div>
-                                            <div style="font-weight: 500; color: var(--color-error);">Delete Account
-                                            </div>
-                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                                Permanently delete your account</div>
-                                        </div>
-                                        <button class="btn btn-sm"
-                                            style="background: var(--color-error); color: white;">Delete</button>
+                                    <div class="form-group">
+                                        <label class="form-label">Midtrans Client Key</label>
+                                        <input type="text" class="form-input" value="Mid-client-xxxxxxxx">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <style>
+                    .tab-pane {
+                        display: none;
+                    }
+
+                    .tab-pane.active {
+                        display: block;
+                    }
+
+                    .tab-btn {
+                        position: relative;
+                        padding-bottom: var(--space-4);
+                        border-radius: 0;
+                        border-bottom: 2px solid transparent;
+                        transition: all 0.3s ease;
+                    }
+
+                    .tab-btn.active {
+                        color: var(--color-primary-600);
+                        border-bottom-color: var(--color-primary-600);
+                        background: none;
+                    }
+
+                    .tab-btn:hover:not(.active) {
+                        background: var(--color-gray-100);
+                    }
+                </style>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const tabBtns = document.querySelectorAll('.tab-btn');
+                        const tabPanes = document.querySelectorAll('.tab-pane');
+
+                        tabBtns.forEach(btn => {
+                            btn.addEventListener('click', function () {
+                                const tabId = this.dataset.tab;
+
+                                // Remove active from all buttons
+                                tabBtns.forEach(b => b.classList.remove('active'));
+                                // Add active to current button
+                                this.classList.add('active');
+
+                                // Hide all panes
+                                tabPanes.forEach(pane => pane.classList.remove('active'));
+                                // Show targeted pane
+                                document.getElementById(tabId).classList.add('active');
+                            });
+                        });
+                    });
+                </script>
             </div>
         </main>
     </div>

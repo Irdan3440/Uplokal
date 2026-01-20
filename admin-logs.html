@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Logs - Activity and Audit Logs">
+    <title>Logs | Admin Uplokal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="admin-customers.html" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="admin-rfq.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="admin-messages.html" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Messages</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="admin-campaigns.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="admin-billing.html" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="admin-moderation.html" class="nav-item">
+                        <i data-lucide="shield-alert"></i>
+                        <span>Moderation</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="admin-settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="admin-team.html" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="admin-logs.html" class="nav-item active">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Activity Logs</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-secondary btn-sm">
+                        <i data-lucide="download"></i>
+                        Export Logs
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Filters -->
+                <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                    <div class="card-body"
+                        style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <div style="position: relative;">
+                                <i data-lucide="search"
+                                    style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-gray-400);"></i>
+                                <input type="text" class="form-input" placeholder="Search logs..."
+                                    style="padding-left: 40px;">
+                            </div>
+                        </div>
+                        <select class="form-input" style="width: auto;">
+                            <option>All Types</option>
+                            <option>Authentication</option>
+                            <option>User Actions</option>
+                            <option>System</option>
+                            <option>Errors</option>
+                        </select>
+                        <select class="form-input" style="width: auto;">
+                            <option>Last 24 Hours</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Custom Range</option>
+                        </select>
+                        <select class="form-input" style="width: auto;">
+                            <option>All Users</option>
+                            <option>Admin User</option>
+                            <option>Sarah Rahman</option>
+                            <option>Budi Wicaksono</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Logs Table -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>📋 Recent Activity</h3>
+                        <span style="color: var(--color-gray-500); font-size: var(--text-sm);">Showing 25 of 1,456
+                            logs</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr
+                                    style="background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200);">
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Timestamp</th>
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        User</th>
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Action</th>
+                                    <th
+                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Type</th>
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        IP Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 14:32:15</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                AD</div>
+                                            <span style="font-size: var(--text-sm);">Admin User</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Approved
+                                        verification for <strong>CV Tenun Kalimantan</strong></td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-success">Action</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        103.121.xx.xx</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 14:28:42</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-secondary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                SR</div>
+                                            <span style="font-size: var(--text-sm);">Sarah Rahman</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Created new campaign
+                                        for <strong>Batik Sekar Arum</strong></td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-primary">Create</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        180.252.xx.xx</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 14:15:08</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-accent-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                BW</div>
+                                            <span style="font-size: var(--text-sm);">Budi Wicaksono</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Matched RFQ #1890
+                                        with <strong>3 suppliers</strong></td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-success">Action</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        114.124.xx.xx</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 14:02:33</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                AD</div>
+                                            <span style="font-size: var(--text-sm);">Admin User</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Logged in from new
+                                        device</td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-warning">Auth</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        103.121.xx.xx</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 13:45:21</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-gray-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                SY</div>
+                                            <span style="font-size: var(--text-sm);">System</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Automated backup
+                                        completed successfully</td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span class="badge"
+                                            style="background: var(--color-gray-200);">System</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        127.0.0.1</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 13:22:05</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-secondary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                SR</div>
+                                            <span style="font-size: var(--text-sm);">Sarah Rahman</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Updated client
+                                        profile: <strong>PT Kulit Nusantara</strong></td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-warning">Update</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        180.252.xx.xx</td>
+                                </tr>
+                                <tr>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-500);">
+                                        20 Jan 2024, 12:58:47</td>
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                                            <div
+                                                style="width: 28px; height: 28px; background: var(--color-error); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: 10px; font-weight: 600;">
+                                                !</div>
+                                            <span style="font-size: var(--text-sm);">Unknown</span>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Failed login attempt
+                                        (3 attempts)</td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span class="badge"
+                                            style="background: var(--color-error); color: white;">Error</span></td>
+                                    <td
+                                        style="padding: var(--space-4); font-size: var(--text-sm); font-family: monospace; color: var(--color-gray-500);">
+                                        45.33.xx.xx</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Pagination -->
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); border-top: 1px solid var(--color-gray-200);">
+                        <span style="font-size: var(--text-sm); color: var(--color-gray-500);">Page 1 of 59</span>
+                        <div style="display: flex; gap: var(--space-2);">
+                            <button class="btn btn-ghost btn-sm" disabled>Previous</button>
+                            <button class="btn btn-ghost btn-sm">Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard-common.js"></script>
+</body>
+
+</html>

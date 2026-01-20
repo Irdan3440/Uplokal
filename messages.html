@@ -250,11 +250,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="chat-input">
-                            <button class="icon-btn"><i data-lucide="paperclip"></i></button>
-                            <input type="text" placeholder="Ketik pesan...">
-                            <button class="icon-btn"><i data-lucide="smile"></i></button>
+                        <div class="chat-input" style="position: relative;">
+                            <input type="file" id="chatFileInput" class="hidden-input" style="display: none;">
+                            <button class="icon-btn" id="attachBtn" title="Attach File"><i
+                                    data-lucide="paperclip"></i></button>
+                            <input type="text" id="chatInputField" placeholder="Ketik pesan...">
+                            <button class="icon-btn" id="emoteBtn" title="Select Emoji"><i
+                                    data-lucide="smile"></i></button>
                             <button class="btn btn-primary btn-send"><i data-lucide="send"></i></button>
+
+                            <!-- Emote Picker -->
+                            <div class="emote-picker-container hidden" id="emotePicker">
+                                <div class="emote-item">😊</div>
+                                <div class="emote-item">👍</div>
+                                <div class="emote-item">🙏</div>
+                                <div class="emote-item">🔥</div>
+                                <div class="emote-item">❤️</div>
+                                <div class="emote-item">🙌</div>
+                                <div class="emote-item">😂</div>
+                                <div class="emote-item">👋</div>
+                                <div class="emote-item">✨</div>
+                                <div class="emote-item">🚀</div>
+                                <div class="emote-item">🤔</div>
+                                <div class="emote-item">✅</div>
+                            </div>
                         </div>
                     </div>
                 </div>
