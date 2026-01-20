@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Uplokal - Tips bisnis, panduan ekspor, dan insight untuk UMKM Indonesia">
+    <title>Blog | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
+            padding: calc(72px + var(--space-16)) 0 var(--space-16);
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+        }
+
+        .page-header p {
+            font-size: var(--text-xl);
+            color: var(--color-gray-600);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .blog-section {
+            padding: var(--space-16) 0;
+        }
+
+        .blog-grid {
+            display: grid;
+            gap: var(--space-8);
+        }
+
+        @media (min-width: 768px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .blog-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .blog-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-4px);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-secondary-100) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .blog-content {
+            padding: var(--space-6);
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: var(--color-primary-100);
+            color: var(--color-primary-700);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+        }
+
+        .blog-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-3);
+            line-height: var(--leading-tight);
+        }
+
+        .blog-excerpt {
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--text-sm);
+            color: var(--color-gray-500);
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .blog-author-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: var(--text-xs);
+            font-weight: var(--font-bold);
+        }
+
+        .categories-section {
+            background: var(--color-gray-50);
+            padding: var(--space-12) 0;
+        }
+
+        .categories-grid {
+            display: flex;
+            gap: var(--space-4);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .category-pill {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-full);
+            font-weight: var(--font-medium);
+            color: var(--color-gray-700);
+            transition: all var(--transition-fast);
+        }
+
+        .category-pill:hover {
+            background: var(--color-primary-600);
+            color: white;
+            border-color: var(--color-primary-600);
+        }
+
+        .newsletter-section {
+            padding: var(--space-16) 0;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: var(--space-3);
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: var(--space-4);
+            border: 2px solid var(--color-gray-200);
+            border-radius: var(--radius-xl);
+            font-size: var(--text-base);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--color-primary-500);
+        }
+
+        @media (max-width: 640px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body data-active-page="blog">
+    <!-- Header Component Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Blog Uplokal 📝</h1>
+            <p>Tips bisnis, panduan ekspor, dan insight terbaru untuk UMKM Indonesia</p>
+        </div>
+    </header>
+
+    <!-- Categories -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="categories-grid">
+                <a href="#" class="category-pill">Semua</a>
+                <a href="#" class="category-pill">Tips Bisnis</a>
+                <a href="#" class="category-pill">Ekspor</a>
+                <a href="#" class="category-pill">Digital Marketing</a>
+                <a href="#" class="category-pill">Keuangan</a>
+                <a href="#" class="category-pill">Success Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">📦</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Ekspor</span>
+                        <h3 class="blog-title">Panduan Lengkap Ekspor Produk UMKM ke Singapura</h3>
+                        <p class="blog-excerpt">Langkah-langkah praktis untuk memulai ekspor produk Anda ke negara
+                            tetangga dengan potensi pasar yang besar.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">DW</div>
+                                <span>Dewi Wulandari</span>
+                            </div>
+                            <span>15 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">💰</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Keuangan</span>
+                        <h3 class="blog-title">5 Tips Mengelola Arus Kas untuk UMKM</h3>
+                        <p class="blog-excerpt">Manajemen keuangan yang baik adalah kunci keberlanjutan bisnis. Simak
+                            tips praktis berikut.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">BP</div>
+                                <span>Budi Pratama</span>
+                            </div>
+                            <span>12 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📱</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Digital Marketing</span>
+                        <h3 class="blog-title">Strategi Social Media Marketing untuk UMKM</h3>
+                        <p class="blog-excerpt">Cara efektif memanfaatkan media sosial untuk meningkatkan awareness dan
+                            penjualan produk Anda.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">SN</div>
+                                <span>Sari Nurhayati</span>
+                            </div>
+                            <span>10 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🌟</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Success Story</span>
+                        <h3 class="blog-title">Kisah Sukses: Dari Pasar Lokal ke Ekspor Global</h3>
+                        <p class="blog-excerpt">Perjalanan inspiratif PT Kulit Nusantara dalam membawa produk lokal ke 5
+                            negara.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">AS</div>
+                                <span>Andi Susanto</span>
+                            </div>
+                            <span>8 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">📋</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Tips Bisnis</span>
+                        <h3 class="blog-title">Checklist Kesiapan Ekspor untuk UMKM</h3>
+                        <p class="blog-excerpt">Pastikan bisnis Anda sudah siap dengan checklist komprehensif ini
+                            sebelum memulai ekspor.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">DW</div>
+                                <span>Dewi Wulandari</span>
+                            </div>
+                            <span>5 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">🏷️</div>
+                    <div class="blog-content">
+                        <span class="blog-category">Tips Bisnis</span>
+                        <h3 class="blog-title">Cara Menentukan Harga Produk untuk Pasar Ekspor</h3>
+                        <p class="blog-excerpt">Strategi pricing yang tepat untuk memaksimalkan profit tanpa kehilangan
+                            daya saing.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="blog-author-avatar">BP</div>
+                                <span>Budi Pratama</span>
+                            </div>
+                            <span>2 Jan 2026</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Berlangganan Newsletter</h2>
+                <p class="section-subtitle">Dapatkan tips bisnis dan update terbaru langsung ke inbox Anda</p>
+            </div>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Masukkan email Anda">
+                <button type="submit" class="btn btn-primary btn-lg">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Component Container -->
+    <div id="footer-container"></div>
+
+    <!-- Mobile Navigation Component Container -->
+    <div id="mobile-nav-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/components/loader.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

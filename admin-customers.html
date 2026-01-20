@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Customers - Manage Platform Buyers">
+    <title>Customers | Admin Uplokal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="admin-customers.html" class="nav-item active">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="admin-rfq.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="admin-campaigns.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="admin-billing.html" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="admin-settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="admin-team.html" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="admin-logs.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Customers</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm">
+                        <i data-lucide="plus"></i>
+                        Add Customer
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Stats -->
+                <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: var(--space-6);">
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-green">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-card-value">1,247</div>
+                        <div class="stat-card-label">Total Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-blue">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <div class="stat-card-value">892</div>
+                        <div class="stat-card-label">Active Buyers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-purple">
+                            <i data-lucide="shopping-cart"></i>
+                        </div>
+                        <div class="stat-card-value">3,456</div>
+                        <div class="stat-card-label">Total Orders</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-orange">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <div class="stat-card-value">15</div>
+                        <div class="stat-card-label">Countries</div>
+                    </div>
+                </div>
+
+                <!-- Filters & Search -->
+                <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                    <div class="card-body"
+                        style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
+                        <div style="flex: 1; min-width: 250px;">
+                            <div style="position: relative;">
+                                <i data-lucide="search"
+                                    style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-gray-400);"></i>
+                                <input type="text" class="form-input" placeholder="Search customers..."
+                                    style="padding-left: 40px;">
+                            </div>
+                        </div>
+                        <select class="form-input" style="width: auto;">
+                            <option>All Countries</option>
+                            <option>Indonesia</option>
+                            <option>Singapore</option>
+                            <option>Malaysia</option>
+                            <option>Japan</option>
+                        </select>
+                        <select class="form-input" style="width: auto;">
+                            <option>All Status</option>
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Customers Table -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>👥 Customer List</h3>
+                        <span style="color: var(--color-gray-500); font-size: var(--text-sm);">Showing 10 of
+                            1,247</span>
+                    </div>
+                    <div class="card-body" style="padding: 0;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr
+                                    style="background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200);">
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Customer</th>
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Company</th>
+                                    <th
+                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Country</th>
+                                    <th
+                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Orders</th>
+                                    <th
+                                        style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Total Spent</th>
+                                    <th
+                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Status</th>
+                                    <th
+                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                        Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                            <div
+                                                style="width: 40px; height: 40px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                JT</div>
+                                            <div>
+                                                <div style="font-weight: 600;">John Tanaka</div>
+                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                                    john@imports.jp</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Tokyo Imports Co.
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇯🇵 Japan</td>
+                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">24</td>
+                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$45,890
+                                    </td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-success">Active</span></td>
+                                    <td style="padding: var(--space-4); text-align: center;">
+                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
+                                                style="width: 16px; height: 16px;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                            <div
+                                                style="width: 40px; height: 40px; background: var(--color-secondary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                SL</div>
+                                            <div>
+                                                <div style="font-weight: 600;">Sarah Lee</div>
+                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                                    sarah@sgtrade.sg</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">SG Trade Pte Ltd
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇸🇬 Singapore</td>
+                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">18</td>
+                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$32,450
+                                    </td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-success">Active</span></td>
+                                    <td style="padding: var(--space-4); text-align: center;">
+                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
+                                                style="width: 16px; height: 16px;"></i></button>
+                                    </td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
+                                    <td style="padding: var(--space-4);">
+                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
+                                            <div
+                                                style="width: 40px; height: 40px; background: var(--color-accent-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+                                                MA</div>
+                                            <div>
+                                                <div style="font-weight: 600;">Michael Anderson</div>
+                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                                    m.anderson@auscraft.au</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">AusCraft Imports
+                                    </td>
+                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇦🇺 Australia</td>
+                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">12</td>
+                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$28,750
+                                    </td>
+                                    <td style="padding: var(--space-4); text-align: center;"><span
+                                            class="badge badge-success">Active</span></td>
+                                    <td style="padding: var(--space-4); text-align: center;">
+                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
+                                                style="width: 16px; height: 16px;"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard-common.js"></script>
+</body>
+
+</html>

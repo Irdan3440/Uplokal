@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Campaigns - Marketing Campaign Management">
+    <title>Campaigns | Admin Uplokal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="admin-customers.html" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="admin-rfq.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="admin-campaigns.html" class="nav-item active">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="admin-billing.html" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="admin-settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="admin-team.html" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="admin-logs.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Campaigns</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm">
+                        <i data-lucide="plus"></i>
+                        New Campaign
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Stats -->
+                <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: var(--space-6);">
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-blue">
+                            <i data-lucide="megaphone"></i>
+                        </div>
+                        <div class="stat-card-value">24</div>
+                        <div class="stat-card-label">Active Campaigns</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-green">
+                            <i data-lucide="eye"></i>
+                        </div>
+                        <div class="stat-card-value">1.2M</div>
+                        <div class="stat-card-label">Total Impressions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-purple">
+                            <i data-lucide="mouse-pointer-click"></i>
+                        </div>
+                        <div class="stat-card-value">45K</div>
+                        <div class="stat-card-label">Total Clicks</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon gradient-orange">
+                            <i data-lucide="percent"></i>
+                        </div>
+                        <div class="stat-card-value">3.8%</div>
+                        <div class="stat-card-label">Avg. CTR</div>
+                    </div>
+                </div>
+
+                <!-- Campaign Cards -->
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>📣 Active Campaigns</h3>
+                        <div style="display: flex; gap: var(--space-2);">
+                            <button class="btn btn-ghost btn-sm active">All</button>
+                            <button class="btn btn-ghost btn-sm">Instagram</button>
+                            <button class="btn btn-ghost btn-sm">Facebook</button>
+                            <button class="btn btn-ghost btn-sm">Google</button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div
+                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: var(--space-4);">
+                            <!-- Campaign 1 -->
+                            <div
+                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
+                                    <div>
+                                        <div style="font-weight: 700; margin-bottom: 4px;">Batik Sekar Arum - Instagram
+                                        </div>
+                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Fashion
+                                            Campaign</div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-4);">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                            Impressions</div>
+                                        <div style="font-weight: 700;">245K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Clicks
+                                        </div>
+                                        <div style="font-weight: 700;">8.9K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">CTR</div>
+                                        <div style="font-weight: 700; color: var(--color-success);">3.6%</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Budget: Rp
+                                        15jt • 12 days left</div>
+                                    <button class="btn btn-ghost btn-sm">Details</button>
+                                </div>
+                            </div>
+
+                            <!-- Campaign 2 -->
+                            <div
+                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
+                                    <div>
+                                        <div style="font-weight: 700; margin-bottom: 4px;">Kopi Gayo Premium - Google
+                                            Ads</div>
+                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Food &
+                                            Beverage</div>
+                                    </div>
+                                    <span class="badge badge-success">Active</span>
+                                </div>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-4);">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                            Impressions</div>
+                                        <div style="font-weight: 700;">189K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Clicks
+                                        </div>
+                                        <div style="font-weight: 700;">7.2K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">CTR</div>
+                                        <div style="font-weight: 700; color: var(--color-success);">3.8%</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Budget: Rp
+                                        20jt • 18 days left</div>
+                                    <button class="btn btn-ghost btn-sm">Details</button>
+                                </div>
+                            </div>
+
+                            <!-- Campaign 3 -->
+                            <div
+                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
+                                    <div>
+                                        <div style="font-weight: 700; margin-bottom: 4px;">Kulit Nusantara - Facebook
+                                        </div>
+                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Fashion
+                                        </div>
+                                    </div>
+                                    <span class="badge badge-warning">Paused</span>
+                                </div>
+                                <div
+                                    style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-3); margin-bottom: var(--space-4);">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
+                                            Impressions</div>
+                                        <div style="font-weight: 700;">98K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Clicks
+                                        </div>
+                                        <div style="font-weight: 700;">2.8K</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">CTR</div>
+                                        <div style="font-weight: 700; color: var(--color-warning);">2.9%</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Budget: Rp
+                                        10jt • Paused</div>
+                                    <button class="btn btn-ghost btn-sm">Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard-common.js"></script>
+</body>
+
+</html>

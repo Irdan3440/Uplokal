@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Karir di Uplokal - Bergabunglah dengan tim kami untuk membawa UMKM Indonesia ke pasar global">
+    <title>Karir | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+
+    <style>
+        .page-header {
+            background: linear-gradient(135deg, var(--color-primary-600) 0%, var(--color-secondary-500) 100%);
+            padding: calc(72px + var(--space-16)) 0 var(--space-16);
+            text-align: center;
+            color: white;
+        }
+
+        .page-header h1 {
+            font-size: var(--text-4xl);
+            margin-bottom: var(--space-4);
+            color: white;
+        }
+
+        .page-header p {
+            font-size: var(--text-xl);
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .jobs-section {
+            padding: var(--space-16) 0;
+        }
+
+        .jobs-grid {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        .job-card {
+            background: white;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-6);
+            transition: all var(--transition-base);
+        }
+
+        .job-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-4);
+        }
+
+        .job-title {
+            font-size: var(--text-xl);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-2);
+        }
+
+        .job-department {
+            font-size: var(--text-sm);
+            color: var(--color-primary-600);
+            font-weight: var(--font-medium);
+        }
+
+        .job-meta {
+            display: flex;
+            gap: var(--space-4);
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .job-meta svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .job-description {
+            color: var(--color-gray-600);
+            font-size: var(--text-sm);
+            line-height: var(--leading-relaxed);
+            margin-bottom: var(--space-4);
+        }
+
+        .job-tags {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+        }
+
+        .job-tag {
+            background: var(--color-gray-100);
+            color: var(--color-gray-700);
+            padding: var(--space-1) var(--space-3);
+            border-radius: var(--radius-full);
+            font-size: var(--text-xs);
+            font-weight: var(--font-medium);
+        }
+
+        .benefits-section {
+            background: var(--color-gray-50);
+            padding: var(--space-16) 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            gap: var(--space-6);
+        }
+
+        @media (min-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .benefit-card {
+            background: white;
+            padding: var(--space-6);
+            border-radius: var(--radius-2xl);
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-xl);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-4);
+        }
+
+        .benefit-icon svg {
+            width: 28px;
+            height: 28px;
+            color: white;
+        }
+
+        .benefit-card h3 {
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-2);
+        }
+
+        .benefit-card p {
+            font-size: var(--text-sm);
+            color: var(--color-gray-600);
+        }
+
+        .no-jobs {
+            text-align: center;
+            padding: var(--space-12);
+            background: var(--color-gray-50);
+            border-radius: var(--radius-2xl);
+        }
+
+        .no-jobs h3 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-3);
+        }
+
+        .no-jobs p {
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-6);
+        }
+    </style>
+</head>
+
+<body data-active-page="karir">
+    <!-- Header Component Container -->
+    <div id="header-container"></div>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1>Karir di Uplokal 🚀</h1>
+            <p>Bergabunglah dengan tim yang berdedikasi untuk membantu UMKM Indonesia berkembang</p>
+        </div>
+    </header>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Mengapa Bergabung dengan Kami?</h2>
+                <p class="section-subtitle">Benefit yang kami tawarkan untuk tim kami</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="laptop"></i>
+                    </div>
+                    <h3>Remote-First</h3>
+                    <p>Bekerja dari mana saja dengan fleksibilitas tinggi</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="heart"></i>
+                    </div>
+                    <h3>Health Insurance</h3>
+                    <p>Asuransi kesehatan untuk karyawan dan keluarga</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="graduation-cap"></i>
+                    </div>
+                    <h3>Learning Budget</h3>
+                    <p>Dana pengembangan diri untuk kursus dan sertifikasi</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="calendar-check"></i>
+                    </div>
+                    <h3>Flexible Leave</h3>
+                    <p>Cuti yang fleksibel sesuai kebutuhan</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="trophy"></i>
+                    </div>
+                    <h3>Performance Bonus</h3>
+                    <p>Bonus berdasarkan performa dan pencapaian</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i data-lucide="users"></i>
+                    </div>
+                    <h3>Great Team</h3>
+                    <p>Tim yang supportive dan collaborative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jobs Section -->
+    <section class="jobs-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lowongan Tersedia</h2>
+                <p class="section-subtitle">Temukan posisi yang sesuai dengan kemampuanmu</p>
+            </div>
+
+            <div class="jobs-grid">
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Frontend Developer</h3>
+                            <span class="job-department">Engineering</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-primary btn-sm">Lamar</a>
+                    </div>
+                    <div class="job-meta">
+                        <span><i data-lucide="map-pin"></i> Remote / Jakarta</span>
+                        <span><i data-lucide="clock"></i> Full-time</span>
+                        <span><i data-lucide="briefcase"></i> 2+ tahun experience</span>
+                    </div>
+                    <p class="job-description">Kami mencari Frontend Developer berbakat untuk membangun antarmuka
+                        pengguna yang indah dan responsif menggunakan React/Vue.js.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">React.js</span>
+                        <span class="job-tag">TypeScript</span>
+                        <span class="job-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Digital Marketing Specialist</h3>
+                            <span class="job-department">Marketing</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-primary btn-sm">Lamar</a>
+                    </div>
+                    <div class="job-meta">
+                        <span><i data-lucide="map-pin"></i> Remote</span>
+                        <span><i data-lucide="clock"></i> Full-time</span>
+                        <span><i data-lucide="briefcase"></i> 3+ tahun experience</span>
+                    </div>
+                    <p class="job-description">Bertanggung jawab untuk merancang dan menjalankan kampanye digital
+                        marketing untuk klien UMKM kami.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Facebook Ads</span>
+                        <span class="job-tag">Google Ads</span>
+                        <span class="job-tag">SEO</span>
+                    </div>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <h3 class="job-title">Business Consultant</h3>
+                            <span class="job-department">Business Development</span>
+                        </div>
+                        <a href="contact.html" class="btn btn-primary btn-sm">Lamar</a>
+                    </div>
+                    <div class="job-meta">
+                        <span><i data-lucide="map-pin"></i> Jakarta / Tarakan</span>
+                        <span><i data-lucide="clock"></i> Full-time</span>
+                        <span><i data-lucide="briefcase"></i> 5+ tahun experience</span>
+                    </div>
+                    <p class="job-description">Membantu UMKM dalam analisis bisnis, strategi pengembangan, dan persiapan
+                        ekspor ke pasar internasional.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Business Analysis</span>
+                        <span class="job-tag">Export</span>
+                        <span class="job-tag">UMKM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-content">
+                    <h2>Tidak Menemukan Posisi yang Cocok?</h2>
+                    <p>Kirimkan CV Anda dan kami akan menghubungi jika ada posisi yang sesuai</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:karir@uplokal.co.id" class="btn btn-light btn-lg">
+                            <i data-lucide="mail"></i>
+                            Kirim CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component Container -->
+    <div id="footer-container"></div>
+
+    <!-- Mobile Navigation Component Container -->
+    <div id="mobile-nav-container"></div>
+
+    <!-- Scripts -->
+    <script src="js/components/loader.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

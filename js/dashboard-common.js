@@ -380,47 +380,7 @@ window.debounce = debounce;
    Phase 7: Enhanced UX Features
    =========================================== */
 
-/**
- * Initialize theme from localStorage on page load
- */
-(function initTheme() {
-    const savedTheme = localStorage.getItem('uplokal-theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-})();
 
-/**
- * Toggle between light and dark themes
- * @returns {string} The new theme
- */
-function toggleTheme() {
-    const html = document.documentElement;
-    const currentTheme = html.getAttribute('data-theme') || 'light';
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-
-    html.setAttribute('data-theme', newTheme);
-    localStorage.setItem('uplokal-theme', newTheme);
-
-    // Update any theme toggle buttons
-    const toggleBtns = document.querySelectorAll('.theme-toggle');
-    toggleBtns.forEach(btn => {
-        const icon = btn.querySelector('i');
-        if (icon) {
-            icon.setAttribute('data-lucide', newTheme === 'dark' ? 'sun' : 'moon');
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        }
-    });
-
-    showNotification(`Mode ${newTheme === 'dark' ? 'Gelap' : 'Terang'} diaktifkan`, 'success');
-    return newTheme;
-}
-
-/**
- * Get current theme
- * @returns {string} Current theme ('light' or 'dark')
- */
-function getTheme() {
-    return document.documentElement.getAttribute('data-theme') || 'light';
-}
 
 /**
  * Animated counter - animates a number from start to end
@@ -539,8 +499,6 @@ if (!document.getElementById('skeleton-styles')) {
 }
 
 // Export Phase 7 functions globally
-window.toggleTheme = toggleTheme;
-window.getTheme = getTheme;
 window.animateCounter = animateCounter;
 window.simulateRealTimeData = simulateRealTimeData;
 window.createSkeleton = createSkeleton;

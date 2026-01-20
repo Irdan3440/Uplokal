@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Admin Settings - Platform and Account Settings">
+    <title>Settings | Admin Uplokal</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar admin-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+                <span class="admin-badge">Admin</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Overview</span>
+                    <a href="admin.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="admin-analytics.html" class="nav-item">
+                        <i data-lucide="bar-chart-3"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Management</span>
+                    <a href="admin-clients.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Clients</span>
+                        <span class="badge badge-primary">248</span>
+                    </a>
+                    <a href="admin-customers.html" class="nav-item">
+                        <i data-lucide="users"></i>
+                        <span>Customers</span>
+                        <span class="badge badge-success">1.2K</span>
+                    </a>
+                    <a href="admin-projects.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                        <span class="badge badge-warning">18</span>
+                    </a>
+                    <a href="admin-rfq.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>RFQ Queue</span>
+                        <span class="badge badge-primary">7</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Operations</span>
+                    <a href="admin-campaigns.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Campaigns</span>
+                    </a>
+                    <a href="admin-billing.html" class="nav-item">
+                        <i data-lucide="credit-card"></i>
+                        <span>Billing</span>
+                    </a>
+                    <a href="admin-verification.html" class="nav-item">
+                        <i data-lucide="shield-check"></i>
+                        <span>Verifications</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">System</span>
+                    <a href="admin-settings.html" class="nav-item active">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="admin-team.html" class="nav-item">
+                        <i data-lucide="users-cog"></i>
+                        <span>Team</span>
+                    </a>
+                    <a href="admin-logs.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Logs</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar admin-avatar">AD</div>
+                    <div class="user-info">
+                        <span class="user-name">Admin User</span>
+                        <span class="user-role">Super Admin</span>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Settings</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm">
+                        <i data-lucide="save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-content">
+                <!-- Settings Navigation -->
+                <div
+                    style="display: flex; gap: var(--space-2); margin-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200); padding-bottom: var(--space-4);">
+                    <button class="btn btn-ghost active"
+                        style="border-bottom: 2px solid var(--color-primary-500);">Account</button>
+                    <button class="btn btn-ghost">Platform</button>
+                    <button class="btn btn-ghost">Notifications</button>
+                    <button class="btn btn-ghost">Security</button>
+                    <button class="btn btn-ghost">Integrations</button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <!-- Account Settings -->
+                    <div>
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>👤 Account Settings</h3>
+                            </div>
+                            <div class="card-body">
+                                <!-- Profile Photo -->
+                                <div
+                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-6); padding-bottom: var(--space-6); border-bottom: 1px solid var(--color-gray-200);">
+                                    <div
+                                        style="width: 80px; height: 80px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-2xl); font-weight: 700;">
+                                        AD</div>
+                                    <div>
+                                        <div style="font-weight: 600; margin-bottom: var(--space-2);">Profile Photo
+                                        </div>
+                                        <div style="display: flex; gap: var(--space-2);">
+                                            <button class="btn btn-secondary btn-sm">Upload New</button>
+                                            <button class="btn btn-ghost btn-sm">Remove</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Form Fields -->
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4);">
+                                    <div class="form-group">
+                                        <label class="form-label">Full Name</label>
+                                        <input type="text" class="form-input" value="Admin User">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" class="form-input" value="admin@uplokal.com">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-input" value="+62 812 3456 7890">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Role</label>
+                                        <select class="form-input">
+                                            <option selected>Super Admin</option>
+                                            <option>Admin</option>
+                                            <option>Moderator</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Password Section -->
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>🔐 Change Password</h3>
+                            </div>
+                            <div class="card-body">
+                                <div
+                                    style="display: flex; flex-direction: column; gap: var(--space-4); max-width: 400px;">
+                                    <div class="form-group">
+                                        <label class="form-label">Current Password</label>
+                                        <input type="password" class="form-input" placeholder="Enter current password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">New Password</label>
+                                        <input type="password" class="form-input" placeholder="Enter new password">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Confirm New Password</label>
+                                        <input type="password" class="form-input" placeholder="Confirm new password">
+                                    </div>
+                                    <button class="btn btn-primary" style="width: fit-content;">Update Password</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications & Security -->
+                    <div>
+                        <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                            <div class="card-header">
+                                <h3>🔔 Notification Preferences</h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                    <label
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">Email Notifications</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
+                                                Receive updates via email</div>
+                                        </div>
+                                        <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                    </label>
+                                    <label
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">New Client Alerts</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Get
+                                                notified when new clients register</div>
+                                        </div>
+                                        <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                    </label>
+                                    <label
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">RFQ Notifications</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Alert
+                                                when new RFQ is submitted</div>
+                                        </div>
+                                        <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                    </label>
+                                    <label
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-3); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">Payment Alerts</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Notify
+                                                on payment received/failed</div>
+                                        </div>
+                                        <input type="checkbox" checked style="width: 20px; height: 20px;">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <div class="card-header">
+                                <h3>🛡️ Security Settings</h3>
+                            </div>
+                            <div class="card-body">
+                                <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">Two-Factor Authentication</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Add
+                                                extra security to your account</div>
+                                        </div>
+                                        <button class="btn btn-secondary btn-sm">Enable</button>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
+                                        <div>
+                                            <div style="font-weight: 500;">Active Sessions</div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Manage
+                                                your active login sessions</div>
+                                        </div>
+                                        <button class="btn btn-ghost btn-sm">View All</button>
+                                    </div>
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4); background: var(--color-error-50, #FEF2F2); border-radius: var(--radius-lg); border: 1px solid var(--color-error-200, #FECACA);">
+                                        <div>
+                                            <div style="font-weight: 500; color: var(--color-error);">Delete Account
+                                            </div>
+                                            <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
+                                                Permanently delete your account</div>
+                                        </div>
+                                        <button class="btn btn-sm"
+                                            style="background: var(--color-error); color: white;">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/dashboard-common.js"></script>
+</body>
+
+</html>

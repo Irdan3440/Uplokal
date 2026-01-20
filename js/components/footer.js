@@ -78,8 +78,11 @@ class UplokalFooter {
                         <img src="assets/logo.jpg" alt="Uplokal" class="logo-image">
                     </div>
                     <p>Jembatan UMKM Indonesia ke pasar global. Dari konsultasi bisnis hingga digital marketing dalam satu platform.</p>
-                    <div class="social-links">
-                        ${this.renderSocialLinks()}
+                    <div class="footer-social-section">
+                        <h4>Ikuti Kami</h4>
+                        <div class="social-links">
+                            ${this.renderSocialLinks()}
+                        </div>
                     </div>
                 </div>
                 <div class="footer-links">

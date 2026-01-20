@@ -926,6 +926,55 @@
     height: 20px;
 }
 
+/* Footer Social Section with "Ikuti Kami" heading */
+.footer-social-section {
+    margin-top: var(--space-6);
+}
+
+.footer-social-section h4 {
+    color: var(--color-gray-300);
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    font-style: italic;
+    margin-bottom: var(--space-4);
+}
+
+.footer-social-section .social-links {
+    display: flex;
+    gap: var(--space-3);
+}
+
+.footer-social-section .social-links a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-800);
+    border-radius: var(--radius-xl);
+    color: var(--color-gray-400);
+    transition: all var(--transition-base);
+}
+
+.footer-social-section .social-links a:hover {
+    background: var(--color-primary-600);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Social section positioned below link columns */
+.footer-social-bottom {
+    grid-column: 1 / -1;
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-gray-700);
+}
+
+.footer-social-bottom h4 {
+    text-transform: none;
+    font-style: italic;
+}
+
 .footer-links h4,
 .footer-contact h4 {
     color: white;
@@ -1071,4 +1120,151 @@
 .map-link svg {
     width: 14px;
     height: 14px;
+}
+
+/* ===========================================
+   Dark Mode Styles for Components
+   =========================================== */
+
+/* Stat Card Dark Mode */
+[data-theme="dark"] .stat-card {
+    background: var(--surface-primary);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .stat-card-value {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .stat-card-label {
+    color: var(--text-secondary) !important;
+}
+
+/* Cards Dark Mode */
+[data-theme="dark"] .card {
+    background: var(--surface-primary);
+    border-color: var(--border-primary);
+}
+
+/* Form Elements Dark Mode */
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .form-textarea,
+[data-theme="dark"] .form-select {
+    background: var(--surface-secondary);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-input::placeholder,
+[data-theme="dark"] .form-textarea::placeholder {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .form-label {
+    color: var(--text-primary);
+}
+
+/* Search Box Dark Mode */
+[data-theme="dark"] .search-box {
+    background: var(--surface-primary);
+    border-color: var(--border-primary);
+}
+
+[data-theme="dark"] .search-box input {
+    color: var(--text-primary);
+}
+
+/* Tabs Dark Mode */
+[data-theme="dark"] .tabs {
+    background: var(--surface-secondary);
+}
+
+[data-theme="dark"] .tab {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .tab:hover {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .tab.active {
+    background: var(--surface-primary);
+    color: var(--text-primary);
+}
+
+/* Tags Dark Mode */
+[data-theme="dark"] .tag {
+    background: var(--surface-secondary);
+    color: var(--text-secondary);
+}
+
+/* Badges - Keep colors but ensure good contrast */
+[data-theme="dark"] .badge-primary {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .badge-success {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--color-secondary-400);
+}
+
+[data-theme="dark"] .badge-warning {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--color-accent-400);
+}
+
+/* Mobile Nav Dark Mode */
+[data-theme="dark"] .mobile-nav {
+    background: var(--surface-primary);
+    border-top-color: var(--border-primary);
+}
+
+[data-theme="dark"] .mobile-nav-item {
+    color: var(--text-tertiary);
+}
+
+[data-theme="dark"] .mobile-nav-item.active,
+[data-theme="dark"] .mobile-nav-item:hover {
+    color: var(--color-primary-400);
+}
+
+/* Navbar Dark Mode */
+[data-theme="dark"] .navbar {
+    background: var(--surface-primary);
+    border-bottom-color: var(--border-primary);
+}
+
+[data-theme="dark"] .logo-text {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-link:hover {
+    color: var(--color-primary-400);
+}
+
+[data-theme="dark"] .navbar-toggle {
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .navbar-toggle:hover {
+    background: var(--surface-secondary);
+}
+
+/* Skeleton Loading Dark Mode */
+[data-theme="dark"] .skeleton {
+    background: linear-gradient(90deg,
+            var(--surface-secondary) 25%,
+            var(--surface-elevated) 50%,
+            var(--surface-secondary) 75%);
+    background-size: 200% 100%;
+}
+
+/* Progress Bar Dark Mode */
+[data-theme="dark"] .progress {
+    background: var(--surface-secondary);
 }
