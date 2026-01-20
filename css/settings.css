@@ -29,7 +29,8 @@
     text-decoration: none;
     font-size: var(--text-sm);
     font-weight: var(--font-medium);
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
+    margin-bottom: var(--space-1);
 }
 
 .settings-nav-item:hover {
@@ -37,14 +38,55 @@
     color: var(--color-gray-900);
 }
 
-.settings-nav-item.active {
-    background: var(--color-primary-50);
-    color: var(--color-primary-700);
+.settings-nav-item i {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-100);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
 }
 
-.settings-nav-item i {
-    width: 20px;
-    height: 20px;
+.settings-nav-item.active {
+    background: var(--color-primary-50);
+    color: var(--color-primary-600);
+    font-weight: var(--font-semibold);
+}
+
+.settings-nav-item.active i {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 10px -2px rgba(37, 99, 235, 0.3);
+}
+
+/* Specific Section Colors for Icons */
+.settings-nav-item[data-section="notifications"]:hover i {
+    color: var(--color-warning);
+}
+
+.settings-nav-item[data-section="privacy"]:hover i {
+    color: var(--color-error);
+}
+
+.settings-nav-item[data-section="appearance"]:hover i {
+    color: var(--color-secondary-500);
+}
+
+.settings-nav-item[data-section="billing"]:hover i {
+    color: #8B5CF6;
+}
+
+#saveSettingsBtn {
+    color: white !important;
+    background: var(--gradient-primary) !important;
+    box-shadow: var(--shadow-primary);
+}
+
+#saveSettingsBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
 }
 
 /* Settings Sections */
@@ -76,8 +118,15 @@
     background: white;
     padding: var(--space-6);
     border-radius: var(--radius-2xl);
-    border: 1px solid var(--color-gray-200);
+    border: 1px solid var(--color-gray-100);
     margin-bottom: var(--space-6);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.settings-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
 }
 
 .settings-card h3 {

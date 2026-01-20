@@ -364,11 +364,30 @@ select {
     }
 }
 
+/* Mobile Specific Overrides */
+@media (max-width: 768px) {
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        font-size: 16px !important;
+        /* Prevent iOS zoom */
+        min-height: 44px !important;
+        /* Better touch targets */
+    }
+
+    .btn {
+        min-height: 48px !important;
+    }
+}
+
 @media (min-width: 768px) {
     .hide-desktop {
         display: none !important;
     }
-}/* Mobile Table Scroll Wrapper */
+}
+
+/* Mobile Table Scroll Wrapper */
 @media (max-width: 767px) {
     .scroll-wrapper-mobile {
         overflow-x: auto;
@@ -381,6 +400,7 @@ select {
 /* ========== Mobile Touch Optimization ========== */
 /* Ensure minimum 44px touch targets on mobile */
 @media (max-width: 767px) {
+
     button,
     input[type="button"],
     input[type="submit"],
@@ -401,7 +421,7 @@ select {
         font-size: 16px !important;
         padding: 12px var(--space-4);
     }
-    
+
     /* Increase spacing for better touch accuracy */
     .nav-item,
     .sidebar-nav a {

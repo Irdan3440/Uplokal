@@ -1,0 +1,293 @@
+/* ===========================================
+   Help Page Styles
+   =========================================== */
+
+/* Search Section */
+.help-search-section {
+    padding: var(--space-20) var(--space-6);
+    background: var(--gradient-hero);
+    color: white;
+    text-align: center;
+    border-radius: var(--radius-2xl);
+    margin-bottom: var(--space-12);
+    box-shadow: 0 20px 40px -10px rgba(118, 75, 162, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.help-search-section::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(60px);
+}
+
+.help-search-section h2 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-6);
+}
+
+.help-search-section .search-box {
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-2);
+    display: flex;
+    align-items: center;
+    max-width: 600px;
+    box-shadow: var(--shadow-xl);
+}
+
+.help-search-section .search-box i {
+    color: var(--color-gray-400);
+    margin: 0 var(--space-3);
+}
+
+.help-search-section .search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: var(--text-base);
+    color: var(--color-gray-900);
+}
+
+/* Categories */
+.help-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+}
+
+.category-card {
+    background: white;
+    padding: var(--space-8);
+    border-radius: var(--radius-2xl);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--color-gray-100);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary-200);
+}
+
+.category-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-50);
+    color: var(--color-primary-600);
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-4);
+    transition: all 0.3s ease;
+}
+
+.category-card:hover .category-icon {
+    background: var(--gradient-primary);
+    color: white;
+    transform: scale(1.1);
+}
+
+.category-icon i {
+    width: 24px;
+    height: 24px;
+}
+
+.category-card h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-2);
+    color: var(--color-gray-900);
+}
+
+.category-card p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    margin-bottom: var(--space-4);
+    line-height: 1.6;
+}
+
+.category-card a {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-primary-600);
+}
+
+/* FAQ Section */
+.faq-section {
+    margin-bottom: var(--space-12);
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.faq-item {
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-gray-100);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.faq-item.active {
+    border-color: var(--color-primary-200);
+    box-shadow: var(--shadow-lg);
+}
+
+.faq-question {
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.faq-question:hover {
+    background: var(--color-gray-50);
+}
+
+.faq-question span {
+    font-weight: var(--font-semibold);
+    color: var(--color-gray-900);
+}
+
+.faq-question i {
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-400);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 var(--space-6);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 var(--space-6) var(--space-6) var(--space-6);
+    max-height: 200px;
+}
+
+.faq-answer p {
+    font-size: var(--text-sm);
+    color: var(--color-gray-600);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Support Channels */
+.support-channels {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.channel-card {
+    background: white;
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    border: 1px solid var(--color-gray-100);
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.channel-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.channel-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.channel-icon.mail {
+    background: var(--color-primary-50);
+    color: var(--color-primary-600);
+}
+
+.channel-icon.chat {
+    background: var(--color-secondary-50);
+    color: var(--color-secondary-600);
+}
+
+.channel-icon i {
+    width: 24px;
+    height: 24px;
+}
+
+.channel-info {
+    flex: 1;
+}
+
+.channel-info h3 {
+    font-size: var(--text-base);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-1);
+}
+
+.channel-info p {
+    font-size: var(--text-xs);
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .help-search-section {
+        padding: var(--space-8) var(--space-4);
+    }
+
+    .help-search-section h2 {
+        font-size: var(--text-xl);
+    }
+
+    .channel-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .channel-card .btn {
+        width: 100%;
+    }
+}

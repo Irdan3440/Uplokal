@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bantuan | Uplokal</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/help.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Backdrop for Mobile -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="messages.html" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="help.html" class="nav-item active">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Pusat Bantuan</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="contactSupportBtn">
+                        <i data-lucide="message-circle"></i>
+                        <span class="btn-label">Hubungi Support</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Help Content -->
+            <div class="dashboard-content">
+                <div class="help-search-section">
+                    <h2>Halo, ada yang bisa kami bantu?</h2>
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" placeholder="Cari bantuan, artikel, atau tanya jawab...">
+                        <button class="btn btn-primary">Cari</button>
+                    </div>
+                </div>
+
+                <div class="help-categories">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i data-lucide="rocket"></i>
+                        </div>
+                        <h3>Memulai</h3>
+                        <p>Panduan langkah demi langkah untuk memulai eksplorasi Uplokal</p>
+                        <a href="#">Lihat 12 Artikel <i data-lucide="chevron-right"></i></a>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i data-lucide="calculator"></i>
+                        </div>
+                        <h3>Keuangan</h3>
+                        <p>Kelola arus kas, pajak, dan laporan keuangan bisnis Anda</p>
+                        <a href="#">Lihat 8 Artikel <i data-lucide="chevron-right"></i></a>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <h3>Kesiapan Ekspor</h3>
+                        <p>Persiapan legalitas, dokumen, dan standar produk ekspor</p>
+                        <a href="#">Lihat 15 Artikel <i data-lucide="chevron-right"></i></a>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i data-lucide="share-2"></i>
+                        </div>
+                        <h3>Kolaborasi</h3>
+                        <p>Cara menggunakan workspace, proyek, dan chat dengan tim</p>
+                        <a href="#">Lihat 6 Artikel <i data-lucide="chevron-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="faq-section">
+                    <div class="section-header">
+                        <h2>Pertanyaan Umum (FAQ)</h2>
+                    </div>
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Bagaimana cara mendaftarkan bisnis saya ke direktori Uplokal?</span>
+                                <i data-lucide="plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Untuk mendaftarkan bisnis, Anda perlu melengkapi Profil Bisnis di menu "Profil
+                                    Bisnis". Pastikan Anda mengisi informasi legalitas, foto produk, dan kapasitas
+                                    produksi secara lengkap agar mudah diverifikasi oleh tim kami.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Apakah data keuangan saya aman di Uplokal?</span>
+                                <i data-lucide="plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Ya, keamanan data adalah prioritas utama kami. Uplokal menggunakan enkripsi standar
+                                    perbankan (AES-256) untuk melindungi semua data sensitif Anda. Data keuangan Anda
+                                    hanya dapat diakses oleh Anda sendiri.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Bagaimana cara mendapatkan sertifikat 'Export Ready'?</span>
+                                <i data-lucide="plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Anda harus melengkapi semua checklist dalam menu "Export Readiness". Setelah progres
+                                    mencapai 100%, sistem akan melakukan review otomatis, dan jika memenuhi syarat, Anda
+                                    akan mendapatkan label khusus di direktori Uplokal.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">
+                                <span>Berapa biaya langganan paket Professional?</span>
+                                <i data-lucide="plus"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Paket Professional saat ini berbiaya Rp 299.000 per bulan. Paket ini mencakup akses
+                                    tak terbatas ke semua fitur ekspor, analitik mendalam, dan dukungan prioritas 24/7.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="support-channels">
+                    <div class="channel-card">
+                        <div class="channel-icon mail">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Email Support</h3>
+                            <p>Kirimkan keluhan Anda ke support@uplokal.com</p>
+                        </div>
+                        <a href="mailto:support@uplokal.com" class="btn btn-outline btn-sm">Kirim Email</a>
+                    </div>
+                    <div class="channel-card">
+                        <div class="channel-icon chat">
+                            <i data-lucide="message-circle"></i>
+                        </div>
+                        <div class="channel-info">
+                            <h3>Live Chat</h3>
+                            <p>Bicara langsung dengan agen kami (08.00 - 17.00)</p>
+                        </div>
+                        <button class="btn btn-outline btn-sm">Mulai Chat</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="messages.html" class="mobile-nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Pesan</span>
+            </a>
+            <a href="settings.html" class="mobile-nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+            <a href="help.html" class="mobile-nav-item active">
+                <i data-lucide="help-circle"></i>
+                <span>Bantuan</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/dashboard-common.js"></script>
+    <script src="js/help.js"></script>
+</body>
+
+</html>

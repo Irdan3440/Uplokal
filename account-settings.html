@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Saya | Uplokal</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/account.css">
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <!-- Sidebar Backdrop for Mobile -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- Sidebar -->
+        <aside class="dashboard-sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-uplokal.png" alt="Uplokal" class="logo-image">
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <span class="nav-section-title">Menu</span>
+                    <a href="dashboard.html" class="nav-item">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="dashboard-diagnostic.html" class="nav-item">
+                        <i data-lucide="activity"></i>
+                        <span>Business Diagnostic</span>
+                    </a>
+                    <a href="financial-assistant.html" class="nav-item">
+                        <i data-lucide="calculator"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <a href="marketing-dashboard.html" class="nav-item">
+                        <i data-lucide="megaphone"></i>
+                        <span>Marketing</span>
+                        <span class="badge badge-primary">3</span>
+                    </a>
+                    <a href="export-readiness.html" class="nav-item">
+                        <i data-lucide="globe"></i>
+                        <span>Export Readiness</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Kolaborasi</span>
+                    <a href="workspace.html" class="nav-item">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>Projects</span>
+                    </a>
+                    <a href="messages.html" class="nav-item">
+                        <i data-lucide="message-square"></i>
+                        <span>Pesan</span>
+                        <span class="badge badge-warning">5</span>
+                    </a>
+                    <a href="document-vault.html" class="nav-item">
+                        <i data-lucide="file-text"></i>
+                        <span>Dokumen</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <span class="nav-section-title">Lainnya</span>
+                    <a href="profile-editor.html" class="nav-item">
+                        <i data-lucide="building-2"></i>
+                        <span>Profil Bisnis</span>
+                    </a>
+                    <a href="settings.html" class="nav-item">
+                        <i data-lucide="settings"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                    <a href="help.html" class="nav-item">
+                        <i data-lucide="help-circle"></i>
+                        <span>Bantuan</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-menu active">
+                    <div class="user-avatar">RA</div>
+                    <div class="user-info">
+                        <div class="user-name">Rina Amelia</div>
+                        <div class="user-role">Kulit Nusantara</div>
+                    </div>
+                    <i data-lucide="chevron-down"></i>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Bar -->
+            <header class="dashboard-topbar">
+                <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i data-lucide="menu"></i>
+                    </button>
+                    <h1 class="page-title">Profil Pengguna</h1>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn btn-primary" id="saveAccountBtn">
+                        <i data-lucide="save"></i>
+                        <span class="btn-label">Simpan Perubahan</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Account Content -->
+            <div class="dashboard-content">
+                <div class="account-grid">
+                    <!-- Left Sidebar (Profile Summary) -->
+                    <div class="account-sidebar">
+                        <div class="account-card profile-summary">
+                            <div class="profile-header">
+                                <div class="profile-image-container">
+                                    <img src="https://ui-avatars.com/api/?name=Rina+Amelia&background=3B82F6&color=fff&size=150"
+                                        alt="Avatar" class="profile-image">
+                                    <button class="edit-image-btn"><i data-lucide="camera"></i></button>
+                                </div>
+                                <h2 class="profile-name">Rina Amelia</h2>
+                                <p class="profile-role">Pemilik Bisnis • Kulit Nusantara</p>
+                            </div>
+                            <div class="profile-stats">
+                                <div class="stat-item">
+                                    <span class="stat-value">4.8</span>
+                                    <span class="stat-label">Rating</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">12</span>
+                                    <span class="stat-label">Proyek</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-value">5y</span>
+                                    <span class="stat-label">Member</span>
+                                </div>
+                            </div>
+                            <div class="profile-social">
+                                <a href="#" class="social-link"><i data-lucide="linkedin"></i></a>
+                                <a href="#" class="social-link"><i data-lucide="twitter"></i></a>
+                                <a href="#" class="social-link"><i data-lucide="mail"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="account-card profile-completeness">
+                            <div class="completeness-header">
+                                <h3>Kelengkapan Profil</h3>
+                                <span class="completeness-value">85%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 85%"></div>
+                            </div>
+                            <p class="completeness-desc">Lengkapi biodata Anda untuk meningkatkan kepercayaan partner
+                                bisnis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Main Form (Biodata) -->
+                    <div class="account-main">
+                        <div class="account-card">
+                            <div class="card-header">
+                                <h3>Biodata Diri</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Nama Depan</label>
+                                        <input type="text" class="form-input" value="Rina">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Nama Belakang</label>
+                                        <input type="text" class="form-input" value="Amelia">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email Utama</label>
+                                    <input type="email" class="form-input" value="rina@kulitnusantara.com">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Nomor Telepon</label>
+                                        <div class="input-with-icon">
+                                            <span class="input-prefix">+62</span>
+                                            <input type="tel" class="form-input" value="81234567890">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Tanggal Lahir</label>
+                                        <input type="date" class="form-input" value="1990-05-15">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Bio Singkat</label>
+                                    <textarea class="form-textarea"
+                                        placeholder="Tuliskan pengalaman bisnis atau minat Anda...">Berpengalaman dalam industri kerajinan kulit selama lebih dari 8 tahun. Bertekad membawa produk lokal Indonesia ke pasar internasional.</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="card-header">
+                                <h3>Alamat & Lokasi</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Alamat Lengkap</label>
+                                    <input type="text" class="form-input" value="Jl. Heritage No. 12, Kota Gede">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label class="form-label">Kota</label>
+                                        <input type="text" class="form-input" value="Yogyakarta">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Provinsi</label>
+                                        <input type="text" class="form-input" value="DIY">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Kode Pos</label>
+                                        <input type="text" class="form-input" value="55173">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="account-card">
+                            <div class="card-header">
+                                <h3>Pendidikan & Keahlian</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label class="form-label">Pendidikan Terakhir</label>
+                                    <select class="form-select">
+                                        <option value="s1">Sarjana (S1)</option>
+                                        <option value="s2">Magister (S2)</option>
+                                        <option value="d3">Diploma (D3)</option>
+                                        <option value="sma">SMA/SMK</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Keahlian Utama</label>
+                                    <div class="skills-tags">
+                                        <span class="skill-tag">Product Management <i data-lucide="x"></i></span>
+                                        <span class="skill-tag">Export-Import <i data-lucide="x"></i></span>
+                                        <span class="skill-tag">Leather Craft <i data-lucide="x"></i></span>
+                                        <button class="add-skill-btn">+ Tambah</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="dashboard-mobile-nav">
+            <a href="dashboard.html" class="mobile-nav-item">
+                <i data-lucide="layout-dashboard"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="messages.html" class="mobile-nav-item">
+                <i data-lucide="message-square"></i>
+                <span>Pesan</span>
+            </a>
+            <a href="settings.html" class="mobile-nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+            <a href="account-settings.html" class="mobile-nav-item active">
+                <i data-lucide="user"></i>
+                <span>Profil</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/dashboard-common.js"></script>
+    <script src="js/account.js"></script>
+</body>
+
+</html>

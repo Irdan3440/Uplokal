@@ -5,8 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Dashboard Bisnis Uplokal - Kelola dan kembangkan bisnis Anda">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Dashboard | Uplokal</title>
 
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
@@ -67,7 +73,7 @@
                         <i data-lucide="folder-kanban"></i>
                         <span>Projects</span>
                     </a>
-                    <a href="#" class="nav-item">
+                    <a href="messages.html" class="nav-item">
                         <i data-lucide="message-square"></i>
                         <span>Pesan</span>
                         <span class="badge badge-warning">5</span>
@@ -84,11 +90,11 @@
                         <i data-lucide="building-2"></i>
                         <span>Profil Bisnis</span>
                     </a>
-                    <a href="#" class="nav-item">
+                    <a href="settings.html" class="nav-item">
                         <i data-lucide="settings"></i>
                         <span>Pengaturan</span>
                     </a>
-                    <a href="#" class="nav-item">
+                    <a href="help.html" class="nav-item">
                         <i data-lucide="help-circle"></i>
                         <span>Bantuan</span>
                     </a>
@@ -118,6 +124,9 @@
                     <h1 class="page-title">Dashboard</h1>
                 </div>
                 <div class="topbar-right">
+                    <button class="topbar-btn theme-toggle" onclick="toggleTheme()" title="Toggle Dark Mode">
+                        <i data-lucide="moon"></i>
+                    </button>
                     <button class="topbar-btn" title="Pencarian">
                         <i data-lucide="search"></i>
                     </button>
@@ -357,14 +366,25 @@
                 <i data-lucide="stethoscope"></i>
                 <span>Diagnosa</span>
             </a>
-            <a href="#" class="mobile-nav-item">
+            <a href="account-settings.html" class="mobile-nav-item">
                 <i data-lucide="user"></i>
                 <span>Profil</span>
             </a>
         </nav>
     </div>
 
+    <script src="js/dashboard-common.js"></script>
     <script src="js/app.js"></script>
+    <script>
+        // Register Service Worker for PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('[PWA] Service Worker registered'))
+                    .catch(err => console.log('[PWA] SW registration failed:', err));
+            });
+        }
+    </script>
 </body>
 
 </html>
