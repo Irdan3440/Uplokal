@@ -178,29 +178,39 @@
                 </div>
 
                 <!-- Filters & Search -->
-                <div class="dashboard-card" style="margin-bottom: var(--space-6);">
+                <div class="admin-filters dashboard-card" style="margin-bottom: var(--space-6);">
                     <div class="card-body"
                         style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
-                        <div style="flex: 1; min-width: 250px;">
+                        <div class="filter-group" style="flex: 1; min-width: 250px;">
                             <div style="position: relative;">
                                 <i data-lucide="search"
                                     style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-gray-400);"></i>
-                                <input type="text" class="form-input" placeholder="Search customers..."
+                                <input type="text" id="custSearch" class="form-input" placeholder="Search customers..."
                                     style="padding-left: 40px;">
                             </div>
                         </div>
-                        <select class="form-input" style="width: auto;">
-                            <option>All Countries</option>
-                            <option>Indonesia</option>
-                            <option>Singapore</option>
-                            <option>Malaysia</option>
-                            <option>Japan</option>
-                        </select>
-                        <select class="form-input" style="width: auto;">
-                            <option>All Status</option>
-                            <option>Active</option>
-                            <option>Inactive</option>
-                        </select>
+                        <div class="filter-group">
+                            <select id="countryFilter" class="form-input" style="width: auto;">
+                                <option value="">All Countries</option>
+                                <option>Indonesia</option>
+                                <option>Singapore</option>
+                                <option>Malaysia</option>
+                                <option>Japan</option>
+                                <option>Australia</option>
+                                <option>USA</option>
+                                <option>China</option>
+                                <option>France</option>
+                                <option>Germany</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <select id="statusFilter" class="form-input" style="width: auto;">
+                                <option value="">All Status</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                                <option>Pending</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -208,126 +218,42 @@
                 <div class="dashboard-card">
                     <div class="card-header">
                         <h3>👥 Customer List</h3>
-                        <span style="color: var(--color-gray-500); font-size: var(--text-sm);">Showing 10 of
-                            1,247</span>
                     </div>
                     <div class="card-body" style="padding: 0;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <thead>
-                                <tr
-                                    style="background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200);">
-                                    <th
-                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Customer</th>
-                                    <th
-                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Company</th>
-                                    <th
-                                        style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Country</th>
-                                    <th
-                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Orders</th>
-                                    <th
-                                        style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Total Spent</th>
-                                    <th
-                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Status</th>
-                                    <th
-                                        style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                        Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                    <td style="padding: var(--space-4);">
-                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
-                                            <div
-                                                style="width: 40px; height: 40px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
-                                                JT</div>
-                                            <div>
-                                                <div style="font-weight: 600;">John Tanaka</div>
-                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
-                                                    john@imports.jp</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">Tokyo Imports Co.
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇯🇵 Japan</td>
-                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">24</td>
-                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$45,890
-                                    </td>
-                                    <td style="padding: var(--space-4); text-align: center;"><span
-                                            class="badge badge-success">Active</span></td>
-                                    <td style="padding: var(--space-4); text-align: center;">
-                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
-                                                style="width: 16px; height: 16px;"></i></button>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                    <td style="padding: var(--space-4);">
-                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
-                                            <div
-                                                style="width: 40px; height: 40px; background: var(--color-secondary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
-                                                SL</div>
-                                            <div>
-                                                <div style="font-weight: 600;">Sarah Lee</div>
-                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
-                                                    sarah@sgtrade.sg</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">SG Trade Pte Ltd
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇸🇬 Singapore</td>
-                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">18</td>
-                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$32,450
-                                    </td>
-                                    <td style="padding: var(--space-4); text-align: center;"><span
-                                            class="badge badge-success">Active</span></td>
-                                    <td style="padding: var(--space-4); text-align: center;">
-                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
-                                                style="width: 16px; height: 16px;"></i></button>
-                                    </td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                    <td style="padding: var(--space-4);">
-                                        <div style="display: flex; align-items: center; gap: var(--space-3);">
-                                            <div
-                                                style="width: 40px; height: 40px; background: var(--color-accent-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
-                                                MA</div>
-                                            <div>
-                                                <div style="font-weight: 600;">Michael Anderson</div>
-                                                <div style="font-size: var(--text-xs); color: var(--color-gray-500);">
-                                                    m.anderson@auscraft.au</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">AusCraft Imports
-                                    </td>
-                                    <td style="padding: var(--space-4); font-size: var(--text-sm);">🇦🇺 Australia</td>
-                                    <td style="padding: var(--space-4); text-align: center; font-weight: 600;">12</td>
-                                    <td style="padding: var(--space-4); text-align: right; font-weight: 600;">$28,750
-                                    </td>
-                                    <td style="padding: var(--space-4); text-align: center;"><span
-                                            class="badge badge-success">Active</span></td>
-                                    <td style="padding: var(--space-4); text-align: center;">
-                                        <button class="btn btn-ghost btn-sm"><i data-lucide="eye"
-                                                style="width: 16px; height: 16px;"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>Company</th>
+                                        <th>Country</th>
+                                        <th style="text-align: center;">Orders</th>
+                                        <th style="text-align: right;">Total Spent</th>
+                                        <th style="text-align: center;">Status</th>
+                                        <th style="text-align: center;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data will be populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer"
+                        style="padding: var(--space-4) var(--space-6); border-top: 1px solid var(--color-gray-200); display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--color-gray-500); font-size: var(--text-sm);">Showing 1-8 of 1,247
+                            customers</span>
+                        <div class="pagination">
+                            <!-- JS will populate -->
+                        </div>
                     </div>
                 </div>
-            </div>
         </main>
     </div>
 
     <script src="js/app.js"></script>
     <script src="js/dashboard-common.js"></script>
+    <script src="js/admin-customers.js"></script>
 </body>
 
 </html>

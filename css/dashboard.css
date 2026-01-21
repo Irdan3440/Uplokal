@@ -473,6 +473,27 @@
 .activity-list {
     display: flex;
     flex-direction: column;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: var(--space-2);
+}
+
+/* Custom scrollbar for activity list */
+.activity-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
 }
 
 .activity-item {
@@ -574,6 +595,27 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: var(--space-2);
+}
+
+/* Custom scrollbar for recommendation list */
+.recommendation-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.recommendation-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.recommendation-list::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: var(--radius-full);
+}
+
+.recommendation-list::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
 }
 
 .recommendation-item {

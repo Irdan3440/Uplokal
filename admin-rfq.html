@@ -151,7 +151,7 @@
                         <div class="stat-card-icon gradient-blue">
                             <i data-lucide="inbox"></i>
                         </div>
-                        <div class="stat-card-value">7</div>
+                        <div class="stat-card-value" id="pendingRFQCount">7</div>
                         <div class="stat-card-label">Pending RFQs</div>
                     </div>
                     <div class="stat-card">
@@ -182,7 +182,8 @@
                     <div class="card-header">
                         <h3>📋 Pending Requests</h3>
                         <div style="display: flex; gap: var(--space-2);">
-                            <select class="form-input" style="width: auto; padding: 6px 12px; font-size: 12px;">
+                            <select class="form-input" id="categoryFilter"
+                                style="width: auto; padding: 6px 12px; font-size: 12px;">
                                 <option>All Categories</option>
                                 <option>Fashion & Tekstil</option>
                                 <option>Kerajinan</option>
@@ -191,127 +192,8 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                            <!-- RFQ Item 1 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border-left: 4px solid var(--color-error);">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
-                                    <div>
-                                        <div
-                                            style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1);">
-                                            <span style="font-weight: 700; color: var(--color-gray-900);">RFQ
-                                                #1892</span>
-                                            <span class="badge"
-                                                style="background: var(--color-error); color: white;">Urgent</span>
-                                        </div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Tokyo
-                                            Imports Co. • Japan</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Received
-                                        </div>
-                                        <div style="font-size: var(--text-sm); font-weight: 600;">2 hours ago</div>
-                                    </div>
-                                </div>
-                                <div style="margin-bottom: var(--space-3);">
-                                    <div style="font-weight: 600; margin-bottom: var(--space-1);">Leather Bags - Premium
-                                        Quality</div>
-                                    <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Looking for
-                                        500 pcs of premium leather bags. MOQ flexible. Target delivery: March 2024.
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <span class="badge badge-primary">Fashion</span>
-                                        <span class="badge" style="background: var(--color-gray-200);">$25K-50K</span>
-                                    </div>
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <button class="btn btn-secondary btn-sm">View Details</button>
-                                        <button class="btn btn-primary btn-sm">Match Suppliers</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- RFQ Item 2 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border-left: 4px solid var(--color-warning);">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
-                                    <div>
-                                        <div
-                                            style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1);">
-                                            <span style="font-weight: 700; color: var(--color-gray-900);">RFQ
-                                                #1891</span>
-                                            <span class="badge badge-warning">New</span>
-                                        </div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-600);">SG Trade
-                                            Pte Ltd • Singapore</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Received
-                                        </div>
-                                        <div style="font-size: var(--text-sm); font-weight: 600;">5 hours ago</div>
-                                    </div>
-                                </div>
-                                <div style="margin-bottom: var(--space-3);">
-                                    <div style="font-weight: 600; margin-bottom: var(--space-1);">Batik Fabric -
-                                        Traditional Patterns</div>
-                                    <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Need 1000
-                                        meters of traditional Javanese batik fabric for fashion collection. Prefer Solo
-                                        or Yogya suppliers.</div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <span class="badge badge-primary">Tekstil</span>
-                                        <span class="badge" style="background: var(--color-gray-200);">$10K-25K</span>
-                                    </div>
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <button class="btn btn-secondary btn-sm">View Details</button>
-                                        <button class="btn btn-primary btn-sm">Match Suppliers</button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- RFQ Item 3 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border-left: 4px solid var(--color-primary-500);">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--space-3);">
-                                    <div>
-                                        <div
-                                            style="display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-1);">
-                                            <span style="font-weight: 700; color: var(--color-gray-900);">RFQ
-                                                #1890</span>
-                                            <span class="badge badge-primary">In Review</span>
-                                        </div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-600);">AusCraft
-                                            Imports • Australia</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Received
-                                        </div>
-                                        <div style="font-size: var(--text-sm); font-weight: 600;">1 day ago</div>
-                                    </div>
-                                </div>
-                                <div style="margin-bottom: var(--space-3);">
-                                    <div style="font-weight: 600; margin-bottom: var(--space-1);">Wooden Furniture -
-                                        Teak Material</div>
-                                    <div style="font-size: var(--text-sm); color: var(--color-gray-600);">Looking for
-                                        teak wood furniture manufacturer. Need dining tables and chairs set, 50 sets
-                                        minimum.</div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <span class="badge badge-primary">Furniture</span>
-                                        <span class="badge" style="background: var(--color-gray-200);">$50K+</span>
-                                    </div>
-                                    <div style="display: flex; gap: var(--space-2);">
-                                        <button class="btn btn-secondary btn-sm">View Details</button>
-                                        <button class="btn btn-primary btn-sm">Match Suppliers</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--space-4);" id="rfqListContainer">
+                            <!-- RFQ Items will be populated here by JS -->
                         </div>
                     </div>
                 </div>
@@ -320,7 +202,7 @@
     </div>
 
     <script src="js/app.js"></script>
-    <script src="js/dashboard-common.js"></script>
+    <script src="js/admin-rfq.js"></script>
 </body>
 
 </html>

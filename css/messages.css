@@ -354,14 +354,18 @@
     text-align: right;
 }
 
-/* Chat Input */
+/* Chat Input - Fixed at bottom */
 .chat-input {
     display: flex;
     align-items: center;
-    gap: var(--space-2);
+    gap: var(--space-3);
     padding: var(--space-4) var(--space-5);
     background: white;
     border-top: 1px solid var(--color-gray-200);
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    flex-shrink: 0;
 }
 
 .chat-input input {
