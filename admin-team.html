@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-team.css">
 </head>
 
 <body>
@@ -137,7 +138,7 @@
                     <h1 class="page-title">Team Management</h1>
                 </div>
                 <div class="topbar-right">
-                    <button class="btn btn-primary btn-sm">
+                    <button class="btn btn-primary" onclick="inviteMember()">
                         <i data-lucide="user-plus"></i>
                         Invite Member
                     </button>
@@ -151,197 +152,55 @@
                         <div class="stat-card-icon gradient-blue">
                             <i data-lucide="users"></i>
                         </div>
-                        <div class="stat-card-value">8</div>
                         <div class="stat-card-label">Total Members</div>
+                        <div class="stat-card-value" id="totalMembersStat">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-icon gradient-green">
                             <i data-lucide="user-check"></i>
                         </div>
-                        <div class="stat-card-value">6</div>
                         <div class="stat-card-label">Active Now</div>
+                        <div class="stat-card-value" id="activeMembersStat">0</div>
+                        <div class="active-indicator"></div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-icon gradient-purple">
                             <i data-lucide="shield"></i>
                         </div>
-                        <div class="stat-card-value">3</div>
                         <div class="stat-card-label">Admins</div>
+                        <div class="stat-card-value" id="adminMembersStat">0</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-icon gradient-orange">
                             <i data-lucide="mail"></i>
                         </div>
-                        <div class="stat-card-value">2</div>
                         <div class="stat-card-label">Pending Invites</div>
+                        <div class="stat-card-value" id="pendingInvitesStat">0</div>
                     </div>
                 </div>
 
-                <!-- Team Members -->
-                <div class="dashboard-card">
-                    <div class="card-header">
-                        <h3>👥 Team Members</h3>
-                        <div style="display: flex; gap: var(--space-2);">
-                            <button class="btn btn-ghost btn-sm active">All</button>
-                            <button class="btn btn-ghost btn-sm">Admins</button>
-                            <button class="btn btn-ghost btn-sm">Moderators</button>
+                <!-- Team Grid Control -->
+                <div class="team-controls">
+                    <div class="search-filter-group">
+                        <div class="search-box">
+                            <i data-lucide="search"></i>
+                            <input type="text" id="memberSearch" placeholder="Search by name or email...">
                         </div>
+                        <select class="filter-select" id="roleFilter">
+                            <option value="all">All Roles</option>
+                            <option value="Admin">Admins</option>
+                            <option value="Moderator">Moderators</option>
+                        </select>
                     </div>
-                    <div class="card-body">
-                        <div
-                            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: var(--space-4);">
-                            <!-- Team Member 1 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: var(--color-primary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        AD</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Admin User</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            admin@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge"
-                                        style="background: var(--color-primary-500); color: white;">Super Admin</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Online</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Team Member 2 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: var(--color-secondary-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        SR</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Sarah Rahman</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            sarah@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge badge-primary">Admin</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Online</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Team Member 3 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: var(--color-accent-500); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        BW</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Budi Wicaksono</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            budi@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge badge-primary">Admin</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Online</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Team Member 4 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: var(--color-gray-400); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        DP</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Dewi Pratiwi</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            dewi@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge badge-warning">Moderator</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-gray-400); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Offline</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Team Member 5 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: #8B5CF6; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        AS</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Ahmad Saputra</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            ahmad@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge badge-warning">Moderator</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Online</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Team Member 6 -->
-                            <div
-                                style="background: var(--color-gray-50); border-radius: var(--radius-xl); padding: var(--space-5); border: 1px solid var(--color-gray-200);">
-                                <div
-                                    style="display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4);">
-                                    <div
-                                        style="width: 56px; height: 56px; background: #EC4899; border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; color: white; font-size: var(--text-xl); font-weight: 700;">
-                                        RN</div>
-                                    <div>
-                                        <div style="font-weight: 700;">Rina Novita</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            rina@uplokal.com</div>
-                                    </div>
-                                </div>
-                                <div style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span class="badge badge-warning">Moderator</span>
-                                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                                        <span
-                                            style="width: 8px; height: 8px; background: var(--color-success); border-radius: var(--radius-full);"></span>
-                                        <span
-                                            style="font-size: var(--text-xs); color: var(--color-gray-500);">Online</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="view-options">
+                        <button class="btn btn-ghost btn-sm active">Grid View</button>
+                        <button class="btn btn-ghost btn-sm">List View</button>
                     </div>
+                </div>
+
+                <!-- Team Members Grid -->
+                <div id="teamGrid" class="team-grid">
+                    <!-- Loaded dynamically via js/admin-team.js -->
                 </div>
             </div>
         </main>
@@ -349,6 +208,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/dashboard-common.js"></script>
+    <script src="js/admin-team.js"></script>
 </body>
 
 </html>

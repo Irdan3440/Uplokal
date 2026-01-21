@@ -153,6 +153,14 @@
 
             <!-- Moderation Content -->
             <div class="dashboard-content">
+                <!-- Advanced Filters -->
+                <div class="admin-filters" style="margin-bottom: var(--space-6);">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="modSearch" placeholder="Cari bisnis, user, atau alasan report...">
+                    </div>
+                </div>
+
                 <!-- Stats Overview -->
                 <div class="moderation-stats">
                     <div class="stat-card flagged">
@@ -198,12 +206,12 @@
                     <button class="mod-tab active" data-tab="flagged">
                         <i data-lucide="flag"></i>
                         Konten Diflag
-                        <span class="tab-badge">5</span>
+                        <span class="tab-badge" id="flaggedBadge">0</span>
                     </button>
                     <button class="mod-tab" data-tab="suspended">
                         <i data-lucide="user-x"></i>
                         User Disuspend
-                        <span class="tab-badge">8</span>
+                        <span class="tab-badge" id="suspendedBadge">0</span>
                     </button>
                     <button class="mod-tab" data-tab="categories">
                         <i data-lucide="folder-tree"></i>
@@ -213,135 +221,8 @@
 
                 <!-- Flagged Content Section -->
                 <div class="tab-content active" id="flagged-content">
-                    <div class="flagged-list">
-                        <!-- Flagged Item 1 -->
-                        <div class="flagged-item" data-id="1">
-                            <div class="flagged-header">
-                                <div class="content-type">
-                                    <span class="type-badge profile"><i data-lucide="user"></i> Profil Bisnis</span>
-                                    <span class="report-count"><i data-lucide="flag"></i> 3 reports</span>
-                                </div>
-                                <div class="flagged-time">2 jam lalu</div>
-                            </div>
-                            <div class="flagged-content">
-                                <div class="business-preview">
-                                    <img src="https://ui-avatars.com/api/?name=Toko+XYZ&background=DC2626&color=fff"
-                                        alt="Toko XYZ">
-                                    <div class="business-info">
-                                        <h4>Toko XYZ Fashion</h4>
-                                        <p>Fashion & Aksesoris</p>
-                                    </div>
-                                </div>
-                                <div class="report-reason">
-                                    <strong>Alasan Report:</strong>
-                                    <ul>
-                                        <li>Konten tidak sesuai dengan deskripsi</li>
-                                        <li>Gambar produk berpotensi melanggar hak cipta</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flagged-actions">
-                                <button class="btn btn-success btn-sm" onclick="dismissFlag(1)">
-                                    <i data-lucide="check"></i> Abaikan
-                                </button>
-                                <button class="btn btn-warning btn-sm" onclick="warnUser(1)">
-                                    <i data-lucide="alert-triangle"></i> Peringatan
-                                </button>
-                                <button class="btn btn-danger btn-sm" onclick="suspendUser(1)">
-                                    <i data-lucide="user-x"></i> Suspend
-                                </button>
-                                <button class="btn btn-outline btn-sm" onclick="viewContent(1)">
-                                    <i data-lucide="external-link"></i> Lihat
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Flagged Item 2 -->
-                        <div class="flagged-item" data-id="2">
-                            <div class="flagged-header">
-                                <div class="content-type">
-                                    <span class="type-badge product"><i data-lucide="package"></i> Produk</span>
-                                    <span class="report-count"><i data-lucide="flag"></i> 5 reports</span>
-                                </div>
-                                <div class="flagged-time">5 jam lalu</div>
-                            </div>
-                            <div class="flagged-content">
-                                <div class="business-preview">
-                                    <img src="https://ui-avatars.com/api/?name=Elektronik+Murah&background=F59E0B&color=fff"
-                                        alt="Elektronik Murah">
-                                    <div class="business-info">
-                                        <h4>Elektronik Murah 88</h4>
-                                        <p>Elektronik</p>
-                                    </div>
-                                </div>
-                                <div class="report-reason">
-                                    <strong>Alasan Report:</strong>
-                                    <ul>
-                                        <li>Produk palsu / imitasi</li>
-                                        <li>Harga tidak wajar (terlalu murah)</li>
-                                        <li>Deskripsi menyesatkan</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flagged-actions">
-                                <button class="btn btn-success btn-sm" onclick="dismissFlag(2)">
-                                    <i data-lucide="check"></i> Abaikan
-                                </button>
-                                <button class="btn btn-warning btn-sm" onclick="warnUser(2)">
-                                    <i data-lucide="alert-triangle"></i> Peringatan
-                                </button>
-                                <button class="btn btn-danger btn-sm" onclick="suspendUser(2)">
-                                    <i data-lucide="user-x"></i> Suspend
-                                </button>
-                                <button class="btn btn-outline btn-sm" onclick="viewContent(2)">
-                                    <i data-lucide="external-link"></i> Lihat
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Flagged Item 3 -->
-                        <div class="flagged-item urgent" data-id="3">
-                            <div class="flagged-header">
-                                <div class="content-type">
-                                    <span class="type-badge review"><i data-lucide="message-circle"></i> Review</span>
-                                    <span class="report-count urgent"><i data-lucide="alert-octagon"></i> 10+
-                                        reports</span>
-                                </div>
-                                <div class="flagged-time">1 jam lalu</div>
-                            </div>
-                            <div class="flagged-content">
-                                <div class="business-preview">
-                                    <img src="https://ui-avatars.com/api/?name=Anonymous&background=6B7280&color=fff"
-                                        alt="Anonymous">
-                                    <div class="business-info">
-                                        <h4>Review oleh UserABC</h4>
-                                        <p>Pada: Toko Sinar Jaya</p>
-                                    </div>
-                                </div>
-                                <div class="report-reason">
-                                    <strong>Alasan Report:</strong>
-                                    <ul>
-                                        <li>Bahasa kasar / tidak sopan</li>
-                                        <li>Konten tidak relevan (spam)</li>
-                                        <li>Fitnah / informasi palsu</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="flagged-actions">
-                                <button class="btn btn-success btn-sm" onclick="dismissFlag(3)">
-                                    <i data-lucide="check"></i> Abaikan
-                                </button>
-                                <button class="btn btn-warning btn-sm" onclick="warnUser(3)">
-                                    <i data-lucide="alert-triangle"></i> Peringatan
-                                </button>
-                                <button class="btn btn-danger btn-sm" onclick="suspendUser(3)">
-                                    <i data-lucide="user-x"></i> Suspend
-                                </button>
-                                <button class="btn btn-outline btn-sm" onclick="viewContent(3)">
-                                    <i data-lucide="external-link"></i> Lihat
-                                </button>
-                            </div>
-                        </div>
+                    <div class="flagged-list" id="flaggedList">
+                        <!-- Flagged items will be rendered here -->
                     </div>
                 </div>
 

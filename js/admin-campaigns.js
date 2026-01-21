@@ -17,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clicks: '8.9K',
             ctr: '3.6%',
             budget: 'Rp 15jt',
+            spend: 'Rp 4.250.000',
+            reach: '650K',
+            reachGoal: '1M',
             timeLeft: '12 days left',
             isPaused: false
         },
@@ -31,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clicks: '7.2K',
             ctr: '3.8%',
             budget: 'Rp 20jt',
+            spend: 'Rp 12.800.000',
+            reach: '450K',
+            reachGoal: '800K',
             timeLeft: '18 days left',
             isPaused: false
         },
@@ -45,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clicks: '2.8K',
             ctr: '2.9%',
             budget: 'Rp 10jt',
+            spend: 'Rp 2.500.000',
+            reach: '120K',
+            reachGoal: '500K',
             timeLeft: 'Paused',
             isPaused: true
         },
@@ -59,6 +68,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clicks: '4.1K',
             ctr: '3.7%',
             budget: 'Rp 8jt',
+            spend: 'Rp 3.100.000',
+            reach: '280K',
+            reachGoal: '400K',
             timeLeft: '5 days left',
             isPaused: false
         },
@@ -73,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function () {
             clicks: '1.2K',
             ctr: '2.1%',
             budget: 'Rp 5jt',
+            spend: 'Rp 1.200.000',
+            reach: '85K',
+            reachGoal: '200K',
             timeLeft: 'Paused',
             isPaused: true
         }
@@ -153,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <div style="font-size: var(--text-xs); color: var(--color-gray-500);">Budget: ${c.budget} • ${c.timeLeft}</div>
-                    <button class="btn btn-ghost btn-sm" onclick="openCampaignDetail(${c.id})">Details</button>
+                    <button class="btn btn-outline btn-sm" style="color: var(--color-primary-600); border-color: var(--color-primary-200); font-weight: 700;" onclick="openCampaignDetail(${c.id})">Details</button>
                 </div>
             </div>
         `).join('');
@@ -172,62 +187,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createModals() {
-        const modalStyles = `
-            <style>
-                .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0; left: 0; right: 0; bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    align-items: center; justify-content: center;
-                    padding: 20px;
-                }
-                .modal-overlay.active { display: flex; }
-                .modal-content {
-                    background: white;
-                    border-radius: var(--radius-xl);
-                    max-width: 600px;
-                    width: 100%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                }
-                .modal-header {
-                    display: flex; align-items: center; justify-content: space-between;
-                    padding: var(--space-5) var(--space-6);
-                    border-bottom: 1px solid var(--color-gray-200);
-                }
-                .modal-body { padding: var(--space-6); }
-                .modal-footer {
-                    display: flex; gap: var(--space-3); justify-content: flex-end;
-                    padding: var(--space-4) var(--space-6);
-                    border-top: 1px solid var(--color-gray-200);
-                }
-                .performance-grid {
-                    display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-                    margin-top: 20px;
-                }
-                .perf-item {
-                    padding: 16px; background: var(--color-gray-50);
-                    border-radius: var(--radius-lg);
-                }
-                .perf-item label { display: block; font-size: 12px; color: var(--color-gray-500); margin-bottom: 4px; }
-                .perf-item span { font-size: 18px; font-weight: 700; color: var(--color-gray-900); }
-            </style>
-        `;
-        document.head.insertAdjacentHTML('beforeend', modalStyles);
 
         const modalsHTML = `
             <div class="modal-overlay" id="campaignDetailModal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Campaign Performance</h3>
-                        <button onclick="closeModal('campaignDetailModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('campaignDetailModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" id="campaignDetailBody"></div>
                     <div class="modal-footer">
                         <button class="btn btn-outline" onclick="closeModal('campaignDetailModal')">Close</button>
-                        <button class="btn btn-primary" onclick="alert('Optimization logic would go here')">Optimize Ads</button>
+                        <button class="btn btn-primary" id="optimizeBtn" onclick="optimizeAds()">
+                            <i data-lucide="zap"></i> Optimize Ads
+                        </button>
                     </div>
                 </div>
             </div>
@@ -236,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Create New Campaign</h3>
-                        <button onclick="closeModal('newCampaignModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('newCampaignModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body">
                         <form id="newCampaignForm">
@@ -308,26 +281,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
                 <div class="perf-item">
                     <label>Spend</label>
-                    <span>Rp 4.250.000</span>
+                    <span>${campaign.spend}</span>
                 </div>
             </div>
             
             <div style="margin-top: 24px;">
                 <label style="display:block; font-size:12px; color:var(--color-gray-500); margin-bottom:8px;">AUDIENCE REACH</label>
                 <div style="height:8px; background:var(--color-gray-100); border-radius:4px; overflow:hidden;">
-                    <div style="width:65%; height:100%; background:var(--color-primary-500);"></div>
+                    <div style="width: ${calculateReachPercent(campaign.reach, campaign.reachGoal)}%; height:100%; background:var(--color-primary-500);"></div>
                 </div>
                 <div style="display:flex; justify-content:space-between; margin-top:4px; font-size:12px; color:var(--color-gray-500);">
-                    <span>650K reached</span>
-                    <span>Goal: 1M</span>
+                    <span>${campaign.reach} reached</span>
+                    <span>Goal: ${campaign.reachGoal}</span>
                 </div>
             </div>
         `;
-        document.getElementById('campaignDetailModal').classList.add('active');
+        document.getElementById('campaignDetailModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
 
     window.openNewCampaignModal = function () {
-        document.getElementById('newCampaignModal').classList.add('active');
+        document.getElementById('newCampaignModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
 
     window.saveNewCampaign = function () {
@@ -336,15 +311,89 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     window.closeModal = function (id) {
-        document.getElementById(id).classList.remove('active');
+        document.getElementById(id).classList.remove('show');
+        document.body.style.overflow = '';
     };
+
+    window.optimizeAds = function () {
+        const btn = document.getElementById('optimizeBtn');
+        const originalContent = btn.innerHTML;
+
+        btn.disabled = true;
+        btn.innerHTML = '<i data-lucide="loader" class="spin"></i> Optimizing...';
+        lucide.createIcons();
+
+        // Simulate AI optimization process
+        setTimeout(() => {
+            btn.innerHTML = '<i data-lucide="check"></i> Optimized!';
+            lucide.createIcons();
+
+            showNotification('Campaign has been optimized using AI recommendation! Budget efficiency increased by 12%.', 'success');
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+                lucide.createIcons();
+            }, 2000);
+        }, 1500);
+    };
+
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 24px;
+            background: white;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 2000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 4px solid ${type === 'success' ? 'var(--color-secondary-500)' : 'var(--color-primary-500)'};
+        `;
+
+        notification.innerHTML = `
+            <i data-lucide="${type === 'success' ? 'check-circle' : 'info'}" style="color: ${type === 'success' ? 'var(--color-secondary-500)' : 'var(--color-primary-500)'}"></i>
+            <span style="font-weight: 600; font-size: 14px;">${message}</span>
+        `;
+
+        document.body.appendChild(notification);
+        lucide.createIcons();
+
+        setTimeout(() => {
+            notification.style.transform = 'translateY(0)';
+            notification.style.opacity = '1';
+        }, 100);
+
+        setTimeout(() => {
+            notification.style.transform = 'translateY(100px)';
+            notification.style.opacity = '0';
+            setTimeout(() => notification.remove(), 300);
+        }, 4000);
+    }
 
     // Close on backdrop click
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', function (e) {
-            if (e.target === this) closeModal(this.id);
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.body.style.overflow = '';
+            }
         });
     });
+
+    function calculateReachPercent(reach, goal) {
+        const r = parseFloat(reach.replace(/[KM]/g, (m) => m === 'K' ? '1000' : '1000000'));
+        const g = parseFloat(goal.replace(/[KM]/g, (m) => m === 'K' ? '1000' : '1000000'));
+        return Math.min(100, Math.round((r / g) * 100));
+    }
 
     // Initial Render
     renderCampaigns();

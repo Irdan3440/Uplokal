@@ -159,53 +159,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createModals() {
-        const modalStyles = `
-            <style>
-                .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0; left: 0; right: 0; bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    align-items: center; justify-content: center;
-                    padding: 20px;
-                }
-                .modal-overlay.active { display: flex; }
-                .modal-content {
-                    background: white;
-                    border-radius: var(--radius-xl);
-                    max-width: 700px;
-                    width: 100%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                    position: relative;
-                }
-                .modal-header {
-                    display: flex; align-items: center; justify-content: space-between;
-                    padding: var(--space-5) var(--space-6);
-                    border-bottom: 1px solid var(--color-gray-200);
-                }
-                .modal-body { padding: var(--space-6); }
-                .modal-footer {
-                    display: flex; gap: var(--space-3); justify-content: flex-end;
-                    padding: var(--space-4) var(--space-6);
-                    border-top: 1px solid var(--color-gray-200);
-                }
-                .supplier-match-item {
-                    display: flex; justify-content: space-between; align-items: center;
-                    padding: 16px; border: 1px solid var(--color-gray-100);
-                    border-radius: var(--radius-lg); margin-bottom: 12px;
-                }
-            </style>
-        `;
-        document.head.insertAdjacentHTML('beforeend', modalStyles);
 
         const modalsHTML = `
             <div class="modal-overlay" id="rfqDetailModal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>RFQ Details</h3>
-                        <button onclick="closeModal('rfqDetailModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('rfqDetailModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" id="rfqDetailBody"></div>
                     <div class="modal-footer">
@@ -218,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Supplier Matcher</h3>
-                        <button onclick="closeModal('supplierMatcherModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('supplierMatcherModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body">
                         <p style="margin-bottom: 20px; color: var(--color-gray-600);">AI has found the best suppliers for this request:</p>
@@ -261,7 +221,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 </div>
             </div>
         `;
-        document.getElementById('rfqDetailModal').classList.add('active');
+        document.getElementById('rfqDetailModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
 
     window.openSupplierMatcher = function (id) {
@@ -288,11 +249,13 @@ document.addEventListener('DOMContentLoaded', function () {
             </div>
         `).join('');
 
-        document.getElementById('supplierMatcherModal').classList.add('active');
+        document.getElementById('supplierMatcherModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     };
 
     window.closeModal = function (id) {
-        document.getElementById(id).classList.remove('active');
+        document.getElementById(id).classList.remove('show');
+        document.body.style.overflow = '';
     };
 
     // Initial render

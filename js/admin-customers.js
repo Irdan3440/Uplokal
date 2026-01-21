@@ -215,63 +215,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Modal functions
     function createModals() {
-        const modalStyles = `
-            <style>
-                .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 20px;
-                }
-                .modal-overlay.active { display: flex; }
-                .modal-content {
-                    background: white;
-                    border-radius: var(--radius-xl);
-                    max-width: 600px;
-                    width: 100%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                    animation: modalSlideIn 0.3s ease;
-                }
-                .modal-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: var(--space-5) var(--space-6);
-                    border-bottom: 1px solid var(--color-gray-200);
-                }
-                .modal-body { padding: var(--space-6); }
-                .modal-footer {
-                    display: flex;
-                    gap: var(--space-3);
-                    justify-content: flex-end;
-                    padding: var(--space-4) var(--space-6);
-                    border-top: 1px solid var(--color-gray-200);
-                }
-                .detail-row {
-                    display: flex;
-                    padding: var(--space-3) 0;
-                    border-bottom: 1px solid var(--color-gray-100);
-                }
-                .detail-label { width: 140px; color: var(--color-gray-500); flex-shrink: 0; }
-                .btn-danger { background: var(--color-error); color: white; }
-            </style>
-        `;
-        document.head.insertAdjacentHTML('beforeend', modalStyles);
 
         const modalsHTML = `
             <div class="modal-overlay" id="viewCustomerModal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Customer Details</h3>
-                        <button onclick="closeModal('viewCustomerModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('viewCustomerModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" id="viewCustomerBody"></div>
                     <div class="modal-footer">
@@ -284,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 id="modalTitle">Edit Customer</h3>
-                        <button onclick="closeModal('editCustomerModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('editCustomerModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body">
                         <form id="customerForm">
@@ -367,7 +317,8 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="detail-row"><span class="detail-label">Status</span><span class="status-badge ${customer.status.toLowerCase()}">${customer.status}</span></div>
             <div class="detail-row"><span class="detail-label">Phone</span><span>${customer.phone}</span></div>
         `;
-        document.getElementById('viewCustomerModal').classList.add('active');
+        document.getElementById('viewCustomerModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     function openEditModal(customer) {
@@ -379,19 +330,24 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('custCountry').value = customer.country;
         document.getElementById('custStatus').value = customer.status;
         document.getElementById('custPhone').value = customer.phone;
-        document.getElementById('editCustomerModal').classList.add('active');
+        const modal = document.getElementById('editCustomerModal');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     function openAddCustomerModal() {
         document.getElementById('modalTitle').textContent = 'Add New Customer';
         document.getElementById('customerForm').reset();
         document.getElementById('customerId').value = '';
-        document.getElementById('editCustomerModal').classList.add('active');
+        const modal = document.getElementById('editCustomerModal');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     function openDeleteConfirmModal(id) {
         document.getElementById('deleteCustId').value = id;
-        document.getElementById('deleteCustModal').classList.add('active');
+        document.getElementById('deleteCustModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     function saveCustomer() {
@@ -432,7 +388,10 @@ document.addEventListener('DOMContentLoaded', function () {
         applyFilters();
     }
 
-    window.closeModal = function (id) { document.getElementById(id).classList.remove('active'); };
+    window.closeModal = function (id) {
+        document.getElementById(id).classList.remove('show');
+        document.body.style.overflow = '';
+    };
 
     // Initial load
     renderTable();

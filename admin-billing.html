@@ -137,7 +137,7 @@
                     <h1 class="page-title">Billing</h1>
                 </div>
                 <div class="topbar-right">
-                    <button class="btn btn-primary btn-sm">
+                    <button class="btn btn-primary btn-sm" id="exportReportBtn">
                         <i data-lucide="download"></i>
                         Export Report
                     </button>
@@ -152,7 +152,7 @@
                             style="background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%);">
                             <i data-lucide="banknote"></i>
                         </div>
-                        <div class="stat-card-value">Rp 125jt</div>
+                        <div class="stat-card-value" id="revenueValue">Rp 0</div>
                         <div class="stat-card-label">Revenue This Month</div>
                         <div class="stat-trend positive">
                             <i data-lucide="trending-up"></i> +18%
@@ -162,21 +162,21 @@
                         <div class="stat-card-icon gradient-green">
                             <i data-lucide="receipt"></i>
                         </div>
-                        <div class="stat-card-value">156</div>
+                        <div class="stat-card-value" id="paidInvoicesCount">0</div>
                         <div class="stat-card-label">Paid Invoices</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-icon gradient-orange">
                             <i data-lucide="clock"></i>
                         </div>
-                        <div class="stat-card-value">12</div>
+                        <div class="stat-card-value" id="pendingInvoicesCount">0</div>
                         <div class="stat-card-label">Pending Invoices</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-card-icon gradient-purple">
                             <i data-lucide="crown"></i>
                         </div>
-                        <div class="stat-card-value">89</div>
+                        <div class="stat-card-value" id="premiumSubscribersCount">0</div>
                         <div class="stat-card-label">Premium Subscribers</div>
                     </div>
                 </div>
@@ -186,90 +186,39 @@
                     <div class="dashboard-card" style="margin-bottom: var(--space-6);">
                         <div class="card-header">
                             <h3>💳 Recent Payments</h3>
-                            <a href="#" class="btn btn-ghost btn-sm">View All</a>
+                            <a href="#" class="btn btn-ghost btn-sm" id="viewAllInvoices">View All</a>
                         </div>
                         <div class="card-body" style="padding: 0;">
-                            <table style="width: 100%; border-collapse: collapse;">
-                                <thead>
-                                    <tr
-                                        style="background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200);">
-                                        <th
-                                            style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                            Invoice</th>
-                                        <th
-                                            style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                            Client</th>
-                                        <th
-                                            style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                            Amount</th>
-                                        <th
-                                            style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                            Status</th>
-                                        <th
-                                            style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
-                                            Date</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                        <td
-                                            style="padding: var(--space-4); font-size: var(--text-sm); font-weight: 600;">
-                                            #INV-2024-001</td>
-                                        <td style="padding: var(--space-4); font-size: var(--text-sm);">Kopi Gayo
-                                            Premium</td>
-                                        <td style="padding: var(--space-4); text-align: right; font-weight: 600;">Rp
-                                            15.000.000</td>
-                                        <td style="padding: var(--space-4); text-align: center;"><span
-                                                class="badge badge-success">Paid</span></td>
-                                        <td
-                                            style="padding: var(--space-4); text-align: right; font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            20 Jan 2024</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                        <td
-                                            style="padding: var(--space-4); font-size: var(--text-sm); font-weight: 600;">
-                                            #INV-2024-002</td>
-                                        <td style="padding: var(--space-4); font-size: var(--text-sm);">Batik Sekar Arum
-                                        </td>
-                                        <td style="padding: var(--space-4); text-align: right; font-weight: 600;">Rp
-                                            12.500.000</td>
-                                        <td style="padding: var(--space-4); text-align: center;"><span
-                                                class="badge badge-success">Paid</span></td>
-                                        <td
-                                            style="padding: var(--space-4); text-align: right; font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            19 Jan 2024</td>
-                                    </tr>
-                                    <tr style="border-bottom: 1px solid var(--color-gray-100);">
-                                        <td
-                                            style="padding: var(--space-4); font-size: var(--text-sm); font-weight: 600;">
-                                            #INV-2024-003</td>
-                                        <td style="padding: var(--space-4); font-size: var(--text-sm);">PT Kulit
-                                            Nusantara</td>
-                                        <td style="padding: var(--space-4); text-align: right; font-weight: 600;">Rp
-                                            8.750.000</td>
-                                        <td style="padding: var(--space-4); text-align: center;"><span
-                                                class="badge badge-warning">Pending</span></td>
-                                        <td
-                                            style="padding: var(--space-4); text-align: right; font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            18 Jan 2024</td>
-                                    </tr>
-                                    <tr>
-                                        <td
-                                            style="padding: var(--space-4); font-size: var(--text-sm); font-weight: 600;">
-                                            #INV-2024-004</td>
-                                        <td style="padding: var(--space-4); font-size: var(--text-sm);">CV Tenun Lombok
-                                        </td>
-                                        <td style="padding: var(--space-4); text-align: right; font-weight: 600;">Rp
-                                            5.000.000</td>
-                                        <td style="padding: var(--space-4); text-align: center;"><span class="badge"
-                                                style="background: var(--color-error); color: white;">Overdue</span>
-                                        </td>
-                                        <td
-                                            style="padding: var(--space-4); text-align: right; font-size: var(--text-sm); color: var(--color-gray-500);">
-                                            15 Jan 2024</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                                <table style="width: 100%; border-collapse: collapse;">
+                                    <thead style="position: sticky; top: 0; z-index: 10;">
+                                        <tr
+                                            style="background: var(--color-gray-50); border-bottom: 1px solid var(--color-gray-200);">
+                                            <th
+                                                style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Invoice</th>
+                                            <th
+                                                style="text-align: left; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Client</th>
+                                            <th
+                                                style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Amount</th>
+                                            <th
+                                                style="text-align: center; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Status</th>
+                                            <th
+                                                style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Date</th>
+                                            <th
+                                                style="text-align: right; padding: var(--space-4); font-size: var(--text-sm); color: var(--color-gray-600);">
+                                                Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="billingTableBody">
+                                        <!-- Invoices loaded dynamically -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -279,50 +228,9 @@
                             <h3>👑 Subscription Overview</h3>
                         </div>
                         <div class="card-body">
-                            <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); background: var(--color-gray-50); border-radius: var(--radius-lg);">
-                                    <div>
-                                        <div style="font-weight: 600;">Free Plan</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-gray-500);">Basic
-                                            features</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div style="font-weight: 700; font-size: var(--text-xl);">159</div>
-                                        <div style="font-size: var(--text-xs); color: var(--color-gray-500);">clients
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-primary-100) 100%); border-radius: var(--radius-lg); border: 1px solid var(--color-primary-200);">
-                                    <div>
-                                        <div style="font-weight: 600; color: var(--color-primary-700);">Pro Plan</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-primary-600);">Rp
-                                            500K/month</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div
-                                            style="font-weight: 700; font-size: var(--text-xl); color: var(--color-primary-700);">
-                                            72</div>
-                                        <div style="font-size: var(--text-xs); color: var(--color-primary-600);">clients
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    style="display: flex; justify-content: space-between; align-items: center; padding: var(--space-4); background: linear-gradient(135deg, var(--color-accent-50) 0%, var(--color-accent-100) 100%); border-radius: var(--radius-lg); border: 1px solid var(--color-accent-200);">
-                                    <div>
-                                        <div style="font-weight: 600; color: var(--color-accent-700);">Enterprise</div>
-                                        <div style="font-size: var(--text-sm); color: var(--color-accent-600);">Custom
-                                            pricing</div>
-                                    </div>
-                                    <div style="text-align: right;">
-                                        <div
-                                            style="font-weight: 700; font-size: var(--text-xl); color: var(--color-accent-700);">
-                                            17</div>
-                                        <div style="font-size: var(--text-xs); color: var(--color-accent-600);">clients
-                                        </div>
-                                    </div>
-                                </div>
+                            <div style="display: flex; flex-direction: column; gap: var(--space-4);"
+                                id="subscriptionContainer">
+                                <!-- Subscription items loaded dynamically -->
                             </div>
                         </div>
                     </div>
@@ -331,8 +239,31 @@
         </main>
     </div>
 
+    <!-- Invoice Modal -->
+    <div class="modal-overlay" id="invoiceModal">
+        <div class="modal-content" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 id="invoiceModalTitle">Invoice Detail</h3>
+                <button class="modal-close" onclick="closeModal('invoiceModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="invoiceModalBody">
+                <!-- Invoice details will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('invoiceModal')">Close</button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i data-lucide="printer"></i>
+                    Print Invoice
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/app.js"></script>
     <script src="js/dashboard-common.js"></script>
+    <script src="js/admin-billing.js"></script>
 </body>
 
 </html>

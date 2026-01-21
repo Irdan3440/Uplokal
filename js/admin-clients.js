@@ -237,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Client Details</h3>
-                        <button class="modal-close" onclick="closeModal('viewClientModal')">&times;</button>
+                        <button class="modal-close" onclick="closeModal('viewClientModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" id="viewClientBody">
                         <!-- Content populated by JS -->
@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 id="editModalTitle">Edit Client</h3>
-                        <button class="modal-close" onclick="closeModal('editClientModal')">&times;</button>
+                        <button class="modal-close" onclick="closeModal('editClientModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body">
                         <form id="clientForm">
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content" style="max-width: 400px;">
                     <div class="modal-header">
                         <h3>Confirm Delete</h3>
-                        <button class="modal-close" onclick="closeModal('deleteConfirmModal')">&times;</button>
+                        <button class="modal-close" onclick="closeModal('deleteConfirmModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" style="text-align: center;">
                         <i data-lucide="alert-triangle" style="width: 48px; height: 48px; color: var(--color-warning); margin-bottom: 16px;"></i>
@@ -336,103 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.body.insertAdjacentHTML('beforeend', modalsHTML);
 
-        // Add modal styles
-        const styles = `
-            <style>
-                .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 20px;
-                }
-                .modal-overlay.active {
-                    display: flex;
-                }
-                .modal-content {
-                    background: white;
-                    border-radius: var(--radius-xl);
-                    max-width: 600px;
-                    width: 100%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                    animation: modalSlideIn 0.3s ease;
-                }
-                @keyframes modalSlideIn {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-20px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                .modal-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: var(--space-5) var(--space-6);
-                    border-bottom: 1px solid var(--color-gray-200);
-                }
-                .modal-header h3 {
-                    margin: 0;
-                    font-size: var(--text-lg);
-                }
-                .modal-close {
-                    background: none;
-                    border: none;
-                    font-size: 24px;
-                    cursor: pointer;
-                    color: var(--color-gray-500);
-                    transition: color 0.2s;
-                }
-                .modal-close:hover {
-                    color: var(--color-gray-900);
-                }
-                .modal-body {
-                    padding: var(--space-6);
-                }
-                .modal-footer {
-                    display: flex;
-                    gap: var(--space-3);
-                    justify-content: flex-end;
-                    padding: var(--space-4) var(--space-6);
-                    border-top: 1px solid var(--color-gray-200);
-                }
-                .client-detail-row {
-                    display: flex;
-                    padding: var(--space-3) 0;
-                    border-bottom: 1px solid var(--color-gray-100);
-                }
-                .client-detail-row:last-child {
-                    border-bottom: none;
-                }
-                .detail-label {
-                    font-weight: var(--font-medium);
-                    color: var(--color-gray-500);
-                    width: 140px;
-                    flex-shrink: 0;
-                }
-                .detail-value {
-                    color: var(--color-gray-900);
-                }
-                .btn-danger {
-                    background: var(--color-error);
-                    color: white;
-                }
-                .btn-danger:hover {
-                    background: #dc2626;
-                }
-            </style>
-        `;
-        document.head.insertAdjacentHTML('beforeend', styles);
+        // Attach modal button listeners
 
         // Attach modal button listeners
         document.getElementById('saveClientBtn').addEventListener('click', saveClient);
@@ -487,7 +391,8 @@ document.addEventListener('DOMContentLoaded', function () {
             openEditModal(client);
         };
 
-        modal.classList.add('active');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
         if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
@@ -506,7 +411,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('clientEmail').value = client.email;
         document.getElementById('clientPhone').value = client.phone;
 
-        modal.classList.add('active');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     // Open Add Client Modal
@@ -518,13 +424,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('clientForm').reset();
         document.getElementById('clientId').value = '';
 
-        modal.classList.add('active');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     // Open Delete Confirm Modal
     function openDeleteConfirmModal(id) {
         document.getElementById('deleteClientId').value = id;
-        document.getElementById('deleteConfirmModal').classList.add('active');
+        document.getElementById('deleteConfirmModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
         if (typeof lucide !== 'undefined') lucide.createIcons();
     }
 
@@ -584,14 +492,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Close modal function (global)
     window.closeModal = function (modalId) {
-        document.getElementById(modalId).classList.remove('active');
+        document.getElementById(modalId).classList.remove('show');
+        document.body.style.overflow = '';
     };
 
     // Close modal on overlay click
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', function (e) {
             if (e.target === this) {
-                this.classList.remove('active');
+                this.classList.remove('show');
+                document.body.style.overflow = '';
             }
         });
     });

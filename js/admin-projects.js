@@ -252,75 +252,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function createModals() {
-        const modalStyles = `
-            <style>
-                .modal-overlay {
-                    display: none;
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: rgba(0, 0, 0, 0.5);
-                    z-index: 1000;
-                    align-items: center;
-                    justify-content: center;
-                    padding: 20px;
-                }
-                .modal-overlay.active { display: flex; }
-                .modal-content {
-                    background: white;
-                    border-radius: var(--radius-xl);
-                    max-width: 600px;
-                    width: 100%;
-                    max-height: 90vh;
-                    overflow-y: auto;
-                    animation: modalSlideIn 0.3s ease;
-                    position: relative;
-                }
-                .modal-header {
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
-                    padding: var(--space-5) var(--space-6);
-                    border-bottom: 1px solid var(--color-gray-200);
-                }
-                .modal-body { padding: var(--space-6); }
-                .modal-footer {
-                    display: flex;
-                    gap: var(--space-3);
-                    justify-content: flex-end;
-                    padding: var(--space-4) var(--space-6);
-                    border-top: 1px solid var(--color-gray-200);
-                }
-                .project-detail-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 24px;
-                    margin-top: 24px;
-                }
-                .detail-item label {
-                    display: block;
-                    font-size: var(--text-xs);
-                    color: var(--color-gray-500);
-                    margin-bottom: 4px;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
-                .detail-item span {
-                    font-weight: 600;
-                    color: var(--color-gray-900);
-                }
-            </style>
-        `;
-        document.head.insertAdjacentHTML('beforeend', modalStyles);
 
         const modalsHTML = `
             <div class="modal-overlay" id="projectModal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 id="modalTitle">New Project</h3>
-                        <button onclick="closeModal('projectModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('projectModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body">
                         <form id="projectForm">
@@ -375,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3>Project Details</h3>
-                        <button onclick="closeModal('projectDetailModal')" style="background:none; border:none; font-size:24px; cursor:pointer;">&times;</button>
+                        <button class="modal-close" onclick="closeModal('projectDetailModal')"><i data-lucide="x"></i></button>
                     </div>
                     <div class="modal-body" id="projectDetailBody">
                         <!-- Populated by JS -->
@@ -415,7 +353,8 @@ document.addEventListener('DOMContentLoaded', function () {
             delete form.dataset.id;
         }
 
-        modal.classList.add('active');
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
     function openProjectDetailModal(project) {
@@ -469,7 +408,8 @@ document.addEventListener('DOMContentLoaded', function () {
             openProjectModal(project);
         };
 
-        document.getElementById('projectDetailModal').classList.add('active');
+        document.getElementById('projectDetailModal').classList.add('show');
+        document.body.style.overflow = 'hidden';
         lucide.createIcons();
     }
 
@@ -509,13 +449,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.closeModal = function (id) {
-        document.getElementById(id).classList.remove('active');
+        document.getElementById(id).classList.remove('show');
+        document.body.style.overflow = '';
     };
 
     // Close on backdrop click
     document.querySelectorAll('.modal-overlay').forEach(modal => {
         modal.addEventListener('click', function (e) {
-            if (e.target === this) closeModal(this.id);
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.body.style.overflow = '';
+            }
         });
     });
 
