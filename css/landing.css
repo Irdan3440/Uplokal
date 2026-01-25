@@ -87,6 +87,12 @@
     margin-bottom: var(--space-6);
 }
 
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: var(--text-3xl);
+    }
+}
+
 @media (min-width: 768px) {
     .hero-title {
         font-size: var(--text-5xl);
@@ -385,11 +391,18 @@
     transition: all var(--transition-base);
     text-decoration: none;
     /* Fixed size 250x250px */
-    min-width: 250px;
-    width: 250px;
-    min-height: 250px;
-    height: 250px;
+    min-height: 200px;
+    height: 200px;
     flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+    .category-card {
+        min-width: 250px;
+        width: 250px;
+        min-height: 250px;
+        height: 250px;
+    }
 }
 
 .category-card:hover {

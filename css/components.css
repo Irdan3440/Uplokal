@@ -312,6 +312,129 @@
     box-shadow: var(--shadow-primary);
 }
 
+/* ========== Mobile Menu Drawer ========== */
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 360px;
+    height: 100%;
+    background: white;
+    z-index: 2100;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-drawer.active {
+    right: 0;
+}
+
+.drawer-header {
+    padding: var(--space-4) var(--space-6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-gray-100);
+}
+
+.drawer-header .logo-image {
+    height: 32px;
+}
+
+.drawer-close {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-50);
+    border-radius: var(--radius-lg);
+    color: var(--color-gray-600);
+}
+
+.drawer-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-6);
+}
+
+.drawer-section {
+    margin-bottom: var(--space-8);
+}
+
+.drawer-section-title {
+    font-size: 11px;
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-gray-400);
+    margin-bottom: var(--space-3);
+}
+
+.drawer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.drawer-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    border-radius: var(--radius-xl);
+    color: var(--color-gray-800);
+    text-decoration: none;
+    font-weight: var(--font-medium);
+    transition: all var(--transition-fast);
+}
+
+.drawer-link:hover {
+    background: var(--color-gray-50);
+    color: var(--color-primary-600);
+}
+
+.drawer-link svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-gray-400);
+}
+
+.drawer-link:hover svg {
+    color: var(--color-primary-600);
+}
+
+.drawer-footer {
+    padding: var(--space-6);
+    background: var(--color-gray-50);
+    text-align: center;
+}
+
+.drawer-footer p {
+    font-size: 10px;
+    color: var(--color-gray-500);
+    margin: 0;
+}
+
+.drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 2050;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* ========== Cards ========== */
 .card {
     background: white;

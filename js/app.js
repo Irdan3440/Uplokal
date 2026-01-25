@@ -81,6 +81,31 @@ function initMobileNav() {
             navToggle.classList.toggle('active');
         });
     }
+
+    // Mobile Menu Drawer Logic
+    const menuTrigger = document.getElementById('mobileMenuTrigger');
+    const menuDrawer = document.getElementById('mobileMenuDrawer');
+    const menuClose = document.getElementById('mobileMenuClose');
+
+    if (menuTrigger && menuDrawer) {
+        // Create backdrop if not exists
+        let drawerOverlay = document.querySelector('.drawer-overlay');
+        if (!drawerOverlay) {
+            drawerOverlay = document.createElement('div');
+            drawerOverlay.className = 'drawer-overlay';
+            document.body.appendChild(drawerOverlay);
+        }
+
+        const toggleDrawer = (show) => {
+            menuDrawer.classList.toggle('active', show);
+            drawerOverlay.classList.toggle('active', show);
+            document.body.style.overflow = show ? 'hidden' : '';
+        };
+
+        menuTrigger.addEventListener('click', () => toggleDrawer(true));
+        if (menuClose) menuClose.addEventListener('click', () => toggleDrawer(false));
+        drawerOverlay.addEventListener('click', () => toggleDrawer(false));
+    }
 }
 
 // ========== Dashboard Sidebar Toggle ==========

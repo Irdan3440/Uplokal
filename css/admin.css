@@ -437,8 +437,43 @@
 }
 
 .table-action svg {
-    width: 16px;
     height: 16px;
+}
+
+/* ========== Admin Mobile Refinements ========== */
+@media (max-width: 768px) {
+    .verification-item {
+        flex-direction: column;
+        gap: var(--space-3);
+    }
+
+    .verification-actions {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .chart-area {
+        height: 200px;
+    }
+
+    .chart-bar {
+        width: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quick-stat-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-1);
+    }
+
+    /* Force stack inline grids used for quick access cards */
+    [style*="grid-template-columns: repeat(2, 1fr)"],
+    [style*="grid-template-columns: 2fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 /* ========== Status Badge ========== */
