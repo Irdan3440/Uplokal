@@ -241,64 +241,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <img src="https://ui-avatars.com/api/?name=John+Doe&background=EF4444&color=fff"
-                                                alt="John Doe">
-                                            <span>John Doe</span>
-                                        </div>
-                                    </td>
-                                    <td>Toko Elektronik JD</td>
-                                    <td><span class="reason-badge">Produk Palsu</span></td>
-                                    <td>15 Jan 2024</td>
-                                    <td>7 hari</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="action-btn unsuspend" title="Cabut Suspend"
-                                                onclick="unsuspendUser('john')">
-                                                <i data-lucide="user-check"></i>
-                                            </button>
-                                            <button class="action-btn extend" title="Perpanjang"
-                                                onclick="extendSuspension('john')">
-                                                <i data-lucide="clock"></i>
-                                            </button>
-                                            <button class="action-btn ban" title="Ban Permanen"
-                                                onclick="banUser('john')">
-                                                <i data-lucide="ban"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="user-cell">
-                                            <img src="https://ui-avatars.com/api/?name=Sarah+Lee&background=F59E0B&color=fff"
-                                                alt="Sarah Lee">
-                                            <span>Sarah Lee</span>
-                                        </div>
-                                    </td>
-                                    <td>Fashion SL Store</td>
-                                    <td><span class="reason-badge">Spam</span></td>
-                                    <td>12 Jan 2024</td>
-                                    <td>3 hari</td>
-                                    <td>
-                                        <div class="action-buttons">
-                                            <button class="action-btn unsuspend" title="Cabut Suspend"
-                                                onclick="unsuspendUser('sarah')">
-                                                <i data-lucide="user-check"></i>
-                                            </button>
-                                            <button class="action-btn extend" title="Perpanjang"
-                                                onclick="extendSuspension('sarah')">
-                                                <i data-lucide="clock"></i>
-                                            </button>
-                                            <button class="action-btn ban" title="Ban Permanen"
-                                                onclick="banUser('sarah')">
-                                                <i data-lucide="ban"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <!-- Suspended users will be rendered here via JS -->
                             </tbody>
                         </table>
                     </div>
@@ -323,8 +266,10 @@
                                 <span>245 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Fashion & Tekstil')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"
+                                    onclick="deleteCategory('Fashion & Tekstil')"><i data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                         <div class="category-card">
@@ -336,8 +281,10 @@
                                 <span>189 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Makanan & Minuman')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"
+                                    onclick="deleteCategory('Makanan & Minuman')"><i data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                         <div class="category-card">
@@ -349,8 +296,10 @@
                                 <span>156 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Kerajinan Tangan')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"
+                                    onclick="deleteCategory('Kerajinan Tangan')"><i data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                         <div class="category-card">
@@ -362,8 +311,10 @@
                                 <span>98 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Furniture')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus" onclick="deleteCategory('Furniture')"><i
+                                        data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                         <div class="category-card">
@@ -375,8 +326,10 @@
                                 <span>134 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Elektronik')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus"
+                                    onclick="deleteCategory('Elektronik')"><i data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                         <div class="category-card">
@@ -388,8 +341,10 @@
                                 <span>67 bisnis</span>
                             </div>
                             <div class="category-actions">
-                                <button class="action-btn" title="Edit"><i data-lucide="edit-2"></i></button>
-                                <button class="action-btn delete" title="Hapus"><i data-lucide="trash-2"></i></button>
+                                <button class="action-btn" title="Edit" onclick="editCategory('Lainnya')"><i
+                                        data-lucide="edit-2"></i></button>
+                                <button class="action-btn delete" title="Hapus" onclick="deleteCategory('Lainnya')"><i
+                                        data-lucide="trash-2"></i></button>
                             </div>
                         </div>
                     </div>
@@ -422,7 +377,7 @@
     <div class="modal-overlay" id="suspendModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Suspend User</h2>
+                <h3>Suspend User</h3>
                 <button class="modal-close" onclick="closeSuspendModal()">
                     <i data-lucide="x"></i>
                 </button>
@@ -431,24 +386,22 @@
                 <div class="form-group">
                     <label>Durasi Suspend *</label>
                     <select class="form-input" id="suspendDuration">
-                        <option value="">Pilih Durasi</option>
-                        <option value="1">1 Hari</option>
+                        <option value="">Pilih Durasi...</option>
                         <option value="3">3 Hari</option>
                         <option value="7">7 Hari</option>
                         <option value="14">14 Hari</option>
                         <option value="30">30 Hari</option>
-                        <option value="permanent">Permanen (Ban)</option>
+                        <option value="999">Permanen</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Alasan Suspend *</label>
                     <select class="form-input" id="suspendReason">
-                        <option value="">Pilih Alasan</option>
-                        <option value="fake_product">Produk Palsu</option>
-                        <option value="spam">Spam/Konten Berulang</option>
+                        <option value="">Pilih Alasan...</option>
+                        <option value="spam">Spam / Konten Sampah</option>
+                        <option value="fraud">Indikasi Penipuan</option>
                         <option value="inappropriate">Konten Tidak Pantas</option>
-                        <option value="fraud">Penipuan</option>
-                        <option value="harassment">Pelecehan</option>
+                        <option value="tos">Melanggar Syarat & Ketentuan</option>
                         <option value="other">Lainnya</option>
                     </select>
                 </div>
@@ -457,19 +410,118 @@
                     <textarea class="form-input" id="suspendNote" rows="3"
                         placeholder="Catatan untuk admin lain..."></textarea>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeSuspendModal()">Batal</button>
+                <button class="btn btn-danger" onclick="confirmSuspend()">Suspend User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Flagged Content Modal -->
+    <div class="modal-overlay" id="viewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Detail Konten</h3>
+                <button class="modal-close" onclick="closeModal('viewModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="viewModalBody">
+                <!-- Content populated via JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('viewModal')">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialized Modals for Standardization -->
+
+    <!-- Dynamic Confirmation Modal (Abaikan, Ban, Unsuspend) -->
+    <div class="modal-overlay" id="confirmActionModal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3 id="confirmTitle">Konfirmasi</h3>
+                <button class="modal-close" onclick="closeModal('confirmActionModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">Apakah Anda yakin ingin melanjutkan aksi ini?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('confirmActionModal')">Batal</button>
+                <button class="btn" id="confirmActionButton">Ya, Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Warning Modal (Peringatan) -->
+    <div class="modal-overlay" id="warnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Kirim Peringatan</h3>
+                <button class="modal-close" onclick="closeModal('warnModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
                 <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="notifyUser" checked>
-                        <span>Kirim notifikasi ke user</span>
-                    </label>
+                    <label>Pesan Peringatan untuk User *</label>
+                    <textarea class="form-input" id="warnMessageInput" rows="4"
+                        placeholder="Tuliskan alasan atau instruksi perbaikan..."></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="closeSuspendModal()">Batal</button>
-                <button class="btn btn-danger" onclick="confirmSuspend()">
-                    <i data-lucide="user-x"></i>
-                    Suspend User
+                <button class="btn btn-outline" onclick="closeModal('warnModal')">Batal</button>
+                <button class="btn btn-warning" id="submitWarnButton">Kirim Peringatan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Modal (Add/Edit) -->
+    <div class="modal-overlay" id="categoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="categoryModalTitle">Tambah Kategori</h3>
+                <button class="modal-close" onclick="closeModal('categoryModal')">
+                    <i data-lucide="x"></i>
                 </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Kategori *</label>
+                    <input type="text" class="form-input" id="categoryNameInput"
+                        placeholder="Contoh: Fashion & Tekstil">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('categoryModal')">Batal</button>
+                <button class="btn btn-primary" id="saveCategoryButton">Simpan Kategori</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extend Suspension Modal -->
+    <div class="modal-overlay" id="extendModal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3>Perpanjang Suspend</h3>
+                <button class="modal-close" onclick="closeModal('extendModal')">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Jumlah Hari *</label>
+                    <input type="number" class="form-input" id="extendDaysInput" placeholder="Masukkan jumlah hari..."
+                        min="1">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('extendModal')">Batal</button>
+                <button class="btn btn-warning" id="confirmExtendButton">Perpanjang</button>
             </div>
         </div>
     </div>

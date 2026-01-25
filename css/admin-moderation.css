@@ -432,10 +432,87 @@
     flex: 1;
 }
 
-.category-card .category-info h4 {
-    font-size: var(--text-base);
+/* Button Refinements (from screenshots) */
+.btn-success {
+    background: #10B981;
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2) var(--space-4);
     font-weight: var(--font-semibold);
-    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.btn-warning {
+    background: #F59E0B;
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2) var(--space-4);
+    font-weight: var(--font-semibold);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.categories-header .btn-primary {
+    background: #2563EB;
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: var(--space-3) var(--space-6);
+    font-weight: var(--font-bold);
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+    transition: all 0.2s ease;
+}
+
+.categories-header .btn-primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.23);
+}
+
+/* User Action Icons */
+.action-btn.unsuspend {
+    color: #10B981;
+    background: #ECFDF5;
+}
+
+.action-btn.extend {
+    color: #F59E0B;
+    background: #FFFBEB;
+}
+
+.action-btn.ban {
+    color: #EF4444;
+    background: #FEF2F2;
+}
+
+.action-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Categories Actions */
+.category-actions .action-btn {
+    padding: var(--space-2);
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.category-actions .action-btn:hover {
+    background: var(--color-gray-100);
+}
+
+.category-actions .action-btn.delete {
+    color: var(--color-gray-400);
+}
+
+.category-actions .action-btn.delete:hover {
+    background: #FEF2F2;
+    color: #EF4444;
 }
 
 .category-card .category-info span {
@@ -446,6 +523,11 @@
 .category-card .category-actions {
     display: flex;
     gap: var(--space-1);
+}
+
+/* Modal Size Utilities */
+.modal-sm {
+    max-width: 400px;
 }
 
 /* Animations */

@@ -169,38 +169,95 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Modals State
+    let activeAction = null;
+    let activeId = null;
+    let activeData = null;
+
+    // --- Flagged Actions ---
+
     // Dismiss flag
     window.dismissFlag = function (id) {
-        if (confirm('Abaikan report ini?')) {
-            const el = document.querySelector(`.flagged-item[data-id="${id}"]`);
-            if (el) {
-                el.classList.add('fade-out-right');
-                setTimeout(() => {
-                    const idx = flaggedData.findIndex(item => item.id === id);
-                    if (idx !== -1) flaggedData.splice(idx, 1);
-                    removeAndRefresh(id);
-                    showNotification('Report diabaikan', 'success');
-                }, 400);
-            }
+        activeAction = 'dismiss';
+        activeId = id;
+
+        const confirmTitle = document.getElementById('confirmTitle');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const confirmBtn = document.getElementById('confirmActionButton');
+
+        if (confirmTitle) confirmTitle.textContent = 'Abaikan Report';
+        if (confirmMessage) confirmMessage.textContent = 'Apakah Anda yakin ingin mengabaikan report ini? Konten akan tetap tersedia.';
+        if (confirmBtn) {
+            confirmBtn.className = 'btn btn-success';
+            confirmBtn.textContent = 'Ya, Abaikan';
         }
+
+        openModal('confirmActionModal');
     };
 
     // Warn user
     window.warnUser = function (id) {
-        const message = prompt('Pesan peringatan untuk user:');
-        if (message) {
-            const el = document.querySelector(`.flagged-item[data-id="${id}"]`);
+        activeId = id;
+        document.getElementById('warnMessageInput').value = '';
+        openModal('warnModal');
+    };
+
+    // Handler for Warning Modal
+    document.getElementById('submitWarnButton').addEventListener('click', function () {
+        const message = document.getElementById('warnMessageInput').value;
+        if (!message) {
+            alert('Pesan peringatan wajib diisi');
+            return;
+        }
+
+        const el = document.querySelector(`.flagged-item[data-id="${activeId}"]`);
+        if (el) {
+            el.classList.add('fade-out');
+            setTimeout(() => {
+                const idx = flaggedData.findIndex(item => item.id === activeId);
+                if (idx !== -1) flaggedData.splice(idx, 1);
+                removeAndRefresh(activeId);
+                closeModal('warnModal');
+                showNotification('Peringatan terkirim ke user', 'warning');
+            }, 400);
+        }
+    });
+
+    // Confirmation Handler (Shared for multiple actions)
+    document.getElementById('confirmActionButton').addEventListener('click', function () {
+        if (activeAction === 'dismiss') {
+            const el = document.querySelector(`.flagged-item[data-id="${activeId}"]`);
             if (el) {
-                el.classList.add('fade-out');
+                el.classList.add('fade-out-right');
                 setTimeout(() => {
-                    const idx = flaggedData.findIndex(item => item.id === id);
+                    const idx = flaggedData.findIndex(item => item.id === activeId);
                     if (idx !== -1) flaggedData.splice(idx, 1);
-                    removeAndRefresh(id);
-                    showNotification('Peringatan terkirim ke user', 'warning');
+                    removeAndRefresh(activeId);
+                    closeModal('confirmActionModal');
+                    showNotification('Report diabaikan', 'success');
                 }, 400);
             }
+        } else if (activeAction === 'unsuspend') {
+            const idx = suspendedData.findIndex(u => u.id === activeId);
+            if (idx !== -1) suspendedData.splice(idx, 1);
+            currentSuspended = [...suspendedData];
+            renderSuspendedUsers();
+            updateStats();
+            closeModal('confirmActionModal');
+            showNotification('Suspend dicabut', 'success');
+        } else if (activeAction === 'ban') {
+            const idx = suspendedData.findIndex(u => u.id === activeId);
+            if (idx !== -1) suspendedData.splice(idx, 1);
+            currentSuspended = [...suspendedData];
+            renderSuspendedUsers();
+            updateStats();
+            closeModal('confirmActionModal');
+            showNotification('User telah di-ban permanen', 'error');
+        } else if (activeAction === 'deleteCategory') {
+            closeModal('confirmActionModal');
+            showNotification(`Kategori "${activeData}" telah dihapus`, 'success');
         }
-    };
+    });
 
     // Suspend user
     let currentSuspendId = null;
@@ -211,23 +268,15 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     window.openSuspendModal = function () {
-        const modal = document.getElementById('suspendModal');
-        if (modal) {
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden';
-        }
+        openModal('suspendModal');
     };
 
     window.closeSuspendModal = function () {
-        const modal = document.getElementById('suspendModal');
-        if (modal) {
-            modal.classList.remove('show');
-            document.body.style.overflow = '';
-            currentSuspendId = null;
-            document.getElementById('suspendDuration').value = '';
-            document.getElementById('suspendReason').value = '';
-            document.getElementById('suspendNote').value = '';
-        }
+        closeModal('suspendModal');
+        currentSuspendId = null;
+        document.getElementById('suspendDuration').value = '';
+        document.getElementById('suspendReason').value = '';
+        document.getElementById('suspendNote').value = '';
     };
 
     window.confirmSuspend = function () {
@@ -260,66 +309,282 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Update stats
     function updateStats() {
-        const count = flaggedData.length;
+        const flaggedCount = flaggedData.length;
+        const suspendedCount = suspendedData.length;
 
-        // Update tab badge
+        // Update tab badges
         const flaggedBadge = document.getElementById('flaggedBadge');
-        if (flaggedBadge) flaggedBadge.textContent = count;
+        if (flaggedBadge) flaggedBadge.textContent = flaggedCount;
 
-        // Update stat card
-        const statCard = document.querySelector('.stat-card.flagged .stat-value');
-        if (statCard) statCard.textContent = count;
+        const suspendedBadge = document.getElementById('suspendedBadge');
+        if (suspendedBadge) suspendedBadge.textContent = suspendedCount;
+
+        // Update stat cards
+        const flaggedStat = document.querySelector('.stat-card.flagged .stat-value');
+        if (flaggedStat) flaggedStat.textContent = flaggedCount;
+
+        const suspendedStat = document.querySelector('.stat-card.suspended .stat-value');
+        if (suspendedStat) suspendedStat.textContent = suspendedCount;
     }
 
     window.viewContent = function (id) {
-        alert(`Viewing content for ID: ${id}`);
+        const item = flaggedData.find(i => i.id === id);
+        if (!item) return;
+
+        const modalBody = document.getElementById('viewModalBody');
+        if (modalBody) {
+            modalBody.innerHTML = `
+                <div class="business-preview" style="margin-bottom: var(--space-6)">
+                    <img src="${item.avatar}" alt="${item.businessName}" style="width: 64px; height: 64px; border-radius: var(--radius-lg)">
+                    <div class="business-info">
+                        <h4 style="font-size: var(--text-lg)">${item.businessName}</h4>
+                        <p>${item.businessCategory}</p>
+                    </div>
+                </div>
+                <div style="margin-bottom: var(--space-4)">
+                    <strong style="display: block; margin-bottom: var(--space-2); font-size: var(--text-sm); text-transform: uppercase; color: var(--color-gray-500)">Alasan Report</strong>
+                    <ul style="padding-left: var(--space-4); margin: 0">
+                        ${item.reasons.map(r => `<li style="margin-bottom: var(--space-1)">${r}</li>`).join('')}
+                    </ul>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-top: var(--space-6); padding-top: var(--space-6); border-top: 1px solid var(--color-gray-100)">
+                    <div>
+                        <span style="display: block; font-size: var(--text-xs); color: var(--color-gray-500)">Status Konten</span>
+                        <span class="type-badge ${item.type}">${item.typeName}</span>
+                    </div>
+                    <div>
+                        <span style="display: block; font-size: var(--text-xs); color: var(--color-gray-500)">Jumlah Laporan</span>
+                        <span class="report-count ${item.urgent ? 'urgent' : ''}">${item.reports} Laporan</span>
+                    </div>
+                </div>
+            `;
+            openModal('viewModal');
+        }
+    };
+
+    window.openModal = function (modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeModal = function (modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
     };
 
     // Initial render
+    // Suspended Data
+    const suspendedData = [
+        {
+            id: 'john',
+            name: 'John Doe',
+            business: 'Toko Elektronik JD',
+            reason: 'Produk Palsu',
+            date: '15 Jan 2024',
+            duration: '7 hari',
+            avatar: 'https://ui-avatars.com/api/?name=John+Doe&background=EF4444&color=fff'
+        },
+        {
+            id: 'sarah',
+            name: 'Sarah Lee',
+            business: 'Fashion SL Store',
+            reason: 'Spam',
+            date: '12 Jan 2024',
+            duration: '3 hari',
+            avatar: 'https://ui-avatars.com/api/?name=Sarah+Lee&background=F59E0B&color=fff'
+        }
+    ];
+
+    let currentSuspended = [...suspendedData];
+
+    // Render suspended users
+    function renderSuspendedUsers() {
+        const tableBody = document.querySelector('.suspended-table tbody');
+        if (!tableBody) return;
+
+        if (currentSuspended.length === 0) {
+            tableBody.innerHTML = `<tr><td colspan="6" style="text-align: center; padding: 2rem; color: var(--color-gray-500)">Tidak ada user dalam daftar suspend.</td></tr>`;
+            return;
+        }
+
+        tableBody.innerHTML = currentSuspended.map(user => `
+            <tr data-id="${user.id}">
+                <td>
+                    <div class="user-cell">
+                        <img src="${user.avatar}" alt="${user.name}">
+                        <span>${user.name}</span>
+                    </div>
+                </td>
+                <td>${user.business}</td>
+                <td><span class="reason-badge">${user.reason}</span></td>
+                <td>${user.date}</td>
+                <td>${user.duration}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="action-btn unsuspend" title="Cabut Suspend" onclick="unsuspendUser('${user.id}')">
+                            <i data-lucide="user-check"></i>
+                        </button>
+                        <button class="action-btn extend" title="Perpanjang" onclick="extendSuspension('${user.id}')">
+                            <i data-lucide="clock"></i>
+                        </button>
+                        <button class="action-btn ban" title="Ban Permanen" onclick="banUser('${user.id}')">
+                            <i data-lucide="ban"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // --- Suspended User Actions ---
+
+    // Unsuspend
+    window.unsuspendUser = function (userId) {
+        activeAction = 'unsuspend';
+        activeId = userId;
+
+        const confirmTitle = document.getElementById('confirmTitle');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const confirmBtn = document.getElementById('confirmActionButton');
+
+        if (confirmTitle) confirmTitle.textContent = 'Cabut Suspend';
+        if (confirmMessage) confirmMessage.textContent = `Apakah Anda yakin ingin mencabut suspend untuk user ${userId}?`;
+        if (confirmBtn) {
+            confirmBtn.className = 'btn btn-success';
+            confirmBtn.textContent = 'Ya, Cabut Suspend';
+        }
+
+        openModal('confirmActionModal');
+    };
+
+    // Extend
+    window.extendSuspension = function (userId) {
+        activeId = userId;
+        document.getElementById('extendDaysInput').value = '';
+        openModal('extendModal');
+    };
+
+    document.getElementById('confirmExtendButton').addEventListener('click', function () {
+        const days = document.getElementById('extendDaysInput').value;
+        if (days && !isNaN(days)) {
+            const user = suspendedData.find(u => u.id === activeId);
+            if (user) user.duration = `${days} hari`;
+            currentSuspended = [...suspendedData];
+            renderSuspendedUsers();
+            updateStats();
+            closeModal('extendModal');
+            showNotification(`Suspend diperpanjang ${days} hari`, 'warning');
+        } else {
+            alert('Masukkan jumlah hari yang valid');
+        }
+    });
+
+    // Ban
+    window.banUser = function (userId) {
+        activeAction = 'ban';
+        activeId = userId;
+
+        const confirmTitle = document.getElementById('confirmTitle');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const confirmBtn = document.getElementById('confirmActionButton');
+
+        if (confirmTitle) confirmTitle.textContent = 'Ban Permanen';
+        if (confirmMessage) confirmMessage.textContent = `Apakah Anda yakin ingin BAN PERMANEN user ${userId}? Aksi ini tidak dapat dibatalkan.`;
+        if (confirmBtn) {
+            confirmBtn.className = 'btn btn-danger';
+            confirmBtn.textContent = 'Ya, Ban Permanen';
+        }
+
+        openModal('confirmActionModal');
+    };
+
+    // --- Category Management ---
+
+    window.addCategory = function () {
+        activeAction = 'addCategory';
+        document.getElementById('categoryModalTitle').textContent = 'Tambah Kategori';
+        document.getElementById('categoryNameInput').value = '';
+        openModal('categoryModal');
+    };
+
+    window.editCategory = function (name) {
+        activeAction = 'editCategory';
+        activeData = name;
+        document.getElementById('categoryModalTitle').textContent = 'Edit Kategori';
+        document.getElementById('categoryNameInput').value = name;
+        openModal('categoryModal');
+    };
+
+    document.getElementById('saveCategoryButton').addEventListener('click', function () {
+        const name = document.getElementById('categoryNameInput').value;
+        if (name) {
+            if (activeAction === 'addCategory') {
+                showNotification(`Kategori "${name}" ditambahkan`, 'success');
+            } else {
+                showNotification(`Kategori "${activeData}" diperbarui menjadi "${name}"`, 'success');
+            }
+            closeModal('categoryModal');
+        } else {
+            alert('Nama kategori wajib diisi');
+        }
+    });
+
+    window.deleteCategory = function (name) {
+        activeAction = 'deleteCategory';
+        activeData = name;
+
+        const confirmTitle = document.getElementById('confirmTitle');
+        const confirmMessage = document.getElementById('confirmMessage');
+        const confirmBtn = document.getElementById('confirmActionButton');
+
+        if (confirmTitle) confirmTitle.textContent = 'Hapus Kategori';
+        if (confirmMessage) confirmMessage.textContent = `Apakah Anda yakin ingin menghapus kategori "${name}"? Semua bisnis di kategori ini akan dipindahkan ke kategori "Lainnya".`;
+        if (confirmBtn) {
+            confirmBtn.className = 'btn btn-danger';
+            confirmBtn.textContent = 'Ya, Hapus';
+        }
+
+        openModal('confirmActionModal');
+    };
+
+    // Modal backdrop click to close
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    });
+
+    // Helper: Show Notification
+    function showNotification(message, type) {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.innerHTML = `
+            <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'alert-circle'}"></i>
+            <span>${message}</span>
+        `;
+
+        document.body.appendChild(notification);
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+
+        setTimeout(() => notification.classList.add('show'), 10);
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Initial render
     renderFlaggedItems();
+    renderSuspendedUsers();
 });
-
-// Original notification and unsuspend functions
-function unsuspendUser(userId) {
-    if (confirm(`Cabut suspend untuk user ${userId}?`)) {
-        showNotification('Suspend dicabut', 'success');
-    }
-}
-
-function extendSuspension(userId) {
-    const days = prompt('Perpanjang berapa hari?');
-    if (days && !isNaN(days)) {
-        showNotification(`Suspend diperpanjang ${days} hari`, 'warning');
-    }
-}
-
-function banUser(userId) {
-    if (confirm(`BAN PERMANEN user ${userId}?`)) {
-        showNotification('User telah di-ban permanen', 'error');
-    }
-}
-
-function addCategory() {
-    const name = prompt('Nama kategori baru:');
-    if (name) {
-        showNotification(`Kategori "${name}" ditambahkan`, 'success');
-    }
-}
-
-function showNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'alert-circle'}"></i>
-        <span>${message}</span>
-    `;
-
-    document.body.appendChild(notification);
-    if (typeof lucide !== 'undefined') lucide.createIcons();
-
-    setTimeout(() => notification.classList.add('show'), 10);
-    setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
-}
