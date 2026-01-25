@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lengkapi profil bisnis Anda di Uplokal untuk mendapatkan rekomendasi yang tepat">
+    <title>Lengkapi Profil Bisnis | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
+    <link rel="shortcut icon" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+
+<body>
+    <div class="auth-layout">
+        <!-- Sidebar Visual -->
+        <aside class="auth-sidebar">
+            <div class="auth-sidebar-content">
+                <h2>Lengkapi<br>Profil Bisnis 🚀</h2>
+                <p>Informasi yang akurat membantu kami memberikan peluang yang lebih relevan untuk bisnis Anda.</p>
+
+                <div class="auth-features">
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <span>Profil yang menarik minat investor</span>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <span>Pencocokan B2B yang lebih akurat</span>
+                    </div>
+                    <div class="auth-feature">
+                        <div class="auth-feature-icon">
+                            <i data-lucide="check-circle"></i>
+                        </div>
+                        <span>Verifikasi centang biru "Verified"</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-sidebar-decoration">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="auth-main">
+            <div class="auth-container" style="max-width: 520px;">
+                <div class="auth-logo">
+                    <a href="index.html" class="logo">
+                        <img src="assets/logo.png" alt="Uplokal" class="logo-image">
+                    </a>
+                </div>
+
+                <!-- Progress Steps -->
+                <div class="onboarding-progress">
+                    <div class="progress-step completed">
+                        <div class="step-dot"><i data-lucide="check" style="width: 14px; height: 14px;"></i></div>
+                        <span class="step-label">Akun</span>
+                    </div>
+                    <div class="step-line completed"></div>
+                    <div class="progress-step active">
+                        <div class="step-dot">2</div>
+                        <span class="step-label">Bisnis</span>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="progress-step">
+                        <div class="step-dot">3</div>
+                        <span class="step-label">Diagnosa</span>
+                    </div>
+                </div>
+
+                <div class="auth-header">
+                    <h1>Profil Bisnis</h1>
+                    <p>Langkah 2 dari 3 - Beritahu kami tentang usaha Anda</p>
+                </div>
+
+                <form class="auth-form" id="profileForm" onsubmit="return handleProfileUpdate(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="businessName">Nama Bisnis / Brand</label>
+                        <input type="text" id="businessName" class="form-input"
+                            placeholder="Masukkan nama brand produk Anda" required>
+                    </div>
+
+                    <div class="form-row-grid"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: var(--space-5);">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="category">Kategori Industri</label>
+                            <select id="category" class="form-input" required>
+                                <option value="" disabled selected>Pilih kategori</option>
+                                <option value="manufaktur">Manufaktur</option>
+                                <option value="kerajinan">Kerajinan</option>
+                                <option value="fnb">Food & Beverage</option>
+                                <option value="fashion">Fashion & Tekstil</option>
+                                <option value="agrikultur">Agrikultur</option>
+                                <option value="furniture">Furniture</option>
+                                <option value="lainnya">Lainnya</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="businessSize">Skala Bisnis</label>
+                            <select id="businessSize" class="form-input" required>
+                                <option value="" disabled selected>Pilih skala</option>
+                                <option value="micro">Mikro (< 2M)</option>
+                                <option value="small">Kecil (2M - 15M)</option>
+                                <option value="medium">Menengah (15M - 50M)</option>
+                                <option value="large">Besar (> 50M)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row-grid"
+                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: var(--space-5);">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="location">Provinsi Bisnis</label>
+                            <select id="location" class="form-input" required onchange="handleProvinceChange()">
+                                <option value="" disabled selected>Pilih Provinsi</option>
+                                <option value="Aceh">Aceh</option>
+                                <option value="Sumatera Utara">Sumatera Utara</option>
+                                <option value="Sumatera Barat">Sumatera Barat</option>
+                                <option value="Riau">Riau</option>
+                                <option value="Kepulauan Riau">Kepulauan Riau</option>
+                                <option value="Jambi">Jambi</option>
+                                <option value="Sumatera Selatan">Sumatera Selatan</option>
+                                <option value="Bangka Belitung">Bangka Belitung</option>
+                                <option value="Bengkulu">Bengkulu</option>
+                                <option value="Lampung">Lampung</option>
+                                <option value="DKI Jakarta">DKI Jakarta</option>
+                                <option value="Jawa Barat">Jawa Barat</option>
+                                <option value="Banten">Banten</option>
+                                <option value="Jawa Tengah">Jawa Tengah</option>
+                                <option value="DI Yogyakarta">DI Yogyakarta</option>
+                                <option value="Jawa Timur">Jawa Timur</option>
+                                <option value="Bali">Bali</option>
+                                <option value="NTB">NTB</option>
+                                <option value="NTT">NTT</option>
+                                <option value="Kalimantan Barat">Kalimantan Barat</option>
+                                <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+                                <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+                                <option value="Kalimantan Timur">Kalimantan Timur</option>
+                                <option value="Kalimantan Utara">Kalimantan Utara</option>
+                                <option value="Sulawesi Utara">Sulawesi Utara</option>
+                                <option value="Gorontalo">Gorontalo</option>
+                                <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+                                <option value="Sulawesi Barat">Sulawesi Barat</option>
+                                <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+                                <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+                                <option value="Maluku">Maluku</option>
+                                <option value="Maluku Utara">Maluku Utara</option>
+                                <option value="Papua">Papua</option>
+                                <option value="Papua Barat">Papua Barat</option>
+                                <option value="Papua Selatan">Papua Selatan</option>
+                                <option value="Papua Tengah">Papua Tengah</option>
+                                <option value="Papua Pegunungan">Papua Pegunungan</option>
+                                <option value="Papua Barat Daya">Papua Barat Daya</option>
+                                <option value="Lainnya">Lainnya...</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label class="form-label" for="city">Kota / Kabupaten</label>
+                            <select id="city" class="form-input" required disabled>
+                                <option value="" disabled selected>Pilih Kota</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="description">Deskripsi Singkat Bisnis</label>
+                        <textarea id="description" class="form-input" rows="4"
+                            placeholder="Ceritakan apa yang membuat produk Anda unik..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="website">Website atau Social Media (Opsional)</label>
+                        <input type="url" id="website" class="form-input"
+                            placeholder="https://instagram.com/bisnisanda">
+                    </div>
+
+                    <div class="auth-actions" style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <a href="register-business.html" class="btn btn-outline" style="flex: 1;">
+                            <i data-lucide="arrow-left"></i>
+                            Kembali
+                        </a>
+                        <button type="submit" class="btn btn-primary" style="flex: 2;">
+                            Simpan & Lanjutkan
+                            <i data-lucide="rocket"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>Butuh bantuan? <a href="contact.html">Pusat Bantuan</a></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        const cityData = {
+            "Aceh": ["Banda Aceh", "Lhokseumawe", "Langsa", "Meulaboh", "Sabang", "Aceh Besar", "Bireuen", "Aceh Tengah"],
+            "Sumatera Utara": ["Medan", "Binjai", "Pematangsiantar", "Tanjungbalai", "Tebing Tinggi", "Sibolga", "Padangsidimpuan", "Deli Serdang", "Karo"],
+            "Sumatera Barat": ["Padang", "Bukittinggi", "Payakumbuh", "Pariaman", "Padang Panjang", "Solok", "Sawahlunto"],
+            "Riau": ["Pekanbaru", "Dumai", "Bengkalis", "Siak", "Inhil (Tembilahan)", "Inhu (Rengat)", "Pelalawan"],
+            "Kepulauan Riau": ["Batam", "Tanjungpinang", "Bintan", "Karimun", "Natuna", "Anambas", "Lingga"],
+            "Jambi": ["Jambi", "Sungai Penuh", "Muaro Jambi", "Batanghari", "Tebo", "Bungo", "Merangin"],
+            "Sumatera Selatan": ["Palembang", "Prabumulih", "Lubuklinggau", "Pagar Alam", "Ogan Ilir", "OKI", "Muara Enim", "Banyuasin"],
+            "Bangka Belitung": ["Pangkalpinang", "Bangka (Sungailiat)", "Belitung (Tanjung Pandan)", "Bangka Barat", "Bangka Tengah", "Bangka Selatan"],
+            "Bengkulu": ["Bengkulu", "Rejang Lebong", "Muko Muko", "Kepahiang", "Kaur", "Seluma", "Lebong"],
+            "Lampung": ["Bandar Lampung", "Metro", "Lampung Selatan", "Lampung Tengah", "Lampung Timur", "Tanggamus", "Pringsewu"],
+            "DKI Jakarta": ["Jakarta Pusat", "Jakarta Selatan", "Jakarta Barat", "Jakarta Utara", "Jakarta Timur", "Kepulauan Seribu"],
+            "Jawa Barat": ["Bandung", "Bekasi", "Depok", "Bogor", "Cirebon", "Sukabumi", "Tasikmalaya", "Cimahi", "Banjar", "Garut", "Karawang", "Purwakarta", "Subang", "Sumedang", "Indramayu", "Majalengka", "Kuningan", "Ciamis", "Cianjur"],
+            "Banten": ["Tangerang", "Tangerang Selatan", "Serang", "Cilegon", "Pandeglang", "Lebak"],
+            "Jawa Tengah": ["Semarang", "Surakarta (Solo)", "Magelang", "Salatiga", "Pekalongan", "Tegal", "Banyumas (Purwokerto)", "Cilacap", "Kudus", "Jepara", "Brebes", "Wonosobo", "Boyolali", "Karanganyar", "Sragen"],
+            "DI Yogyakarta": ["Yogyakarta", "Sleman", "Bantul", "Kulon Progo", "Gunung Kidul"],
+            "Jawa Timur": ["Surabaya", "Malang", "Sidoarjo", "Gresik", "Kediri", "Madiun", "Pasuruan", "Probolinggo", "Blitar", "Batu", "Banyuwangi", "Jember", "Mojokerto", "Lumajang", "Bojonegoro", "Tuban", "Lamongan"],
+            "Bali": ["Denpasar", "Badung", "Gianyar", "Tabanan", "Buleleng", "Klungkung", "Bangli", "Karangasem", "Jembrana"],
+            "NTB": ["Mataram", "Bima", "Lombok Barat", "Lombok Timur", "Lombok Tengah", "Sumbawa", "Dompu"],
+            "NTT": ["Kupang", "Ende", "Maumere", "Labuan Bajo", "Sikka", "Alor", "Sumba Timur", "Sumba Barat"],
+            "Kalimantan Barat": ["Pontianak", "Singkawang", "Ketapang", "Sintang", "Mempawah", "Sambas", "Kubu Raya"],
+            "Kalimantan Tengah": ["Palangkaraya", "Sampit", "Pangkalan Bun", "Kapuas", "Barito Utara", "Barito Selatan"],
+            "Kalimantan Selatan": ["Banjarmasin", "Banjarbaru", "Martapura", "Tabalong", "Tanah Bumbu", "Kotabaru", "Barito Kuala"],
+            "Kalimantan Timur": ["Samarinda", "Balikpapan", "Bontang", "Kutai Kartanegara", "Kutai Timur", "Berau", "Paser"],
+            "Kalimantan Utara": ["Tanjung Selor", "Tarakan", "Nunukan", "Malinau", "Tana Tidung"],
+            "Sulawesi Utara": ["Manado", "Bitung", "Tomohon", "Kotamobagu", "Minahasa", "Sangihe", "Talaud"],
+            "Gorontalo": ["Gorontalo", "Limboto", "Boalemo", "Pohuwato", "Bone Bolango", "Gorontalo Utara"],
+            "Sulawesi Tengah": ["Palu", "Luwuk", "Poso", "Donggala", "Tolitoli", "Morowali", "Sigi", "Parigi Moutong"],
+            "Sulawesi Barat": ["Mamuju", "Majene", "Polewali Mandar", "Pasangkayu", "Mamasa"],
+            "Sulawesi Selatan": ["Makassar", "Parepare", "Palopo", "Gowa", "Maros", "Bone", "Bulukumba", "Tana Toraja", "Luwu"],
+            "Sulawesi Tenggara": ["Kendari", "Bau-Bau", "Kolaka", "Muna", "Buton", "Wakatobi", "Konawe"],
+            "Maluku": ["Ambon", "Tual", "Masohi", "Buru", "Maluku Tenggara", "Kepulauan Tanimbar"],
+            "Maluku Utara": ["Ternate", "Tidore", "Sofifi", "Halmahera Utara", "Halmahera Selatan", "Halmahera Barat"],
+            "Papua": ["Jayapura", "Sentani", "Biak", "Serui", "Sarmi", "Keerom"],
+            "Papua Barat": ["Manokwari", "Fakfak", "Kaimana", "Teluk Bintuni", "Teluk Wondama"],
+            "Papua Selatan": ["Merauke", "Asmat", "Boven Digoel", "Mappi"],
+            "Papua Tengah": ["Nabire", "Timika", "Paniai", "Dogiyai", "Deiyai", "Puncak Jaya"],
+            "Papua Pegunungan": ["Wamena", "Lanny Jaya", "Tolikara", "Nduga", "Yalimo", "Yahukimo"],
+            "Papua Barat Daya": ["Sorong", "Raja Ampat", "Tambrauw", "Maybrat", "Sorong Selatan"]
+        };
+
+        function handleProvinceChange() {
+            const provinceSelect = document.getElementById('location');
+            const citySelect = document.getElementById('city');
+            const selectedProvince = provinceSelect.value;
+
+            // Reset city select
+            citySelect.innerHTML = '<option value="" disabled selected>Pilih Kota / Kabupaten</option>';
+            citySelect.disabled = true;
+
+            if (selectedProvince && cityData[selectedProvince]) {
+                cityData[selectedProvince].forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+                citySelect.disabled = false;
+            } else if (selectedProvince === "Lainnya") {
+                const option = document.createElement('option');
+                option.value = "Lainnya";
+                option.textContent = "Lainnya...";
+                citySelect.appendChild(option);
+                citySelect.disabled = false;
+            }
+        }
+
+        function handleProfileUpdate(e) {
+            e.preventDefault();
+
+            // Collect data
+            const formData = {
+                name: document.getElementById('businessName').value,
+                category: document.getElementById('category').value,
+                province: document.getElementById('location').value,
+                city: document.getElementById('city').value,
+                description: document.getElementById('description').value
+            };
+
+            console.log('Business Profile Saved:', formData);
+
+            // Simulation
+            showToast('Profil berhasil disimpan!', 'success');
+
+            setTimeout(() => {
+                // Redirect to next step (Diagnostic)
+                window.location.href = 'dashboard-diagnostic.html';
+            }, 1500);
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>

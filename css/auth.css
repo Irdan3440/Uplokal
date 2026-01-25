@@ -430,10 +430,15 @@
     width: 40px;
     height: 2px;
     background: var(--color-gray-200);
+    align-self: center;
 }
 
-.progress-step.completed .step-line {
+.step-line.completed {
     background: var(--color-secondary-500);
+}
+
+.step-line.active {
+    background: var(--color-primary-500);
 }
 
 .step-label {

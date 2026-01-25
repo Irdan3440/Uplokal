@@ -28,7 +28,136 @@
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/landing.css?v=1.2">
+
+    <!-- Custom Style for Pricing Failsafe & Enhancement -->
+    <style>
+        .pricing-grid {
+            display: grid !important;
+            grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+            margin-top: 3rem !important;
+            position: relative;
+            z-index: 10;
+        }
+
+        @media (min-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+        }
+
+        .pricing-card {
+            background: #ffffff !important;
+            border-radius: 24px !important;
+            border: 1px solid #e2e8f0 !important;
+            padding: 2.5rem !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 2rem !important;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            position: relative !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-12px) !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+            border-color: #2563eb !important;
+        }
+
+        .pricing-card.featured {
+            border-color: #2563eb !important;
+            border-width: 2px !important;
+            background: linear-gradient(180deg, #f0f7ff 0%, #ffffff 100%) !important;
+        }
+
+        .plan-header {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+        }
+
+        .plan-icon {
+            width: 56px !important;
+            height: 56px !important;
+            border-radius: 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: #f8fafc !important;
+        }
+
+        .plan-icon i {
+            width: 28px !important;
+            height: 28px !important;
+            color: #64748b !important;
+        }
+
+        .plan-pro .plan-icon {
+            background: #dbeafe !important;
+        }
+
+        .plan-pro .plan-icon i {
+            color: #2563eb !important;
+        }
+
+        .plan-stats-pill {
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            padding: 0.25rem 0.75rem !important;
+            background: #f1f5f9 !important;
+            border-radius: 9999px !important;
+            font-size: 0.75rem !important;
+            font-weight: 600 !important;
+            color: #475569 !important;
+            width: fit-content !important;
+        }
+
+        .plan-features {
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 1rem !important;
+            flex: 1 !important;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .plan-features li {
+            display: flex !important;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+            font-size: 0.875rem !important;
+            color: #4b5563 !important;
+            line-height: 1.5 !important;
+        }
+
+        .plan-features li i {
+            width: 20px !important;
+            height: 20px !important;
+            color: #10b981 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .featured-tag {
+            position: absolute !important;
+            top: -16px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+            color: white !important;
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 9999px !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3) !important;
+            z-index: 20 !important;
+        }
+    </style>
 </head>
 
 <body data-active-page="home">
