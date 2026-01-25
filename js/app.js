@@ -9,7 +9,18 @@ document.addEventListener('DOMContentLoaded', function () {
     initMobileNav();
     initDashboardSidebar();
     initAnimations();
+    initAdminSecretTrigger();
 });
+
+// ========== Secret Admin Trigger ==========
+function initAdminSecretTrigger() {
+    document.addEventListener('keydown', function (e) {
+        // Ctrl + Shift + Alt + A
+        if (e.ctrlKey && e.shiftKey && e.altKey && e.code === 'KeyA') {
+            window.location.href = 'uplokal-admin-portal.html';
+        }
+    });
+}
 
 // ========== Navbar Scroll Effect ==========
 function initNavbar() {
