@@ -434,8 +434,18 @@
 }
 
 .badge-warning {
-    background: var(--color-accent-100);
+    background: var(--color-warning-light);
     color: var(--color-accent-700);
+}
+
+.badge-error {
+    background: var(--color-error-light);
+    color: var(--color-error);
+}
+
+.badge-secondary {
+    background: var(--color-gray-100);
+    color: var(--color-gray-700);
 }
 
 /* ========== Tags ========== */

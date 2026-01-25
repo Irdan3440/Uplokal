@@ -162,14 +162,159 @@ function updateStats() {
     if (pendingStat) pendingStat.textContent = pendingCount;
 }
 
+// --- Modal Helpers ---
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+}
+
+// --- Action Functions ---
+
+// Invite
 function inviteMember() {
-    alert('Buka modal untuk mengirim undangan email kepada anggota tim baru.');
+    document.getElementById('inviteName').value = '';
+    document.getElementById('inviteEmail').value = '';
+    document.getElementById('inviteRole').value = 'Admin';
+    openModal('inviteModal');
 }
 
+function confirmInvite() {
+    const name = document.getElementById('inviteName').value;
+    const email = document.getElementById('inviteEmail').value;
+    const role = document.getElementById('inviteRole').value;
+
+    if (!name || !email) {
+        alert('Please fill in Name and Email');
+        return;
+    }
+
+    // Add to list
+    const newMember = {
+        id: Date.now(),
+        name: name,
+        role: role,
+        status: 'Offline',
+        email: email,
+        avatar: name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2),
+        lastActive: 'Never',
+        color: `hsl(${Math.random() * 360}, 70%, 50%)`
+    };
+
+    teamMembers.push(newMember);
+    filteredMembers = [...teamMembers];
+    renderTeam();
+    updateStats();
+    closeModal('inviteModal');
+    showNotification(`Invitation sent to ${email}`, 'success');
+}
+
+// Edit
 function editMember(id) {
-    alert('Edit detail dan role untuk anggota tim ID: ' + id);
+    const member = teamMembers.find(m => m.id === id);
+    if (!member) return;
+
+    document.getElementById('editMemberId').value = member.id;
+    document.getElementById('editMemberName').value = member.name;
+    document.getElementById('editMemberRole').value = member.role;
+    document.getElementById('editMemberStatus').value = member.status;
+
+    openModal('editMemberModal');
 }
 
+function saveMemberChanges() {
+    const id = parseInt(document.getElementById('editMemberId').value);
+    const name = document.getElementById('editMemberName').value;
+    const role = document.getElementById('editMemberRole').value;
+    const status = document.getElementById('editMemberStatus').value;
+
+    const idx = teamMembers.findIndex(m => m.id === id);
+    if (idx !== -1) {
+        teamMembers[idx].name = name;
+        teamMembers[idx].role = role;
+        teamMembers[idx].status = status;
+
+        // Update avatar if name changed
+        teamMembers[idx].avatar = name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+
+        filteredMembers = [...teamMembers];
+        renderTeam();
+        updateStats();
+        closeModal('editMemberModal');
+        showNotification('Member details updated', 'success');
+    }
+}
+
+// Delete
+let memberToDelete = null;
+
+function deleteMemberConfirm() {
+    const id = parseInt(document.getElementById('editMemberId').value);
+    const member = teamMembers.find(m => m.id === id);
+    if (!member) return;
+
+    memberToDelete = id;
+    document.getElementById('deleteTargetName').textContent = member.name;
+
+    closeModal('editMemberModal');
+    openModal('confirmDeleteModal');
+}
+
+function confirmDeleteMember() {
+    const idx = teamMembers.findIndex(m => m.id === memberToDelete);
+    if (idx !== -1) {
+        const name = teamMembers[idx].name;
+        teamMembers.splice(idx, 1);
+        filteredMembers = [...teamMembers];
+        renderTeam();
+        updateStats();
+        closeModal('confirmDeleteModal');
+        showNotification(`${name} removed from team`, 'error');
+    }
+}
+
+// Permissions
 function viewPermissions(id) {
-    alert('Lihat dan atur hak akses untuk anggota tim ID: ' + id);
+    const member = teamMembers.find(m => m.id === id);
+    if (!member) return;
+
+    // In a real app, we'd load permissions based on role
+    openModal('permissionsModal');
+}
+
+// --- Global UI Helpers ---
+
+function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i data-lucide="${type === 'success' ? 'check-circle' : type === 'error' ? 'x-circle' : 'info'}"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+
+    setTimeout(() => notification.classList.add('show'), 10);
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Ensure modals can be closed by clicking outside
+window.onclick = function (event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        closeModal(event.target.id);
+    }
 }
