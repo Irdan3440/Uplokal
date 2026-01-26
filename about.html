@@ -1,361 +1,438 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tentang Uplokal - Platform untuk membawa bisnis lokal ke pasar global">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Tentang Uplokal - Platform untuk membawa bisnis lokal ke pasar global"
+    />
     <title>Tentang Kami | Uplokal</title>
 
-
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon(1).png">
-    <link rel="shortcut icon" href="assets/favicon(1).png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon(1).png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon(1).png"
+    />
+    <link rel="shortcut icon" href="assets/favicon(1).png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
-    <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/landing.css">
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/components.css" />
+    <link rel="stylesheet" href="css/landing.css" />
 
     <style>
-        .page-header {
-            background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);
-            padding: calc(72px + var(--space-16)) 0 var(--space-16);
-            text-align: center;
-        }
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-50) 0%,
+          var(--color-secondary-50) 100%
+        );
+        padding: calc(72px + var(--space-16)) 0 var(--space-16);
+        text-align: center;
+      }
 
-        .page-header h1 {
-            font-size: var(--text-4xl);
-            margin-bottom: var(--space-4);
-        }
+      .page-header h1 {
+        font-size: var(--text-4xl);
+        margin-bottom: var(--space-4);
+      }
 
-        .page-header p {
-            font-size: var(--text-xl);
-            color: var(--color-gray-600);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+      .page-header p {
+        font-size: var(--text-xl);
+        color: var(--color-gray-600);
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-        .about-section {
-            padding: var(--space-16) 0;
-        }
+      .about-section {
+        padding: var(--space-16) 0;
+      }
 
+      .about-grid {
+        display: grid;
+        gap: var(--space-12);
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
         .about-grid {
-            display: grid;
-            gap: var(--space-12);
-            align-items: center;
+          grid-template-columns: 1fr 1fr;
         }
+      }
 
-        @media (min-width: 1024px) {
-            .about-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+      .about-content h2 {
+        font-size: var(--text-3xl);
+        margin-bottom: var(--space-6);
+      }
 
-        .about-content h2 {
-            font-size: var(--text-3xl);
-            margin-bottom: var(--space-6);
-        }
+      .about-content p {
+        color: var(--color-gray-600);
+        line-height: var(--leading-relaxed);
+        margin-bottom: var(--space-4);
+      }
 
-        .about-content p {
-            color: var(--color-gray-600);
-            line-height: var(--leading-relaxed);
-            margin-bottom: var(--space-4);
-        }
+      .about-image {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-100) 0%,
+          var(--color-secondary-100) 100%
+        );
+        border-radius: var(--radius-3xl);
+        padding: 0; /* Ubah dari var(--space-12) menjadi 0 agar gambar memenuhi kotak */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Tambahkan ini agar sudut gambar mengikuti border-radius */
+        aspect-ratio: 16 / 9; /* Menjaga proporsi kotak tetap profesional */
+      }
 
-        .about-image {
-            background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-secondary-100) 100%);
-            border-radius: var(--radius-3xl);
-            padding: var(--space-12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 8rem;
-        }
+      /* Tambahkan selector baru ini */
+      .about-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Gambar akan mengisi seluruh area tanpa merusak rasio */
+        display: block;
+      }
 
+      .values-grid {
+        display: grid;
+        gap: var(--space-6);
+      }
+
+      @media (min-width: 768px) {
         .values-grid {
-            display: grid;
-            gap: var(--space-6);
+          grid-template-columns: repeat(3, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .values-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
+      .value-card {
+        text-align: center;
+        padding: var(--space-8);
+        background: var(--color-gray-50);
+        border-radius: var(--radius-2xl);
+      }
 
-        .value-card {
-            text-align: center;
-            padding: var(--space-8);
-            background: var(--color-gray-50);
-            border-radius: var(--radius-2xl);
-        }
+      .value-icon {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto var(--space-5);
+        background: white;
+        border-radius: var(--radius-2xl);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-md);
+      }
 
-        .value-icon {
-            width: 72px;
-            height: 72px;
-            margin: 0 auto var(--space-5);
-            background: white;
-            border-radius: var(--radius-2xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-md);
-        }
+      .value-icon svg {
+        width: 36px;
+        height: 36px;
+        color: var(--color-primary-600);
+      }
 
-        .value-icon svg {
-            width: 36px;
-            height: 36px;
-            color: var(--color-primary-600);
-        }
+      .value-card h3 {
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-3);
+      }
 
-        .value-card h3 {
-            font-size: var(--text-xl);
-            margin-bottom: var(--space-3);
-        }
+      .value-card p {
+        color: var(--color-gray-600);
+        font-size: var(--text-sm);
+      }
 
-        .value-card p {
-            color: var(--color-gray-600);
-            font-size: var(--text-sm);
-        }
+      .team-section {
+        background: var(--color-gray-50);
+      }
 
-        .team-section {
-            background: var(--color-gray-50);
-        }
+      .team-grid {
+        display: grid;
+        gap: var(--space-6);
+      }
 
+      @media (min-width: 768px) {
         .team-grid {
-            display: grid;
-            gap: var(--space-6);
+          grid-template-columns: repeat(5, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .team-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+      .team-card {
+        text-align: center;
+        background: white;
+        border-radius: var(--radius-2xl);
+        padding: var(--space-6);
+      }
 
-        .team-card {
-            text-align: center;
-            background: white;
-            border-radius: var(--radius-2xl);
-            padding: var(--space-6);
-        }
+      .team-card h4 {
+        font-size: var(--text-lg);
+        margin-bottom: var(--space-1);
+      }
 
-        .team-avatar {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto var(--space-4);
-            background: var(--gradient-primary);
-            border-radius: var(--radius-full);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: var(--text-3xl);
-            font-weight: var(--font-bold);
-        }
+      .team-card p {
+        font-size: var(--text-sm);
+        color: var(--color-gray-500);
+      }
 
-        .team-card h4 {
-            font-size: var(--text-lg);
-            margin-bottom: var(--space-1);
-        }
+      .stats-section {
+        padding: var(--space-16) 0;
+      }
 
-        .team-card p {
-            font-size: var(--text-sm);
-            color: var(--color-gray-500);
-        }
+      .stats-grid {
+        display: grid;
+        gap: var(--space-8);
+        text-align: center;
+      }
 
-        .stats-section {
-            padding: var(--space-16) 0;
-        }
-
+      @media (min-width: 768px) {
         .stats-grid {
-            display: grid;
-            gap: var(--space-8);
-            text-align: center;
+          grid-template-columns: repeat(4, 1fr);
         }
+      }
 
-        @media (min-width: 768px) {
-            .stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
+      .stat-item h3 {
+        font-size: var(--text-5xl);
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: var(--space-2);
+      }
 
-        .stat-item h3 {
-            font-size: var(--text-5xl);
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: var(--space-2);
-        }
+      .stat-item p {
+        color: var(--color-gray-600);
+      }
 
-        .stat-item p {
-            color: var(--color-gray-600);
-        }
+      .team-avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto var(--space-4);
+        background: var(--gradient-primary);
+        border-radius: var(--radius-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* Penting agar foto tetap bulat */
+      }
+
+      .team-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
     </style>
-</head>
+  </head>
 
-<body data-active-page="about">
+  <body data-active-page="about">
     <!-- Header Component Container -->
     <div id="header-container"></div>
 
     <!-- Page Header -->
     <header class="page-header">
-        <div class="container">
-            <h1>Tentang Uplokal</h1>
-            <p>Menjadi jembatan yang membawa UMKM Indonesia ke panggung global</p>
-        </div>
+      <div class="container">
+        <h1>Tentang Uplokal</h1>
+        <p>Menjadi jembatan yang membawa UMKM Indonesia ke panggung global</p>
+      </div>
     </header>
 
     <!-- Vision Section -->
     <section class="about-section">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <h2>Visi Kami 🎯</h2>
-                    <p>
-                        <strong>Uplokal</strong> lahir dari kesadaran bahwa Indonesia memiliki potensi UMKM yang luar
-                        biasa,
-                        namun seringkali terhambat oleh keterbatasan akses ke pasar, modal, dan pengetahuan bisnis.
-                    </p>
-                    <p>
-                        Kami percaya bahwa dengan pendekatan <strong>one-stop solution</strong> yang menggabungkan
-                        konsultasi bisnis, perbaikan keuangan, dan pemasaran digital, setiap pelaku usaha lokal
-                        memiliki kesempatan untuk bersaing di pasar global.
-                    </p>
-                    <p>
-                        Visi kami adalah menjadi platform kolaborasi bisnis #1 di Indonesia yang tidak hanya
-                        menghubungkan supply dan demand, tetapi juga memastikan setiap mitra bisnis memiliki
-                        <strong>fundamental yang kuat</strong> untuk bertumbuh secara berkelanjutan.
-                    </p>
-                </div>
-                <div class="about-image">
-                    🌏
-                </div>
-            </div>
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-content">
+            <h2>Visi Kami 🎯</h2>
+            <p>
+              <strong>Uplokal</strong> lahir dari kesadaran bahwa Indonesia
+              memiliki potensi UMKM yang luar biasa, namun seringkali terhambat
+              oleh keterbatasan akses ke pasar, modal, dan pengetahuan bisnis.
+            </p>
+            <p>
+              Kami percaya bahwa dengan pendekatan
+              <strong>one-stop solution</strong> yang menggabungkan konsultasi
+              bisnis, perbaikan keuangan, dan pemasaran digital, setiap pelaku
+              usaha lokal memiliki kesempatan untuk bersaing di pasar global.
+            </p>
+            <p>
+              Visi kami adalah menjadi platform kolaborasi bisnis #1 di
+              Indonesia yang tidak hanya menghubungkan supply dan demand, tetapi
+              juga memastikan setiap mitra bisnis memiliki
+              <strong>fundamental yang kuat</strong> untuk bertumbuh secara
+              berkelanjutan.
+            </p>
+          </div>
+          <div class="about-image">
+            <img
+              src="assets/vision-uplokal.png"
+              alt="Visi Uplokal: One-Stop Solution UMKM"
+            />
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Values Section -->
     <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nilai-Nilai Kami</h2>
-                <p class="section-subtitle">Prinsip yang memandu setiap langkah kami</p>
-            </div>
-
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i data-lucide="handshake"></i>
-                    </div>
-                    <h3>Kemitraan</h3>
-                    <p>Kami bukan sekadar vendor, tapi mitra sejati yang berkomitmen pada kesuksesan bersama</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i data-lucide="shield-check"></i>
-                    </div>
-                    <h3>Kepercayaan</h3>
-                    <p>Transparansi dan integritas adalah fondasi dari setiap hubungan yang kami bangun</p>
-                </div>
-                <div class="value-card">
-                    <div class="value-icon">
-                        <i data-lucide="rocket"></i>
-                    </div>
-                    <h3>Inovasi</h3>
-                    <p>Terus berinovasi untuk memberikan solusi terbaik bagi mitra bisnis kami</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Nilai-Nilai Kami</h2>
+          <p class="section-subtitle">
+            Prinsip yang memandu setiap langkah kami
+          </p>
         </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="handshake"></i>
+            </div>
+            <h3>Kemitraan</h3>
+            <p>
+              Kami bukan sekadar vendor, tapi mitra sejati yang berkomitmen pada
+              kesuksesan bersama
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="shield-check"></i>
+            </div>
+            <h3>Kepercayaan</h3>
+            <p>
+              Transparansi dan integritas adalah fondasi dari setiap hubungan
+              yang kami bangun
+            </p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i data-lucide="rocket"></i>
+            </div>
+            <h3>Inovasi</h3>
+            <p>
+              Terus berinovasi untuk memberikan solusi terbaik bagi mitra bisnis
+              kami
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Stats Section -->
-    <section class="stats-section"
-        style="background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-secondary-50) 100%);">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Mitra Bisnis</p>
-                </div>
-                <div class="stat-item">
-                    <h3>15+</h3>
-                    <p>Negara Tujuan</p>
-                </div>
-                <div class="stat-item">
-                    <h3>Rp 2.5M+</h3>
-                    <p>Transaksi Difasilitasi</p>
-                </div>
-                <div class="stat-item">
-                    <h3>98%</h3>
-                    <p>Tingkat Kepuasan</p>
-                </div>
-            </div>
+    <section
+      class="stats-section"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-50) 0%,
+          var(--color-secondary-50) 100%
+        );
+      "
+    >
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h3>500+</h3>
+            <p>Mitra Bisnis</p>
+          </div>
+          <div class="stat-item">
+            <h3>15+</h3>
+            <p>Negara Tujuan</p>
+          </div>
+          <div class="stat-item">
+            <h3>Rp 2.5M+</h3>
+            <p>Transaksi Difasilitasi</p>
+          </div>
+          <div class="stat-item">
+            <h3>98%</h3>
+            <p>Tingkat Kepuasan</p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Team Section -->
     <section class="section team-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Tim Kami</h2>
-                <p class="section-subtitle">Para profesional yang berdedikasi untuk kesuksesan Anda</p>
-            </div>
-
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-avatar">AS</div>
-                    <h4>Andi Susanto</h4>
-                    <p>CEO & Founder</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">DW</div>
-                    <h4>Dewi Wulandari</h4>
-                    <p>Head of Business</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">BP</div>
-                    <h4>Budi Pratama</h4>
-                    <p>Head of Technology</p>
-                </div>
-                <div class="team-card">
-                    <div class="team-avatar">SN</div>
-                    <h4>Sari Nurhayati</h4>
-                    <p>Head of Marketing</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tim Kami</h2>
+          <p class="section-subtitle">
+            Para profesional yang berdedikasi untuk kesuksesan Anda
+          </p>
         </div>
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/ersa.jpeg" alt="Ersah Atthbarry Rahmadinata" />
+            </div>
+            <h4>Ersah Atthbarry Rahmadinata</h4>
+            <p>CEO & Founder</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/nuraini.png" alt="Nur Aini" />
+            </div>
+            <h4>Nur Aini</h4>
+            <p>Chief Marketing Officer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/romi.jpeg" alt="Romi" />
+            </div>
+            <h4>Romi</h4>
+            <p>Chief Business Development Officer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/irdan.png" alt="Irdan Ramadhani" />
+            </div>
+            <h4>Irdan Ramadhani</h4>
+            <p>Chief Technology Officer</p>
+          </div>
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="assets/amel.jpeg" alt="Amelia Suci Wulandari" />
+            </div>
+            <h4>Amelia Suci Wulandari</h4>
+            <p>Chief Product Officer</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="section cta-section">
-        <div class="container">
-            <div class="cta-card">
-                <div class="cta-content">
-                    <h2>Siap Bergabung dengan Kami?</h2>
-                    <p>Mulai perjalanan bisnis global Anda bersama Uplokal hari ini</p>
-                    <div class="cta-buttons">
-                        <a href="register.html" class="btn btn-light btn-lg">
-                            <i data-lucide="rocket"></i>
-                            Daftar Sekarang
-                        </a>
-                        <a href="contact.html" class="btn btn-outline-light btn-lg">
-                            <i data-lucide="phone"></i>
-                            Hubungi Kami
-                        </a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="cta-card">
+          <div class="cta-content">
+            <h2>Siap Bergabung dengan Kami?</h2>
+            <p>Mulai perjalanan bisnis global Anda bersama Uplokal hari ini</p>
+            <div class="cta-buttons">
+              <a href="register.html" class="btn btn-light btn-lg">
+                <i data-lucide="rocket"></i>
+                Daftar Sekarang
+              </a>
+              <a href="contact.html" class="btn btn-outline-light btn-lg">
+                <i data-lucide="phone"></i>
+                Hubungi Kami
+              </a>
             </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer Component Container -->
@@ -367,6 +444,5 @@
     <!-- Scripts -->
     <script src="js/components/loader.js"></script>
     <script src="js/app.js"></script>
-</body>
-
+  </body>
 </html>

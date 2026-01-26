@@ -195,17 +195,42 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 300px;
+    width: 420px;
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.illustration-globe {
+.hero-circle-bg {
+    position: absolute;
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    animation: rotate 20s linear infinite;
+    opacity: 0.8;
+}
+
+.hero-main-img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
     border-radius: var(--radius-full);
-    background: linear-gradient(135deg, var(--color-primary-100) 0%, var(--color-secondary-100) 100%);
-    border: 2px dashed var(--color-primary-300);
-    animation: float 6s ease-in-out infinite;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+    border: 8px solid white;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hero-card {
@@ -338,25 +363,25 @@
 .categories-track {
     display: flex;
     gap: 20px;
-    animation: slide-seamless 20s linear infinite;
     width: max-content;
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-6);
+    scroll-snap-type: x mandatory;
 }
 
-.categories-track:hover {
-    animation-play-state: paused;
+.categories-slider {
+    width: 100%;
+    overflow-x: auto;
+    position: relative;
+    padding: var(--space-4) 0;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    /* Hide scrollbar Firefox */
 }
 
-/* Seamless one-direction animation: starts visible, scrolls left */
-@keyframes slide-seamless {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        /* Move exactly 50% (6 cards worth) to loop seamlessly */
-        transform: translateX(-50%);
-    }
+.categories-slider::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar Chrome/Safari */
 }
 
 /* Keep original grid for fallback */
@@ -402,7 +427,12 @@
         width: 250px;
         min-height: 250px;
         height: 250px;
+        scroll-snap-align: start;
     }
+}
+
+.category-card {
+    scroll-snap-align: center;
 }
 
 .category-card:hover {
@@ -607,24 +637,24 @@
 
 .suppliers-track {
     display: flex;
-    gap: 20px;
-    animation: slide-suppliers 25s linear infinite;
+    gap: 24px;
     width: max-content;
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-6);
+    scroll-snap-type: x mandatory;
 }
 
-.suppliers-track:hover {
-    animation-play-state: paused;
+.suppliers-slider {
+    width: 100%;
+    overflow-x: auto;
+    position: relative;
+    padding: var(--space-4) 0;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
 
-@keyframes slide-suppliers {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-50%);
-    }
+.suppliers-slider::-webkit-scrollbar {
+    display: none;
 }
 
 /* Keep original grid for fallback */
@@ -664,6 +694,16 @@
     border-color: var(--color-primary-200);
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
+}
+
+.supplier-card {
+    scroll-snap-align: center;
+}
+
+@media (min-width: 768px) {
+    .supplier-card {
+        scroll-snap-align: start;
+    }
 }
 
 .supplier-badge {
