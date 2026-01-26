@@ -36,18 +36,18 @@ class UplokalFooter {
 
     getSocialLinks() {
         return [
-            { href: '#', icon: 'instagram', label: 'Instagram' },
-            { href: '#', icon: 'linkedin', label: 'LinkedIn' },
-            { href: '#', icon: 'twitter', label: 'Twitter' },
-            { href: '#', icon: 'youtube', label: 'YouTube' }
+            { href: 'https://instagram.com/uplocal.trk', icon: 'instagram', label: 'Instagram' },
+            { href: 'https://linkedin.com/company/uplokal', icon: 'linkedin', label: 'LinkedIn' },
+            { href: 'https://twitter.com/uplocal_trk', icon: 'twitter', label: 'Twitter' },
+            { href: 'https://youtube.com/@uplocal_trk', icon: 'youtube', label: 'YouTube' }
         ];
     }
 
     getContactInfo() {
         return [
-            { icon: 'mail', text: 'hello@uplokal.com' },
-            { icon: 'phone', text: '+62 21 1234 5678' },
-            { icon: 'map-pin', text: 'Jakarta, Indonesia' }
+            { icon: 'mail', text: 'uplokal@gmail.com' },
+            { icon: 'phone', text: '+62 822-5250-9542' },
+            { icon: 'map-pin', text: 'Tarakan, Kalimantan Utara' }
         ];
     }
 
