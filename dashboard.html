@@ -118,9 +118,6 @@
             <!-- Top Bar -->
             <header class="dashboard-topbar">
                 <div class="topbar-left">
-                    <button class="sidebar-toggle">
-                        <i data-lucide="menu"></i>
-                    </button>
                     <h1 class="page-title">Dashboard</h1>
                 </div>
                 <div class="topbar-right">
@@ -133,6 +130,11 @@
                     </button>
                     <button class="btn-lang" onclick="toggleLanguage()" title="Switch Language">
                         <span>ID</span>
+                    </button>
+                    <!-- New Mobile Menu Trigger (Right Side) -->
+                    <button class="mobile-menu-trigger-dashboard" id="mobileMenuTrigger"
+                        aria-label="Open navigation menu">
+                        <i data-lucide="more-vertical"></i>
                     </button>
                 </div>
             </header>
@@ -348,26 +350,6 @@
                 </div>
             </div>
         </main>
-
-        <!-- Mobile Navigation -->
-        <nav class="dashboard-mobile-nav">
-            <a href="dashboard.html" class="mobile-nav-item active">
-                <i data-lucide="layout-dashboard"></i>
-                <span>Dashboard</span>
-            </a>
-            <a href="#" class="mobile-nav-item">
-                <i data-lucide="message-square"></i>
-                <span>Pesan</span>
-            </a>
-            <a href="dashboard-diagnostic.html" class="mobile-nav-item">
-                <i data-lucide="stethoscope"></i>
-                <span>Diagnosa</span>
-            </a>
-            <a href="account-settings.html" class="mobile-nav-item">
-                <i data-lucide="user"></i>
-                <span>Profil</span>
-            </a>
-        </nav>
     </div>
 
     <script src="js/dashboard-common.js"></script>

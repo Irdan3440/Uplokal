@@ -135,9 +135,6 @@
             <!-- Top Bar -->
             <header class="dashboard-topbar">
                 <div class="topbar-left">
-                    <button class="sidebar-toggle">
-                        <i data-lucide="menu"></i>
-                    </button>
                     <h1 class="page-title">Content Moderation</h1>
                 </div>
                 <div class="topbar-right">
@@ -348,187 +345,164 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </main>
 
-        <!-- Mobile Bottom Navigation -->
-        <nav class="dashboard-mobile-nav">
-            <a href="admin.html" class="mobile-nav-item">
-                <i data-lucide="layout-dashboard"></i>
-                <span>Dashboard</span>
-            </a>
-            <a href="admin-verification.html" class="mobile-nav-item">
-                <i data-lucide="user-check"></i>
-                <span>Verify</span>
-            </a>
-            <a href="admin-moderation.html" class="mobile-nav-item active">
-                <i data-lucide="shield-alert"></i>
-                <span>Moderate</span>
-            </a>
-            <a href="admin-clients.html" class="mobile-nav-item">
-                <i data-lucide="users"></i>
-                <span>Clients</span>
-            </a>
-        </nav>
-    </div>
-
-    <!-- Suspend User Modal -->
-    <div class="modal-overlay" id="suspendModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Suspend User</h3>
-                <button class="modal-close" onclick="closeSuspendModal()">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Durasi Suspend *</label>
-                    <select class="form-input" id="suspendDuration">
-                        <option value="">Pilih Durasi...</option>
-                        <option value="3">3 Hari</option>
-                        <option value="7">7 Hari</option>
-                        <option value="14">14 Hari</option>
-                        <option value="30">30 Hari</option>
-                        <option value="999">Permanen</option>
-                    </select>
+        <!-- Suspend User Modal -->
+        <div class="modal-overlay" id="suspendModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Suspend User</h3>
+                    <button class="modal-close" onclick="closeSuspendModal()">
+                        <i data-lucide="x"></i>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label>Alasan Suspend *</label>
-                    <select class="form-input" id="suspendReason">
-                        <option value="">Pilih Alasan...</option>
-                        <option value="spam">Spam / Konten Sampah</option>
-                        <option value="fraud">Indikasi Penipuan</option>
-                        <option value="inappropriate">Konten Tidak Pantas</option>
-                        <option value="tos">Melanggar Syarat & Ketentuan</option>
-                        <option value="other">Lainnya</option>
-                    </select>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Durasi Suspend *</label>
+                        <select class="form-input" id="suspendDuration">
+                            <option value="">Pilih Durasi...</option>
+                            <option value="3">3 Hari</option>
+                            <option value="7">7 Hari</option>
+                            <option value="14">14 Hari</option>
+                            <option value="30">30 Hari</option>
+                            <option value="999">Permanen</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Alasan Suspend *</label>
+                        <select class="form-input" id="suspendReason">
+                            <option value="">Pilih Alasan...</option>
+                            <option value="spam">Spam / Konten Sampah</option>
+                            <option value="fraud">Indikasi Penipuan</option>
+                            <option value="inappropriate">Konten Tidak Pantas</option>
+                            <option value="tos">Melanggar Syarat & Ketentuan</option>
+                            <option value="other">Lainnya</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Catatan Internal</label>
+                        <textarea class="form-input" id="suspendNote" rows="3"
+                            placeholder="Catatan untuk admin lain..."></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Catatan Internal</label>
-                    <textarea class="form-input" id="suspendNote" rows="3"
-                        placeholder="Catatan untuk admin lain..."></textarea>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeSuspendModal()">Batal</button>
+                    <button class="btn btn-danger" onclick="confirmSuspend()">Suspend User</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeSuspendModal()">Batal</button>
-                <button class="btn btn-danger" onclick="confirmSuspend()">Suspend User</button>
-            </div>
         </div>
-    </div>
 
-    <!-- View Flagged Content Modal -->
-    <div class="modal-overlay" id="viewModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Detail Konten</h3>
-                <button class="modal-close" onclick="closeModal('viewModal')">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body" id="viewModalBody">
-                <!-- Content populated via JS -->
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('viewModal')">Tutup</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Specialized Modals for Standardization -->
-
-    <!-- Dynamic Confirmation Modal (Abaikan, Ban, Unsuspend) -->
-    <div class="modal-overlay" id="confirmActionModal">
-        <div class="modal-content modal-sm">
-            <div class="modal-header">
-                <h3 id="confirmTitle">Konfirmasi</h3>
-                <button class="modal-close" onclick="closeModal('confirmActionModal')">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p id="confirmMessage">Apakah Anda yakin ingin melanjutkan aksi ini?</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('confirmActionModal')">Batal</button>
-                <button class="btn" id="confirmActionButton">Ya, Lanjutkan</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Warning Modal (Peringatan) -->
-    <div class="modal-overlay" id="warnModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Kirim Peringatan</h3>
-                <button class="modal-close" onclick="closeModal('warnModal')">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Pesan Peringatan untuk User *</label>
-                    <textarea class="form-input" id="warnMessageInput" rows="4"
-                        placeholder="Tuliskan alasan atau instruksi perbaikan..."></textarea>
+        <!-- View Flagged Content Modal -->
+        <div class="modal-overlay" id="viewModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Detail Konten</h3>
+                    <button class="modal-close" onclick="closeModal('viewModal')">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body" id="viewModalBody">
+                    <!-- Content populated via JS -->
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal('viewModal')">Tutup</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('warnModal')">Batal</button>
-                <button class="btn btn-warning" id="submitWarnButton">Kirim Peringatan</button>
-            </div>
         </div>
-    </div>
 
-    <!-- Category Modal (Add/Edit) -->
-    <div class="modal-overlay" id="categoryModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="categoryModalTitle">Tambah Kategori</h3>
-                <button class="modal-close" onclick="closeModal('categoryModal')">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Nama Kategori *</label>
-                    <input type="text" class="form-input" id="categoryNameInput"
-                        placeholder="Contoh: Fashion & Tekstil">
+        <!-- Specialized Modals for Standardization -->
+
+        <!-- Dynamic Confirmation Modal (Abaikan, Ban, Unsuspend) -->
+        <div class="modal-overlay" id="confirmActionModal">
+            <div class="modal-content modal-sm">
+                <div class="modal-header">
+                    <h3 id="confirmTitle">Konfirmasi</h3>
+                    <button class="modal-close" onclick="closeModal('confirmActionModal')">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage">Apakah Anda yakin ingin melanjutkan aksi ini?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal('confirmActionModal')">Batal</button>
+                    <button class="btn" id="confirmActionButton">Ya, Lanjutkan</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('categoryModal')">Batal</button>
-                <button class="btn btn-primary" id="saveCategoryButton">Simpan Kategori</button>
-            </div>
         </div>
-    </div>
 
-    <!-- Extend Suspension Modal -->
-    <div class="modal-overlay" id="extendModal">
-        <div class="modal-content modal-sm">
-            <div class="modal-header">
-                <h3>Perpanjang Suspend</h3>
-                <button class="modal-close" onclick="closeModal('extendModal')">
-                    <i data-lucide="x"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label>Jumlah Hari *</label>
-                    <input type="number" class="form-input" id="extendDaysInput" placeholder="Masukkan jumlah hari..."
-                        min="1">
+        <!-- Warning Modal (Peringatan) -->
+        <div class="modal-overlay" id="warnModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Kirim Peringatan</h3>
+                    <button class="modal-close" onclick="closeModal('warnModal')">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Pesan Peringatan untuk User *</label>
+                        <textarea class="form-input" id="warnMessageInput" rows="4"
+                            placeholder="Tuliskan alasan atau instruksi perbaikan..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal('warnModal')">Batal</button>
+                    <button class="btn btn-warning" id="submitWarnButton">Kirim Peringatan</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeModal('extendModal')">Batal</button>
-                <button class="btn btn-warning" id="confirmExtendButton">Perpanjang</button>
+        </div>
+
+        <!-- Category Modal (Add/Edit) -->
+        <div class="modal-overlay" id="categoryModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="categoryModalTitle">Tambah Kategori</h3>
+                    <button class="modal-close" onclick="closeModal('categoryModal')">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Nama Kategori *</label>
+                        <input type="text" class="form-input" id="categoryNameInput"
+                            placeholder="Contoh: Fashion & Tekstil">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal('categoryModal')">Batal</button>
+                    <button class="btn btn-primary" id="saveCategoryButton">Simpan Kategori</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="js/app.js"></script>
-    <script src="js/admin-moderation.js"></script>
+        <!-- Extend Suspension Modal -->
+        <div class="modal-overlay" id="extendModal">
+            <div class="modal-content modal-sm">
+                <div class="modal-header">
+                    <h3>Perpanjang Suspend</h3>
+                    <button class="modal-close" onclick="closeModal('extendModal')">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Jumlah Hari *</label>
+                        <input type="number" class="form-input" id="extendDaysInput"
+                            placeholder="Masukkan jumlah hari..." min="1">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline" onclick="closeModal('extendModal')">Batal</button>
+                    <button class="btn btn-warning" id="confirmExtendButton">Perpanjang</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scripts -->
+        <script src="js/app.js"></script>
+        <script src="js/admin-moderation.js"></script>
 </body>
 
 </html>

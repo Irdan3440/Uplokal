@@ -187,6 +187,35 @@
         margin-left: 260px;
         padding-bottom: 0;
     }
+
+    /* Hide bottom mobile nav in dashboard */
+    .dashboard-mobile-nav {
+        display: none !important;
+    }
+
+    /* New Dashboard Mobile Menu Trigger */
+    .mobile-menu-trigger-dashboard {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius-md);
+        background: transparent;
+        color: var(--color-gray-700);
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .mobile-menu-trigger-dashboard:hover {
+        background: var(--color-gray-100);
+    }
+
+    .mobile-menu-trigger-dashboard svg {
+        width: 20px;
+        height: 20px;
+    }
 }
 
 /* ========== Top Bar ========== */
@@ -210,7 +239,7 @@
 }
 
 .sidebar-toggle {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     width: 40px;

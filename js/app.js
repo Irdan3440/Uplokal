@@ -82,30 +82,81 @@ function initMobileNav() {
         });
     }
 
-    // Mobile Menu Drawer Logic
-    const menuTrigger = document.getElementById('mobileMenuTrigger');
-    const menuDrawer = document.getElementById('mobileMenuDrawer');
-    const menuClose = document.getElementById('mobileMenuClose');
-
-    if (menuTrigger && menuDrawer) {
-        // Create backdrop if not exists
-        let drawerOverlay = document.querySelector('.drawer-overlay');
-        if (!drawerOverlay) {
-            drawerOverlay = document.createElement('div');
-            drawerOverlay.className = 'drawer-overlay';
-            document.body.appendChild(drawerOverlay);
-        }
-
-        const toggleDrawer = (show) => {
-            menuDrawer.classList.toggle('active', show);
-            drawerOverlay.classList.toggle('active', show);
-            document.body.style.overflow = show ? 'hidden' : '';
-        };
-
-        menuTrigger.addEventListener('click', () => toggleDrawer(true));
-        if (menuClose) menuClose.addEventListener('click', () => toggleDrawer(false));
-        drawerOverlay.addEventListener('click', () => toggleDrawer(false));
+    // Auto-inject Menu Trigger to Dashboard Topbars if missing
+    const topbarRight = document.querySelector('.dashboard-topbar .topbar-right');
+    if (topbarRight && !document.getElementById('mobileMenuTrigger')) {
+        const trigger = document.createElement('button');
+        trigger.className = 'mobile-menu-trigger-dashboard';
+        trigger.id = 'mobileMenuTrigger';
+        trigger.innerHTML = '<i data-lucide="more-vertical"></i>';
+        topbarRight.appendChild(trigger);
+        if (window.lucide) lucide.createIcons();
     }
+
+    // Ensure Mobile Menu Drawer exists
+    async function ensureDrawer() {
+        let menuDrawer = document.getElementById('mobileMenuDrawer');
+        if (!menuDrawer) {
+            // Try to fetch from components folder
+            try {
+                const response = await fetch('components/mobile-nav.html');
+                if (response.ok) {
+                    const html = await response.text();
+                    const container = document.createElement('div');
+                    container.id = 'mobile-nav-container';
+                    container.innerHTML = html;
+                    document.body.appendChild(container);
+                    // Re-run lucide for the new icons
+                    if (window.lucide) lucide.createIcons();
+
+                    // Now re-init the logic for the newly added drawer
+                    setupDrawerLogic();
+                }
+            } catch (error) {
+                console.error('Error auto-injecting mobile drawer:', error);
+            }
+        } else {
+            setupDrawerLogic();
+        }
+    }
+
+    function setupDrawerLogic() {
+        const menuTriggers = document.querySelectorAll('#mobileMenuTrigger, .mobile-menu-trigger, .mobile-menu-trigger-dashboard');
+        const menuDrawer = document.getElementById('mobileMenuDrawer');
+        const drawerOverlay = document.querySelector('.drawer-overlay') || (() => {
+            const overlay = document.createElement('div');
+            overlay.className = 'drawer-overlay';
+            document.body.appendChild(overlay);
+            return overlay;
+        })();
+
+        if (menuTriggers.length > 0 && menuDrawer) {
+            const toggleDrawer = (show) => {
+                menuDrawer.classList.toggle('active', show);
+                drawerOverlay.classList.toggle('active', show);
+                document.body.style.overflow = show ? 'hidden' : '';
+            };
+
+            menuTriggers.forEach(trigger => {
+                // Remove existing listeners to avoid duplicates
+                const newTrigger = trigger.cloneNode(true);
+                trigger.parentNode.replaceChild(newTrigger, trigger);
+                newTrigger.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleDrawer(true);
+                });
+            });
+
+            // Use event delegation for closing
+            document.addEventListener('click', (e) => {
+                if (e.target.closest('#mobileMenuClose') || e.target.closest('.drawer-overlay')) {
+                    toggleDrawer(false);
+                }
+            });
+        }
+    }
+
+    ensureDrawer();
 }
 
 // ========== Dashboard Sidebar Toggle ==========

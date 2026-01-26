@@ -1,28 +1,5 @@
-<!-- Uplokal Mobile Navigation Component -->
-<nav class="mobile-nav" id="mobileNav">
-    <a href="index.html" class="mobile-nav-item" data-page="home">
-        <i data-lucide="home"></i>
-        <span>Beranda</span>
-    </a>
-    <a href="directory.html" class="mobile-nav-item" data-page="directory">
-        <i data-lucide="search"></i>
-        <span>Direktori</span>
-    </a>
-    <a href="register.html" class="mobile-nav-item highlight" data-page="register">
-        <i data-lucide="plus-circle"></i>
-        <span>Daftar</span>
-    </a>
-    <a href="login.html" class="mobile-nav-item" data-page="login">
-        <i data-lucide="user"></i>
-        <span>Masuk</span>
-    </a>
-    <a href="javascript:void(0)" class="mobile-nav-item" id="mobileMenuTrigger">
-        <i data-lucide="more-horizontal"></i>
-        <span>Menu</span>
-    </a>
-</nav>
-
-<!-- Mobile Menu Drawer -->
+<!-- Uplokal Mobile Navigation Drawer -->
+<!-- The bottom nav bar has been removed per user request to move menu to top-right -->
 <div class="mobile-menu-drawer" id="mobileMenuDrawer">
     <div class="drawer-header">
         <div class="logo">
@@ -33,6 +10,41 @@
         </button>
     </div>
     <div class="drawer-content">
+        <!-- Primary Navigation -->
+        <div class="drawer-section">
+            <h4 class="drawer-section-title">Navigasi Utama</h4>
+            <div class="drawer-links">
+                <a href="index.html" class="drawer-link">
+                    <i data-lucide="home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="directory.html" class="drawer-link">
+                    <i data-lucide="search"></i>
+                    <span>Direktori Supplier</span>
+                </a>
+                <a href="dashboard.html" class="drawer-link">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard Bisnis</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Account Section -->
+        <div class="drawer-section">
+            <h4 class="drawer-section-title">Akun</h4>
+            <div class="drawer-links">
+                <a href="login.html" class="drawer-link">
+                    <i data-lucide="log-in"></i>
+                    <span>Masuk ke Akun</span>
+                </a>
+                <a href="register.html" class="drawer-link">
+                    <i data-lucide="user-plus"></i>
+                    <span>Daftar UMKM Baru</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- About/Contact -->
         <div class="drawer-section">
             <h4 class="drawer-section-title">Perusahaan</h4>
             <div class="drawer-links">
@@ -42,11 +54,11 @@
                 </a>
                 <a href="contact.html" class="drawer-link">
                     <i data-lucide="phone"></i>
-                    <span>Kontak</span>
+                    <span>Kontak Kami</span>
                 </a>
                 <a href="blog.html" class="drawer-link">
                     <i data-lucide="book-open"></i>
-                    <span>Blog</span>
+                    <span>Blog & Artikel</span>
                 </a>
                 <a href="karir.html" class="drawer-link">
                     <i data-lucide="briefcase"></i>
@@ -54,33 +66,14 @@
                 </a>
             </div>
         </div>
-        <div class="drawer-section">
-            <h4 class="drawer-section-title">Layanan</h4>
-            <div class="drawer-links">
-                <a href="dashboard-diagnostic.html" class="drawer-link">
-                    <i data-lucide="activity"></i>
-                    <span>Business Diagnostic</span>
-                </a>
-                <a href="financial-assistant.html" class="drawer-link">
-                    <i data-lucide="pie-chart"></i>
-                    <span>Tax & Finance</span>
-                </a>
-                <a href="marketing-dashboard.html" class="drawer-link">
-                    <i data-lucide="megaphone"></i>
-                    <span>Digital Marketing</span>
-                </a>
-                <a href="export-readiness.html" class="drawer-link">
-                    <i data-lucide="globe"></i>
-                    <span>Export Readiness</span>
-                </a>
-            </div>
-        </div>
+
+        <!-- Help Section -->
         <div class="drawer-section bottom-section">
             <h4 class="drawer-section-title">Bantuan</h4>
             <div class="drawer-links">
                 <a href="help.html" class="drawer-link">
                     <i data-lucide="help-circle"></i>
-                    <span>FAQ & Pusat Bantuan</span>
+                    <span>FAQ & Bantuan</span>
                 </a>
                 <a href="privacy.html" class="drawer-link">
                     <i data-lucide="shield"></i>
@@ -90,6 +83,11 @@
         </div>
     </div>
     <div class="drawer-footer">
+        <div class="drawer-social">
+            <a href="https://instagram.com/uplokaltrk" target="_blank"><i data-lucide="instagram"></i></a>
+            <a href="https://linkedin.com/company/uplokal" target="_blank"><i data-lucide="linkedin"></i></a>
+            <a href="https://wa.me/6282252509542" target="_blank"><i data-lucide="message-circle"></i></a>
+        </div>
         <p>&copy; 2026 Uplokal - UMKM Digital Hub</p>
     </div>
 </div>

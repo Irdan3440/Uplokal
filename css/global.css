@@ -428,4 +428,10 @@ select {
         min-height: 44px;
         padding: 12px var(--space-4);
     }
+
+    /* Force hide legacy mobile toggles (replaced by top-right menu) */
+    .sidebar-toggle,
+    .navbar-toggle {
+        display: none !important;
+    }
 }

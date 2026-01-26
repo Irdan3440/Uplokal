@@ -133,15 +133,21 @@
         <main class="dashboard-main">
             <header class="dashboard-topbar">
                 <div class="topbar-left">
-                    <button class="sidebar-toggle">
-                        <i data-lucide="menu"></i>
-                    </button>
                     <h1 class="page-title">Client Management</h1>
                 </div>
                 <div class="topbar-right">
                     <button class="btn btn-primary btn-sm">
                         <i data-lucide="plus"></i>
                         Add Client
+                    </button>
+                    <a href="index.html" class="btn btn-ghost btn-sm">
+                        <i data-lucide="external-link"></i>
+                        View Site
+                    </a>
+                    <!-- Admin Mobile Trigger -->
+                    <button class="mobile-menu-trigger-dashboard" id="mobileMenuTrigger"
+                        aria-label="Open navigation menu">
+                        <i data-lucide="more-vertical"></i>
                     </button>
                 </div>
             </header>
@@ -421,25 +427,6 @@
                 </div>
             </div>
         </main>
-
-        <nav class="dashboard-mobile-nav">
-            <a href="admin.html" class="mobile-nav-item">
-                <i data-lucide="layout-dashboard"></i>
-                <span>Dashboard</span>
-            </a>
-            <a href="admin-clients.html" class="mobile-nav-item active">
-                <i data-lucide="building-2"></i>
-                <span>Clients</span>
-            </a>
-            <a href="admin-projects.html" class="mobile-nav-item">
-                <i data-lucide="folder-kanban"></i>
-                <span>Projects</span>
-            </a>
-            <a href="#" class="mobile-nav-item">
-                <i data-lucide="settings"></i>
-                <span>Settings</span>
-            </a>
-        </nav>
     </div>
 
     <script src="js/app.js"></script>
@@ -447,3 +434,4 @@
 </body>
 
 </html>
+
