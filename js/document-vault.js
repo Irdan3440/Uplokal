@@ -226,34 +226,64 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Action buttons - Preview
-    document.querySelectorAll('.action-btn[title="Preview"]').forEach(btn => {
-        btn.addEventListener('click', function (e) {
+    document.addEventListener('click', function (e) {
+        const previewBtn = e.target.closest('.action-btn[title="Preview"]');
+        if (previewBtn) {
             e.stopPropagation();
-            const row = this.closest('tr');
-            const fileName = row.querySelector('.document-name span').textContent;
+            const row = previewBtn.closest('tr');
+            const item = previewBtn.closest('.mobile-document-item');
+            const fileName = row ? row.querySelector('.document-name span').textContent :
+                item.querySelector('.item-name').textContent;
             alert(`Preview: ${fileName}`);
-        });
+        }
     });
 
     // Action buttons - Download
-    document.querySelectorAll('.action-btn[title="Download"]').forEach(btn => {
-        btn.addEventListener('click', function (e) {
+    document.addEventListener('click', function (e) {
+        const downloadBtn = e.target.closest('.action-btn[title="Download"]');
+        if (downloadBtn) {
             e.stopPropagation();
-            const row = this.closest('tr');
-            const fileName = row.querySelector('.document-name span').textContent;
+            const row = downloadBtn.closest('tr');
+            const item = downloadBtn.closest('.mobile-document-item');
+            const fileName = row ? row.querySelector('.document-name span').textContent :
+                item.querySelector('.item-name').textContent;
             alert(`Downloading: ${fileName}`);
-        });
+        }
     });
 
     // Action buttons - Delete
-    document.querySelectorAll('.action-btn[title="Hapus"]').forEach(btn => {
-        btn.addEventListener('click', function (e) {
+    document.addEventListener('click', function (e) {
+        const deleteBtn = e.target.closest('.action-btn[title="Hapus"]');
+        if (deleteBtn) {
             e.stopPropagation();
-            const row = this.closest('tr');
-            const fileName = row.querySelector('.document-name span').textContent;
+            const row = deleteBtn.closest('tr');
+            const item = deleteBtn.closest('.mobile-document-item');
+            const target = row || item;
+            const fileName = row ? row.querySelector('.document-name span').textContent :
+                item.querySelector('.item-name').textContent;
+
             if (confirm(`Hapus dokumen "${fileName}"?`)) {
-                row.remove();
+                target.remove();
             }
-        });
+        }
+    });
+
+    // Mobile "More" menu simulation
+    document.addEventListener('click', function (e) {
+        const moreBtn = e.target.closest('.item-more');
+        if (moreBtn) {
+            e.stopPropagation();
+            const item = moreBtn.closest('.mobile-document-item');
+            const fileName = item.querySelector('.item-name').textContent;
+
+            // Simple action sheet simulation
+            const action = prompt(`Aksi untuk "${fileName}":\n1. Preview\n2. Download\n3. Hapus\n(Ketik angka)`);
+
+            if (action === '1') alert(`Preview: ${fileName}`);
+            else if (action === '2') alert(`Downloading: ${fileName}`);
+            else if (action === '3') {
+                if (confirm(`Hapus dokumen "${fileName}"?`)) item.remove();
+            }
+        }
     });
 });

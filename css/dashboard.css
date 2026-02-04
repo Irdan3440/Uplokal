@@ -232,6 +232,12 @@
     z-index: var(--z-sticky);
 }
 
+@media (max-width: 640px) {
+    .dashboard-topbar {
+        padding: var(--space-3) var(--space-4);
+    }
+}
+
 .topbar-left {
     display: flex;
     align-items: center;
@@ -261,6 +267,7 @@
     width: 24px;
     height: 24px;
     stroke-width: 2px;
+    display: block;
 }
 
 @media (min-width: 1024px) {

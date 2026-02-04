@@ -4,8 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Document Vault - Kelola dokumen bisnis Anda dengan aman">
+    <meta name="description" content="Document Vault - Kelola dokumen legal dan sertifikasi bisnis Anda dengan aman">
+    <meta name="theme-color" content="#2563EB">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Document Vault | Uplokal</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
@@ -112,6 +119,9 @@
             <!-- Top Bar -->
             <header class="dashboard-topbar">
                 <div class="topbar-left">
+                    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+                        <i data-lucide="menu"></i>
+                    </button>
                     <h1 class="page-title">Document Vault</h1>
                 </div>
                 <div class="topbar-right">
@@ -131,15 +141,17 @@
             <!-- Document Vault Content -->
             <div class="dashboard-content">
                 <!-- Header -->
-                <div class="vault-header">
-                    <div>
-                        <h1>Document Vault</h1>
-                        <p>Kelola dokumen legal dan sertifikasi bisnis Anda dengan aman</p>
+                <div class="dashboard-header">
+                    <div class="header-main">
+                        <div>
+                            <h1>Document Vault</h1>
+                            <p>Kelola dokumen legal dan sertifikasi bisnis Anda dengan aman</p>
+                        </div>
+                        <button class="btn btn-primary" id="uploadBtn">
+                            <i data-lucide="upload"></i>
+                            Upload Dokumen
+                        </button>
                     </div>
-                    <button class="btn btn-primary" id="uploadBtn">
-                        <i data-lucide="upload"></i>
-                        Upload Dokumen
-                    </button>
                 </div>
 
                 <!-- Security Banner -->
@@ -401,23 +413,109 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
 
-                <!-- Storage Info -->
-                <div class="storage-info">
-                    <div class="storage-header">
-                        <h3><i data-lucide="hard-drive"></i> Penyimpanan</h3>
-                        <span class="storage-used">12.5 MB / 100 MB</span>
+                    <!-- Mobile Document List -->
+                    <div class="mobile-document-list">
+                        <!-- Item 1 -->
+                        <div class="mobile-document-item">
+                            <div class="item-header">
+                                <div class="file-icon pdf">
+                                    <i data-lucide="file-text"></i>
+                                </div>
+                                <div class="item-main">
+                                    <span class="item-name">NIB_KulitNusantara_2024.pdf</span>
+                                    <div class="item-meta">
+                                        <span class="category-tag nib">NIB</span>
+                                        <span class="item-date">15 Jan 2024</span>
+                                    </div>
+                                </div>
+                                <button class="item-more"><i data-lucide="more-vertical"></i></button>
+                            </div>
+                            <div class="item-footer">
+                                <span class="status-badge verified"><i data-lucide="check-circle"></i> Verified</span>
+                                <span class="item-size">2.4 MB</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="mobile-document-item">
+                            <div class="item-header">
+                                <div class="file-icon pdf">
+                                    <i data-lucide="file-text"></i>
+                                </div>
+                                <div class="item-main">
+                                    <span class="item-name">NPWP_PT_KulitNusantara.pdf</span>
+                                    <div class="item-meta">
+                                        <span class="category-tag npwp">NPWP</span>
+                                        <span class="item-date">10 Jan 2024</span>
+                                    </div>
+                                </div>
+                                <button class="item-more"><i data-lucide="more-vertical"></i></button>
+                            </div>
+                            <div class="item-footer">
+                                <span class="status-badge verified"><i data-lucide="check-circle"></i> Verified</span>
+                                <span class="item-size">1.8 MB</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="mobile-document-item">
+                            <div class="item-header">
+                                <div class="file-icon pdf">
+                                    <i data-lucide="award"></i>
+                                </div>
+                                <div class="item-main">
+                                    <span class="item-name">Sertifikat_Halal_MUI.pdf</span>
+                                    <div class="item-meta">
+                                        <span class="category-tag certificate">Sertifikasi</span>
+                                        <span class="item-date">5 Jan 2024</span>
+                                    </div>
+                                </div>
+                                <button class="item-more"><i data-lucide="more-vertical"></i></button>
+                            </div>
+                            <div class="item-footer">
+                                <span class="status-badge active"><i data-lucide="badge-check"></i> Aktif</span>
+                                <span class="item-size">3.2 MB</span>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="mobile-document-item">
+                            <div class="item-header">
+                                <div class="file-icon pdf">
+                                    <i data-lucide="file-signature"></i>
+                                </div>
+                                <div class="item-main">
+                                    <span class="item-name">Kontrak_Kerjasama_TokoPedia.pdf</span>
+                                    <div class="item-meta">
+                                        <span class="category-tag contract">Kontrak</span>
+                                        <span class="item-date">1 Jan 2024</span>
+                                    </div>
+                                </div>
+                                <button class="item-more"><i data-lucide="more-vertical"></i></button>
+                            </div>
+                            <div class="item-footer">
+                                <span class="status-badge"><i data-lucide="file-check"></i> Tersimpan</span>
+                                <span class="item-size">4.5 MB</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="storage-bar">
-                        <div class="storage-progress" style="width: 12.5%;"></div>
-                    </div>
-                    <p class="storage-hint">Upgrade ke Premium untuk penyimpanan unlimited</p>
                 </div>
             </div>
-        </main>
 
-        </main>
+            <!-- Storage Info -->
+            <div class="storage-info">
+                <div class="storage-header">
+                    <h3><i data-lucide="hard-drive"></i> Penyimpanan</h3>
+                    <span class="storage-used">12.5 MB / 100 MB</span>
+                </div>
+                <div class="storage-bar">
+                    <div class="storage-progress" style="width: 12.5%;"></div>
+                </div>
+                <p class="storage-hint">Upgrade ke Premium untuk penyimpanan unlimited</p>
+            </div>
+    </div>
+    </main>
     </div>
 
     <!-- Upload Modal -->
@@ -481,6 +579,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="js/dashboard-common.js"></script>
     <script src="js/app.js"></script>
     <script src="js/document-vault.js"></script>
 </body>
