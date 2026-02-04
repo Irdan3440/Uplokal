@@ -82,14 +82,15 @@ function initMobileNav() {
         });
     }
 
-    // Auto-inject Menu Trigger to Dashboard Topbars if missing
-    const topbarRight = document.querySelector('.dashboard-topbar .topbar-right');
-    if (topbarRight && !document.getElementById('mobileMenuTrigger')) {
-        const trigger = document.createElement('button');
-        trigger.className = 'mobile-menu-trigger-dashboard';
-        trigger.id = 'mobileMenuTrigger';
-        trigger.innerHTML = '<i data-lucide="more-vertical"></i>';
-        topbarRight.appendChild(trigger);
+    // Auto-inject hamburger button to Dashboard Topbars if missing
+    const topbarLeft = document.querySelector('.dashboard-topbar .topbar-left');
+    if (topbarLeft && !document.getElementById('sidebarToggle')) {
+        const hamburger = document.createElement('button');
+        hamburger.className = 'sidebar-toggle';
+        hamburger.id = 'sidebarToggle';
+        hamburger.setAttribute('aria-label', 'Toggle sidebar');
+        hamburger.innerHTML = '<i data-lucide="menu"></i>';
+        topbarLeft.insertBefore(hamburger, topbarLeft.firstChild);
         if (window.lucide) lucide.createIcons();
     }
 

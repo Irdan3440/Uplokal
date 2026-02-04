@@ -239,18 +239,26 @@
 }
 
 .sidebar-toggle {
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 40px;
     height: 40px;
     border-radius: var(--radius-lg);
     color: var(--color-gray-600);
+    background: transparent;
+    border: none;
+    cursor: pointer;
     transition: all var(--transition-fast);
 }
 
 .sidebar-toggle:hover {
     background: var(--color-gray-100);
+}
+
+.sidebar-toggle svg {
+    width: 24px;
+    height: 24px;
 }
 
 @media (min-width: 1024px) {
