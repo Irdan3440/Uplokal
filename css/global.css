@@ -429,8 +429,7 @@ select {
         padding: 12px var(--space-4);
     }
 
-    /* Force hide legacy mobile toggles (replaced by top-right menu) */
-    .sidebar-toggle,
+    /* Legacy mobile toggles */
     .navbar-toggle {
         display: none !important;
     }

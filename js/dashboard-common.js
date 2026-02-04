@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
  * Handles the sidebar toggle for mobile views
  */
 function initDashboardSidebar() {
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-    const sidebar = document.querySelector('.dashboard-sidebar');
+    if (window.sidebarInitialized) return;
 
-    if (!sidebarToggle || !sidebar) return;
+    const sidebar = document.querySelector('.dashboard-sidebar');
+    if (!sidebar) return;
 
     // Ensure backdrop exists
     let backdrop = document.querySelector('.sidebar-backdrop');
@@ -43,46 +43,35 @@ function initDashboardSidebar() {
         document.body.appendChild(backdrop);
     }
 
-    function openSidebar() {
-        sidebar.classList.add('open');
-        backdrop.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
+    const toggleSidebar = (show) => {
+        sidebar.classList.toggle('open', show);
+        backdrop.classList.toggle('show', show);
+        document.body.style.overflow = show ? 'hidden' : '';
+    };
 
-    function closeSidebar() {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('show');
-        document.body.style.overflow = '';
-    }
-
-    // Export for global use
-    window.openSidebar = openSidebar;
-    window.closeSidebar = closeSidebar;
-
-    sidebarToggle.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (sidebar.classList.contains('open')) {
-            closeSidebar();
-        } else {
-            openSidebar();
+    // Use event delegation for the toggle button
+    document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('.sidebar-toggle');
+        if (toggleBtn) {
+            e.preventDefault();
+            const isOpen = sidebar.classList.contains('open');
+            toggleSidebar(!isOpen);
         }
-    });
 
-    backdrop.addEventListener('click', closeSidebar);
-
-    // Close on escape key
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && sidebar.classList.contains('open')) {
-            closeSidebar();
+        // Close when clicking backdrop
+        if (e.target.classList.contains('sidebar-backdrop')) {
+            toggleSidebar(false);
         }
     });
 
     // Handle window resize
-    window.addEventListener('resize', function () {
-        if (window.innerWidth >= 1024 && sidebar.classList.contains('open')) {
-            closeSidebar();
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            toggleSidebar(false);
         }
     });
+
+    window.sidebarInitialized = true;
 }
 
 /**

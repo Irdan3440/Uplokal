@@ -162,12 +162,12 @@ function initMobileNav() {
 
 // ========== Dashboard Sidebar Toggle ==========
 function initDashboardSidebar() {
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
+    if (window.sidebarInitialized) return;
+
     const sidebar = document.querySelector('.dashboard-sidebar');
+    if (!sidebar) return;
 
-    if (!sidebarToggle || !sidebar) return;
-
-    // Create backdrop element
+    // Create backdrop element if missing
     let backdrop = document.querySelector('.sidebar-backdrop');
     if (!backdrop) {
         backdrop = document.createElement('div');
@@ -175,39 +175,35 @@ function initDashboardSidebar() {
         document.body.appendChild(backdrop);
     }
 
-    // Toggle sidebar function
-    function toggleSidebar() {
-        const isOpen = sidebar.classList.contains('open');
+    const toggleSidebar = (show) => {
+        sidebar.classList.toggle('open', show);
+        backdrop.classList.toggle('show', show);
+        document.body.style.overflow = show ? 'hidden' : '';
+    };
 
-        if (isOpen) {
-            sidebar.classList.remove('open');
-            backdrop.classList.remove('show');
-            document.body.style.overflow = '';
-        } else {
-            sidebar.classList.add('open');
-            backdrop.classList.add('show');
-            document.body.style.overflow = 'hidden';
+    // Use event delegation for the toggle button
+    document.addEventListener('click', (e) => {
+        const toggleBtn = e.target.closest('.sidebar-toggle');
+        if (toggleBtn) {
+            e.preventDefault();
+            const isOpen = sidebar.classList.contains('open');
+            toggleSidebar(!isOpen);
         }
-    }
 
-    // Sidebar toggle button click
-    sidebarToggle.addEventListener('click', toggleSidebar);
-
-    // Backdrop click to close
-    backdrop.addEventListener('click', function () {
-        sidebar.classList.remove('open');
-        backdrop.classList.remove('show');
-        document.body.style.overflow = '';
+        // Close when clicking backdrop
+        if (e.target.classList.contains('sidebar-backdrop')) {
+            toggleSidebar(false);
+        }
     });
 
-    // Close sidebar on window resize to desktop
-    window.addEventListener('resize', function () {
+    // Close sidebar on window resize
+    window.addEventListener('resize', () => {
         if (window.innerWidth >= 1024) {
-            sidebar.classList.remove('open');
-            backdrop.classList.remove('show');
-            document.body.style.overflow = '';
+            toggleSidebar(false);
         }
     });
+
+    window.sidebarInitialized = true;
 }
 
 // ========== Scroll Animations ==========
