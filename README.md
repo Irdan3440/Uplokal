@@ -1,4 +1,8 @@
-# 🇮🇩 Uplokal - From Local Up To Global
+<p align="center">
+  <img src="assets/logo.png" alt="Uplokal Logo" width="200">
+</p>
+
+# <p align="center">🇮🇩 Uplokal - From Local Up To Global</p>
 
 **Uplokal** adalah platform digital All-in-One yang dirancang khusus untuk memberdayakan UMKM (Usaha Mikro, Kecil, dan Menengah) Indonesia agar siap bersaing di pasar global. Platform ini menjembatani kesenjangan antara potensi lokal dengan standar internasional melalui rangkaian layanan terintegrasi.
 
