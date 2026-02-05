@@ -1,6 +1,10 @@
-/* ===========================================
-   Document Vault JavaScript
-   =========================================== */
+/**
+ * @license
+ * Uplokal - From Local Up To Global
+ * Copyright (c) 2026 Uplokal Team. All rights reserved.
+ * 
+ * Document Vault JavaScript
+ * =========================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
     // Modal elements

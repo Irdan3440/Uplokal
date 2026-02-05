@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="assets/logo-readme.png" alt="Uplokal Logo" width="200">
-</p>
-
 # 🇮🇩 Uplokal - From Local Up To Global
 
 **Uplokal** adalah platform digital All-in-One yang dirancang khusus untuk memberdayakan UMKM (Usaha Mikro, Kecil, dan Menengah) Indonesia agar siap bersaing di pasar global. Platform ini menjembatani kesenjangan antara potensi lokal dengan standar internasional melalui rangkaian layanan terintegrasi.
@@ -10,23 +6,22 @@
 
 ## 🚀 Fitur Utama
 
-- **🩺 Business Diagnostic**: Analisis kesehatan bisnis otomatis (marketing, keuangan, legalitas) dengan sistem scoring.
-- **💰 Tax & Finance Assistant**: Pengelolaan arus kas sederhana dan estimasi pajak yang ramah UMKM.
+- **🩺 Business Diagnostic (AI-Powered)**: Analisis kesehatan bisnis mendalam menggunakan algoritma cerdas untuk memberikan skor dan rekomendasi perbaikan yang personal.
+- **💰 Tax & Finance Assistant (Smart Insights)**: Pengelolaan keuangan dengan asisten pintar yang memberikan estimasi pajak dan analisis arus kas.
 - **📢 Marketing Campaign**: Pengelolaan kampanye digital (Ads) dengan dashboard transparansi data real-time.
-- **🤝 B2B Matchmaking**: Sistem RFQ (Request for Quotation) untuk menghubungkan supplier lokal dengan pembeli global.
+- **🤝 B2B Matchmaking**: Sistem RFQ (Request for Quotation) yang menghubungkan supplier lokal dengan pembeli global secara cerdas.
 - **📂 Document Vault**: Penyimpanan dokumen legalitas bisnis yang aman dan terorganisir untuk keperluan ekspor.
-- **🎓 Export Readiness**: Penilaian dan panduan langkah demi langkah untuk mempersiapkan UMKM menuju ekspor.
+- **🎓 Export Readiness**: Penilaian dan panduan langkah demi langkah berbasis data untuk mempersiapkan UMKM menuju ekspor.
 
 ---
 
-## 🤖 Integrasi AI (Smart Insights)
+## 🤖 Integrasi AI
 
-Uplokal memanfaatkan teknologi AI untuk memberikan wawasan mendalam bagi pengguna:
+Uplokal memanfaatkan kecerdasan buatan (AI) untuk memberikan nilai tambah bagi penggunanya melalui:
 
-- **Smart Diagnostics**: Mesin AI menganalisis data bisnis untuk memberikan rekomendasi perbaikan yang spesifik dan terukur.
-- **Financial Forecasting**: Proyeksi arus kas masa depan berdasarkan tren historis untuk membantu pengambilan keputusan.
-- **Matchmaking Engine**: Menghubungkan pembeli dan penjual secara cerdas berdasarkan profil, kapasitas produksi, dan riwayat transaksi.
-- **Automated Reporting**: Pembuatan laporan bisnis dan pajak secara otomatis dengan bantuan pemrosesan data cerdas.
+1.  **Smart Diagnostic**: Mesin AI kami menganalisis input dari kuesioner Business Diagnostic untuk mengidentifikasi celah dalam strategi pemasaran, kesehatan keuangan, dan kepatuhan legalitas.
+2.  **Predictive Finance**: Memberikan rekomendasi alokasi anggaran dan estimasi pajak masa depan berdasarkan tren transaksi historis.
+3.  **Automated Matchmaking**: Menyarankan kemitraan B2B yang paling relevan dengan mencocokkan profil supplier dan kebutuhan pembeli secara otomatis.
 
 ---
 
@@ -93,6 +88,6 @@ Uplokal/
 
 ## 📝 Lisensi
 
-Proyek ini dilisensikan di bawah **Lisensi MIT**. Lihat file `LICENSE` untuk informasi lebih lanjut.
+Seluruh kode sumber dalam proyek ini dilisensikan di bawah **MIT License**.
 
 Hak Cipta © 2026 Uplokal Team. Seluruh hak cipta dilindungi undang-undang.

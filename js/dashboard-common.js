@@ -2,12 +2,10 @@
  * @license
  * Uplokal - From Local Up To Global
  * Copyright (c) 2026 Uplokal Team. All rights reserved.
- */
-
-/* ===========================================
-   Uplokal - Dashboard Common JavaScript
-   Shared functionality for all dashboard pages
-   =========================================== */
+ * 
+ * Uplokal - Dashboard Common JavaScript
+ * Shared functionality for all dashboard pages
+ * =========================================== */
 
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize Lucide icons

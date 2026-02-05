@@ -1,4 +1,8 @@
 /**
+ * @license
+ * Uplokal - From Local Up To Global
+ * Copyright (c) 2026 Uplokal Team. All rights reserved.
+ * 
  * Admin Clients Management
  * Provides search, filter, pagination, view/edit/add client functionality
  */

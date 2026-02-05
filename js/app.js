@@ -2,11 +2,9 @@
  * @license
  * Uplokal - From Local Up To Global
  * Copyright (c) 2026 Uplokal Team. All rights reserved.
- */
-
-/* ===========================================
-   Uplokal - Main JavaScript
-   =========================================== */
+ * 
+ * Uplokal - Main JavaScript
+ * =========================================== */
 
 // Initialize Lucide icons
 document.addEventListener('DOMContentLoaded', function () {
