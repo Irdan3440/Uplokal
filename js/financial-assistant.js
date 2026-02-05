@@ -1,3 +1,9 @@
+/**
+ * @license
+ * Uplokal - From Local Up To Global
+ * Copyright (c) 2026 Uplokal Team. All rights reserved.
+ */
+
 /* ===========================================
    Financial Assistant JavaScript
    =========================================== */
