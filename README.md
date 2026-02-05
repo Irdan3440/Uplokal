@@ -91,6 +91,6 @@ Uplokal/
 
 ## 📝 Lisensi
 
-Seluruh kode sumber dalam proyek ini dilisensikan di bawah **MIT License**.
+Seluruh kode sumber dalam proyek ini dilisensikan di bawah **[MIT License](LICENSE)**.
 
 Hak Cipta © 2026 Uplokal Team. Seluruh hak cipta dilindungi undang-undang.
