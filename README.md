@@ -6,6 +6,14 @@
 
 **Uplokal** adalah platform digital All-in-One yang dirancang khusus untuk memberdayakan UMKM (Usaha Mikro, Kecil, dan Menengah) Indonesia agar siap bersaing di pasar global. Platform ini menjembatani kesenjangan antara potensi lokal dengan standar internasional melalui rangkaian layanan terintegrasi.
 
+## 🤖 Integrasi AI
+
+Uplokal memanfaatkan kecerdasan buatan (AI) untuk memberikan nilai tambah bagi penggunanya melalui:
+
+1.  **Smart Diagnostic**: Mesin AI kami menganalisis input dari kuesioner Business Diagnostic untuk mengidentifikasi celah dalam strategi pemasaran, kesehatan keuangan, dan kepatuhan legalitas.
+2.  **Predictive Finance**: Memberikan rekomendasi alokasi anggaran dan estimasi pajak masa depan berdasarkan tren transaksi historis.
+3.  **Automated Matchmaking**: Menyarankan kemitraan B2B yang paling relevan dengan mencocokkan profil supplier dan kebutuhan pembeli secara otomatis.
+
 ---
 
 ## 🚀 Fitur Utama
@@ -19,15 +27,6 @@
 
 ---
 
-## 🤖 Integrasi AI
-
-Uplokal memanfaatkan kecerdasan buatan (AI) untuk memberikan nilai tambah bagi penggunanya melalui:
-
-1.  **Smart Diagnostic**: Mesin AI kami menganalisis input dari kuesioner Business Diagnostic untuk mengidentifikasi celah dalam strategi pemasaran, kesehatan keuangan, dan kepatuhan legalitas.
-2.  **Predictive Finance**: Memberikan rekomendasi alokasi anggaran dan estimasi pajak masa depan berdasarkan tren transaksi historis.
-3.  **Automated Matchmaking**: Menyarankan kemitraan B2B yang paling relevan dengan mencocokkan profil supplier dan kebutuhan pembeli secara otomatis.
-
----
 
 ## 🛠️ Stack Teknologi
 
