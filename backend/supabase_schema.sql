@@ -162,14 +162,67 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 
 -- Initial Subscription Plans
-INSERT INTO subscription_plans (name, tier, description, price_monthly, price_yearly, features, limits, display_order) VALUES
-('Gratis', 'FREE', 'Untuk usaha kecil yang baru mulai.', 0, 0, 
-    '["Pencatatan Dasar", "1 Profil Bisnis", "5 Dokumen/Bulan"]'::jsonb, 
-    '{"max_businesses": 1, "max_documents": 5, "api_access": false}'::jsonb, 1),
-('Starter', 'STARTER', 'Cocok untuk bisnis berkembang.', 50000, 500000, 
-    '["Pencatatan Lengkap", "3 Profil Bisnis", "50 Dokumen/Bulan", "Export PDF"]'::jsonb, 
-    '{"max_businesses": 3, "max_documents": 50, "api_access": true}'::jsonb, 2),
-('Pro', 'PRO', 'Dibuat untuk profesional dan UMKM besar.', 150000, 1500000, 
-    '["Semua Fitur Starter", "Bisnis Tak Terbatas", "Dokumen Tak Terbatas", "Priority Support"]'::jsonb, 
-    '{"max_businesses": 100, "max_documents": 10000, "api_access": true}'::jsonb, 3);
+INSERT INTO subscription_plans (
+    name, 
+    tier, 
+    description, 
+    price_monthly, 
+    price_yearly, 
+    features, 
+    max_documents, 
+    max_rfq_per_month,
+    ai_diagnostic,
+    ai_assistant,
+    b2b_matchmaking,
+    priority_support,
+    white_label,
+    api_access,
+    is_popular,
+    display_order
+) VALUES
+-- FREE Plan
+('Gratis', 'free', 'Untuk usaha kecil yang baru mulai.', 
+    0, 0, 
+    '["Pencatatan Dasar", "1 Profil Bisnis", "5 Dokumen/Bulan"]'::jsonb,
+    5,      -- max_documents
+    3,      -- max_rfq_per_month
+    false,  -- ai_diagnostic
+    false,  -- ai_assistant
+    false,  -- b2b_matchmaking
+    false,  -- priority_support
+    false,  -- white_label
+    false,  -- api_access
+    false,  -- is_popular
+    1       -- display_order
+),
+-- STARTER Plan
+('Starter', 'starter', 'Cocok untuk bisnis berkembang.', 
+    50000, 500000, 
+    '["Pencatatan Lengkap", "3 Profil Bisnis", "50 Dokumen/Bulan", "Export PDF"]'::jsonb,
+    50,     -- max_documents
+    10,     -- max_rfq_per_month
+    true,   -- ai_diagnostic
+    false,  -- ai_assistant
+    false,  -- b2b_matchmaking
+    false,  -- priority_support
+    false,  -- white_label
+    true,   -- api_access
+    true,   -- is_popular (most popular plan)
+    2       -- display_order
+),
+-- PRO Plan
+('Pro', 'pro', 'Dibuat untuk profesional dan UMKM besar.', 
+    150000, 1500000, 
+    '["Semua Fitur Starter", "Bisnis Tak Terbatas", "Dokumen Tak Terbatas", "Priority Support", "AI Assistant", "B2B Matchmaking"]'::jsonb,
+    10000,  -- max_documents (unlimited in practice)
+    100,    -- max_rfq_per_month
+    true,   -- ai_diagnostic
+    true,   -- ai_assistant
+    true,   -- b2b_matchmaking
+    true,   -- priority_support
+    false,  -- white_label
+    true,   -- api_access
+    false,  -- is_popular
+    3       -- display_order
+)
 ON CONFLICT (tier) DO NOTHING;
