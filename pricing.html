@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pilih paket berlangganan Uplokal yang sesuai dengan kebutuhan bisnis Anda">
+    <title>Paket Berlangganan | Uplokal</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/components.css">
+
+    <style>
+        .pricing-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            min-height: 100vh;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--accent-500) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-header p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .billing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .billing-toggle span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .billing-toggle span.active {
+            color: var(--primary-600);
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 56px;
+            height: 28px;
+            background: var(--surface-200);
+            border-radius: 14px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: var(--primary-600);
+        }
+
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active::after {
+            transform: translateX(28px);
+        }
+
+        .save-badge {
+            background: var(--success-100);
+            color: var(--success-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: var(--surface-50);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--surface-200);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary-500);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .plan-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-price {
+            margin: 1.5rem 0;
+        }
+
+        .price-amount {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .plan-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .features-list li i {
+            color: var(--success-500);
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .plan-btn {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .plan-btn.primary {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+            color: white;
+        }
+
+        .plan-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.3);
+        }
+
+        .plan-btn.secondary {
+            background: var(--surface-100);
+            color: var(--text-primary);
+            border: 1px solid var(--surface-200);
+        }
+
+        .plan-btn.secondary:hover {
+            background: var(--surface-200);
+        }
+
+        .plan-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .current-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-100);
+            color: var(--primary-700);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .pricing-card.popular:hover {
+                transform: translateY(-8px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="pricing-section">
+        <div class="pricing-header">
+            <a href="index.html" class="logo" style="display: inline-block; margin-bottom: 2rem;">
+                <img src="assets/logo.png" alt="Uplokal" style="height: 48px;">
+            </a>
+            <h1>Pilih Paket yang Tepat</h1>
+            <p>Mulai gratis dan upgrade sesuai kebutuhan bisnis Anda. Semua paket termasuk akses dashboard lengkap.</p>
+        </div>
+
+        <div class="billing-toggle">
+            <span id="monthlyLabel" class="active">Bulanan</span>
+            <div class="toggle-switch" id="billingToggle" onclick="toggleBilling()"></div>
+            <span id="yearlyLabel">Tahunan</span>
+            <span class="save-badge">Hemat 20%</span>
+        </div>
+
+        <div class="pricing-grid" id="pricingGrid">
+            <!-- Plans will be loaded here -->
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+    <script src="js/api-client.js"></script>
+    <script>
+        let isYearly = false;
+        let plans = [];
+        let currentSubscription = null;
+
+        // Format currency
+        function formatPrice(amount) {
+            if (amount === 0) return 'Gratis';
+            return 'Rp ' + amount.toLocaleString('id-ID');
+        }
+
+        // Toggle billing period
+        function toggleBilling() {
+            isYearly = !isYearly;
+            document.getElementById('billingToggle').classList.toggle('active', isYearly);
+            document.getElementById('monthlyLabel').classList.toggle('active', !isYearly);
+            document.getElementById('yearlyLabel').classList.toggle('active', isYearly);
+            renderPlans();
+        }
+
+        // Render plan cards
+        function renderPlans() {
+            const grid = document.getElementById('pricingGrid');
+
+            grid.innerHTML = plans.map(plan => {
+                const price = isYearly ? plan.price_yearly : plan.price_monthly;
+                const period = isYearly ? '/tahun' : '/bulan';
+                const isCurrentPlan = currentSubscription?.plan?.tier === plan.tier;
+                const isFree = plan.tier === 'free';
+
+                return `
+                    <div class="pricing-card ${plan.is_popular ? 'popular' : ''}">
+                        ${plan.is_popular ? '<div class="popular-badge">Paling Populer</div>' : ''}
+                        
+                        <div class="plan-name">${plan.name}</div>
+                        <p class="plan-description">${plan.description || ''}</p>
+                        
+                        <div class="plan-price">
+                            <span class="price-amount">${formatPrice(price)}</span>
+                            ${!isFree ? `<span class="price-period">${period}</span>` : ''}
+                        </div>
+                        
+                        <ul class="features-list">
+                            <li><i data-lucide="check"></i> ${plan.max_documents === -1 ? 'Unlimited' : plan.max_documents} dokumen</li>
+                            ${plan.ai_diagnostic ? '<li><i data-lucide="check"></i> AI Diagnostic lengkap</li>' : '<li><i data-lucide="check"></i> Diagnostic dasar</li>'}
+                            ${plan.b2b_matchmaking ? '<li><i data-lucide="check"></i> B2B Matchmaking</li>' : ''}
+                            ${plan.ai_assistant ? '<li><i data-lucide="check"></i> AI Assistant</li>' : ''}
+                            ${plan.priority_support ? '<li><i data-lucide="check"></i> Priority Support</li>' : ''}
+                            ${plan.white_label ? '<li><i data-lucide="check"></i> White Label</li>' : ''}
+                            ${plan.api_access ? '<li><i data-lucide="check"></i> API Access</li>' : ''}
+                        </ul>
+                        
+                        ${isCurrentPlan ? `
+                            <div class="current-badge">
+                                <i data-lucide="check-circle"></i>
+                                Paket Anda Saat Ini
+                            </div>
+                        ` : `
+                            <button class="plan-btn ${plan.is_popular ? 'primary' : 'secondary'}"
+                                    onclick="selectPlan('${plan.tier}')"
+                                    ${isFree ? 'data-free="true"' : ''}>
+                                ${isFree ? 'Mulai Gratis' : 'Pilih Paket'}
+                            </button>
+                        `}
+                    </div>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        // Select a plan
+        async function selectPlan(tier) {
+            try {
+                showToast('Memproses...', 'info');
+
+                const response = await UplokalAPI.subscription.subscribe(
+                    tier,
+                    isYearly ? 'yearly' : 'monthly'
+                );
+
+                if (response.success) {
+                    if (response.requires_payment) {
+                        // Load Midtrans Snap and open payment popup
+                        const config = await UplokalAPI.payment.getConfig();
+                        await UplokalAPI.payment.loadSnapLibrary(!config.is_production);
+
+                        // Set client key
+                        window.snap.clientKey = config.client_key;
+
+                        const result = await UplokalAPI.payment.openSnapPopup(response.snap_token);
+
+                        if (result.status === 'success') {
+                            showToast('Pembayaran berhasil!', 'success');
+                            setTimeout(() => window.location.href = 'dashboard.html', 1500);
+                        } else if (result.status === 'pending') {
+                            showToast('Menunggu pembayaran...', 'info');
+                            setTimeout(() => window.location.href = 'dashboard.html', 1500);
+                        } else if (result.status === 'closed') {
+                            showToast('Pembayaran dibatalkan', 'warning');
+                        }
+                    } else {
+                        // Free plan - no payment needed
+                        showToast(response.message, 'success');
+                        setTimeout(() => window.location.href = 'dashboard.html', 1500);
+                    }
+                }
+            } catch (error) {
+                console.error('Subscription error:', error);
+                showToast(error.message || 'Gagal memproses', 'error');
+            }
+        }
+
+        // Load plans on page load
+        async function loadPlans() {
+            try {
+                // Try to get current subscription
+                try {
+                    currentSubscription = await UplokalAPI.subscription.getMy();
+                } catch (e) {
+                    // Not logged in or no subscription
+                }
+
+                // Get available plans
+                plans = await UplokalAPI.subscription.getPlans();
+
+                if (plans.length === 0) {
+                    // Fallback static plans
+                    plans = [
+                        { tier: 'free', name: 'Gratis', price_monthly: 0, price_yearly: 0, max_documents: 5, ai_diagnostic: false, b2b_matchmaking: false, description: 'Untuk memulai' },
+                        { tier: 'starter', name: 'Starter', price_monthly: 99000, price_yearly: 950000, max_documents: 50, ai_diagnostic: true, b2b_matchmaking: true, is_popular: true, description: 'Untuk UKM yang berkembang' },
+                        { tier: 'pro', name: 'Pro', price_monthly: 299000, price_yearly: 2870000, max_documents: -1, ai_diagnostic: true, b2b_matchmaking: true, ai_assistant: true, priority_support: true, description: 'Untuk bisnis serius' },
+                        { tier: 'enterprise', name: 'Enterprise', price_monthly: 0, price_yearly: 0, max_documents: -1, ai_diagnostic: true, b2b_matchmaking: true, ai_assistant: true, priority_support: true, white_label: true, api_access: true, description: 'Solusi kustom' }
+                    ];
+                }
+
+                renderPlans();
+            } catch (error) {
+                console.error('Failed to load plans:', error);
+                showToast('Gagal memuat paket', 'error');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPlans);
+    </script>
+</body>
+
+</html>

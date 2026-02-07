@@ -157,13 +157,24 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
-        function handleRegister(e) {
+        /**
+         * Handle business registration with backend API
+         */
+        async function handleRegister(e) {
             e.preventDefault();
 
+            const fullname = document.getElementById('fullname').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
+            const terms = document.getElementById('terms').checked;
+            const submitBtn = document.querySelector('button[type="submit"]');
 
+            // Validation
             if (password !== confirmPassword) {
                 showToast('Password tidak cocok', 'error');
                 return false;
@@ -174,14 +185,105 @@
                 return false;
             }
 
-            // Demo: redirect to next step
-            showToast('Akun berhasil dibuat!', 'success');
-            setTimeout(() => {
-                window.location.href = 'register-business-profile.html';
-            }, 1500);
+            if (!terms) {
+                showToast('Silakan setujui Syarat & Ketentuan', 'error');
+                return false;
+            }
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Memproses...';
+            lucide.createIcons();
+
+            try {
+                const response = await UplokalAPI.auth.register({
+                    email: email,
+                    password: password,
+                    full_name: fullname,
+                    phone: phone
+                });
+
+                showToast('Akun berhasil dibuat!', 'success');
+
+                // Auto-login after registration
+                try {
+                    const loginResponse = await UplokalAPI.auth.login(email, password);
+                    if (loginResponse.success) {
+                        sessionStorage.setItem('user', JSON.stringify(loginResponse.user));
+                        setTimeout(() => {
+                            window.location.href = 'register-business-profile.html';
+                        }, 1000);
+                    }
+                } catch (loginError) {
+                    // If auto-login fails, redirect to login page
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 1500);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+
+                if (error.status === 400 && error.data?.detail?.includes('already registered')) {
+                    showToast('Email sudah terdaftar. Silakan login.', 'error');
+                } else {
+                    showToast(error.message || 'Pendaftaran gagal', 'error');
+                }
+
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Lanjutkan <i data-lucide="arrow-right"></i>';
+                lucide.createIcons();
+            }
 
             return false;
         }
+
+        /**
+         * Initialize Google Sign-In for registration
+         */
+        function initGoogleSignIn() {
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.initialize({
+                    client_id: 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com',
+                    callback: handleGoogleResponse,
+                    auto_select: false
+                });
+            }
+        }
+
+        async function handleGoogleResponse(response) {
+            if (response.credential) {
+                showToast('Mendaftarkan dengan Google...', 'info');
+
+                try {
+                    const result = await UplokalAPI.post('/auth/google', {
+                        id_token: response.credential
+                    });
+
+                    if (result.success) {
+                        showToast('Berhasil! Melanjutkan...', 'success');
+                        sessionStorage.setItem('user', JSON.stringify(result.user));
+
+                        // Check if new user
+                        if (result.is_new_user) {
+                            setTimeout(() => {
+                                window.location.href = 'register-business-profile.html';
+                            }, 1000);
+                        } else {
+                            setTimeout(() => {
+                                window.location.href = 'dashboard.html';
+                            }, 1000);
+                        }
+                    }
+                } catch (error) {
+                    showToast(error.message || 'Pendaftaran Google gagal', 'error');
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(initGoogleSignIn, 1000);
+        });
     </script>
 </body>
 

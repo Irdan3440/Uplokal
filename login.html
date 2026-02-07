@@ -139,27 +139,128 @@
     </div>
 
     <script src="js/app.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <script>
-        function handleLogin(e) {
+        /**
+         * Handle manual login with backend API
+         */
+        async function handleLogin(e) {
             e.preventDefault();
 
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim();
             const password = document.getElementById('password').value;
+            const submitBtn = document.querySelector('button[type="submit"]');
 
-            // Simple validation
+            // Validation
             if (!email || !password) {
                 showToast('Mohon lengkapi semua field', 'error');
                 return false;
             }
 
-            // Demo: redirect to dashboard
-            showToast('Login berhasil! Mengalihkan...', 'success');
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i data-lucide="loader-2" class="animate-spin"></i> Memproses...';
+            lucide.createIcons();
+
+            try {
+                const response = await UplokalAPI.auth.login(email, password);
+
+                if (response.success) {
+                    showToast('Login berhasil! Mengalihkan...', 'success');
+
+                    // Store user info
+                    sessionStorage.setItem('user', JSON.stringify(response.user));
+
+                    // Redirect to dashboard or stored redirect
+                    const redirect = sessionStorage.getItem('redirectAfterLogin') || 'dashboard.html';
+                    sessionStorage.removeItem('redirectAfterLogin');
+
+                    setTimeout(() => {
+                        window.location.href = redirect;
+                    }, 1000);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+
+                if (error.status === 401) {
+                    showToast('Email atau password salah', 'error');
+                } else if (error.status === 403) {
+                    showToast('Akun dinonaktifkan', 'error');
+                } else {
+                    showToast(error.message || 'Login gagal', 'error');
+                }
+
+                // Reset button
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i data-lucide="log-in"></i> Masuk';
+                lucide.createIcons();
+            }
 
             return false;
         }
+
+        /**
+         * Initialize Google Sign-In
+         */
+        function initGoogleSignIn() {
+            // Initialize when library is loaded
+            if (typeof google !== 'undefined' && google.accounts) {
+                google.accounts.id.initialize({
+                    client_id: '540555703552-qv44i5g32598he89vs9lburihl3q0k96.apps.googleusercontent.com',
+                    callback: handleGoogleResponse,
+                    auto_select: false
+                });
+
+                // Render custom button
+                const googleBtn = document.querySelector('.social-btn');
+                if (googleBtn) {
+                    googleBtn.addEventListener('click', () => {
+                        google.accounts.id.prompt();
+                    });
+                }
+            }
+        }
+
+        /**
+         * Handle Google Sign-In response
+         */
+        async function handleGoogleResponse(response) {
+            if (response.credential) {
+                showToast('Memverifikasi akun Google...', 'info');
+
+                try {
+                    const result = await UplokalAPI.post('/auth/google', {
+                        id_token: response.credential
+                    });
+
+                    if (result.success) {
+                        showToast('Login dengan Google berhasil!', 'success');
+                        sessionStorage.setItem('user', JSON.stringify(result.user));
+
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    }
+                } catch (error) {
+                    console.error('Google auth error:', error);
+                    showToast(error.message || 'Login Google gagal', 'error');
+                }
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if already logged in
+            UplokalAPI.auth.me().then(user => {
+                if (user) {
+                    window.location.href = 'dashboard.html';
+                }
+            }).catch(() => { });
+
+            // Init Google Sign-In after library loads
+            setTimeout(initGoogleSignIn, 1000);
+        });
     </script>
 </body>
 

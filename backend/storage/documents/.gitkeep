@@ -1,0 +1,3 @@
+# Document Storage Directory
+# This directory stores uploaded documents for the Document Vault.
+# Files are stored with UUID names for security.

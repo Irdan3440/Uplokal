@@ -110,6 +110,10 @@
                     </div>
                     <i data-lucide="chevron-down"></i>
                 </div>
+                <button class="logout-btn" onclick="handleLogout()" title="Logout">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </button>
             </div>
         </aside>
 
@@ -353,7 +357,23 @@
 
     <script src="js/dashboard-common.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/api-client.js"></script>
     <script>
+        // Logout handler
+        async function handleLogout() {
+            try {
+                await api.auth.logout();
+                showToast('Berhasil logout', 'success');
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 1000);
+            } catch (error) {
+                console.error('Logout failed:', error);
+                // Still redirect to login even if logout fails
+                window.location.href = 'login.html';
+            }
+        }
+
         // Register Service Worker for PWA
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
